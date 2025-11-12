@@ -1,0 +1,1929 @@
+
+/* CSS Variables for Theming */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #64748b;
+    --accent-color: #f59e0b;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --border-color: #e5e7eb;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Navigation Styles */
+.navbar {
+    background: var(--bg-primary);
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo .logo-link {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    padding: 0.5rem 0;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--text-primary);
+    position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background: var(--text-primary);
+    left: 0;
+    transition: var(--transition);
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    bottom: -8px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: var(--primary-color);
+}
+
+/* Features Section */
+.features {
+    padding: 80px 0;
+    background: var(--bg-secondary);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.feature-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+/* Math Content Styles */
+.content-page {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.math-content {
+    line-height: 1.7;
+}
+
+.content-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.content-header h1 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.content-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content-section {
+    margin-bottom: 3rem;
+}
+
+.content-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.content-divider {
+    border: none;
+    border-top: 2px solid var(--border-color);
+    margin: 3rem 0;
+}
+
+/* Example Cards */
+.example-card {
+    background: var(--bg-primary);
+    border-left: 4px solid var(--accent-color);
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.example-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.solution-step {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+}
+
+/* Math Code and Pre Styles */
+.math-code {
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.math-pre {
+    background: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    margin: 1rem 0;
+    border-left: 3px solid var(--primary-color);
+}
+
+.example-comment {
+    font-style: italic;
+    color: var(--text-secondary);
+    border-left: 3px solid var(--border-color);
+    padding-left: 1rem;
+    margin-top: 1rem;
+}
+
+/* Content Lists */
+.content-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.content-list li {
+    padding: 0.5rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.content-list li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 1rem;
+}
+
+.highlight {
+    background: linear-gradient(120deg, var(--accent-color) 0%, var(--accent-color) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    font-weight: 600;
+}
+
+/* Content Footer */
+.content-footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+/* Active Navigation Link */
+.nav-link.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Special Link Styles */
+.special-link {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    border-radius: 25px;
+    padding: 0.5rem 1rem !important;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.special-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Language Switcher */
+.language-switcher {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.large-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Topics Grid */
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.topic-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    display: block;
+}
+
+.topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+    text-decoration: none;
+    color: inherit;
+}
+
+.topic-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.topic-card p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.topic-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.topic-card:hover .topic-arrow {
+    transform: translateX(5px);
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #f8fafc 100%);
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius);
+    margin: 3rem 0;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* Special Banner */
+.special-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius);
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.banner-content h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.banner-content p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-accent {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-accent:hover {
+    background: white;
+    color: var(--primary-color);
+}
+
+/* Footer Links */
+.footer-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design for Intro Page */
+@media (max-width: 768px) {
+    .special-link {
+        margin: 0.5rem 0;
+        text-align: center;
+        display: block;
+    }
+    
+    .large-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .topics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-actions .btn {
+        width: 200px;
+    }
+    
+    .special-banner {
+        padding: 2rem 1rem;
+    }
+}
+
+
+/* Philosophical Content Styles */
+.philosophical-content {
+    max-width: 800px;
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+}
+
+.philosophical-text {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    text-align: justify;
+    color: var(--text-primary);
+}
+
+.philosophical-highlight {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border-left: 4px solid var(--accent-color);
+    padding: 2rem;
+    margin: 2.5rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    font-style: italic;
+    position: relative;
+}
+
+.philosophical-highlight::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--accent-color);
+    opacity: 0.3;
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+    font-family: serif;
+}
+
+.philosophical-highlight p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #856404;
+}
+
+/* Content Header for Philosophical Pages */
+.philosophical-content .content-header h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2.75rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    font-weight: normal;
+    line-height: 1.3;
+}
+
+/* Language Section */
+.language-section {
+    text-align: center;
+    margin: 4rem 0 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #f8fafc 100%);
+    border-radius: var(--border-radius);
+}
+
+.language-section p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Philosophical Footer */
+.philosophical-footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Special Link Styles (if not already added) */
+.special-link {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    border-radius: 25px;
+    padding: 0.5rem 1rem !important;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.special-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.large-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design for Philosophical Content */
+@media (max-width: 768px) {
+    .philosophical-content {
+        font-size: 1rem;
+    }
+    
+    .philosophical-text {
+        font-size: 1.05rem;
+        text-align: left;
+    }
+    
+    .philosophical-content .content-header h1 {
+        font-size: 2rem;
+    }
+    
+    .philosophical-highlight {
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .philosophical-highlight::before {
+        font-size: 3rem;
+        top: -0.5rem;
+        left: 0.5rem;
+    }
+    
+    .special-link {
+        margin: 0.5rem 0;
+        text-align: center;
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .philosophical-content .content-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .philosophical-text {
+        font-size: 1rem;
+    }
+    
+    .large-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .language-section {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* Add these to your existing style.css file */
+
+/* Math Display Styles */
+.math-display {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    color: var(--primary-color);
+    margin: 1.5rem 0;
+    border: 2px solid var(--border-color);
+}
+
+/* Arrow Steps */
+.arrow-step {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.arrow {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin: 0 0.5rem;
+}
+
+/* Tip Box */
+.tip-box {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.tip-box strong {
+    color: #856404;
+}
+
+/* Math Table */
+.table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.math-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-primary);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.math-table th {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.math-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.math-table tr:nth-child(even) {
+    background: var(--bg-secondary);
+}
+
+.math-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Verification */
+.verification {
+    background: #d1edff;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+    margin: 1.5rem 0;
+}
+
+.checkmark {
+    color: #28a745;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+/* Language Section */
+.language-section {
+    text-align: center;
+    margin: 4rem 0 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #f8fafc 100%);
+    border-radius: var(--border-radius);
+}
+
+.language-section p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Special Links */
+.special-link {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    border-radius: 25px;
+    padding: 0.5rem 1rem !important;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.special-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.large-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Tautology List Styles */
+.tautology-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.tautology-list li {
+    padding: 0.75rem 0;
+    padding-left: 2.5rem;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tautology-list li:last-child {
+    border-bottom: none;
+}
+
+.tautology-list li::before {
+    content: '✓';
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+}
+
+/* Comparison Grid */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.comparison-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    border-top: 4px solid var(--primary-color);
+}
+
+.comparison-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.math-example {
+    background: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+}
+
+.comparison-note {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Warning Card */
+.warning-card {
+    border-left-color: #e74c3c;
+    background: linear-gradient(135deg, #ffeaea, #ffcccc);
+}
+
+.warning-card h3 {
+    color: #c0392b;
+}
+
+/* Benefits List */
+.benefits-list li {
+    padding: 0.5rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.benefits-list li::before {
+    content: '🎯';
+    position: absolute;
+    left: 0;
+}
+
+/* Content Description */
+.content-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    line-height: 1.6;
+}
+
+/* Responsive Design for Tautology Page */
+@media (max-width: 768px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .comparison-card {
+        padding: 1.5rem;
+    }
+    
+    .tautology-list li {
+        padding-left: 2rem;
+    }
+    
+    .tautology-list li::before {
+        left: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-description {
+        font-size: 1.1rem;
+        text-align: left;
+    }
+    
+    .comparison-card {
+        padding: 1rem;
+    }
+    
+    .math-example {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Trigonometry Example Styles */
+.trig-example {
+    border-left: 4px solid #9b59b6;
+    background: linear-gradient(135deg, #f8f5ff, #e8e2ff);
+}
+
+.trig-example h3 {
+    color: #8e44ad;
+}
+
+/* Formulas Grid */
+.formulas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.formula-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.formula-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: #9b59b6;
+}
+
+.formula-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.formula-large {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: block;
+    margin: 1rem 0;
+    background: var(--bg-secondary);
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+}
+
+.formula-card p {
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Tips Grid */
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.tip-card {
+    background: var(--bg-primary);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    border-top: 3px solid var(--accent-color);
+}
+
+.tip-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.tip-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.tip-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Key Principle Section */
+.key-principle {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border-left: 4px solid var(--primary-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin: 2rem 0;
+}
+
+.key-principle h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.key-principle p {
+    color: #1565c0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Trigonometric Code Styling */
+.math-pre {
+    background: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    margin: 1rem 0;
+    border-left: 3px solid #9b59b6;
+    font-size: 0.95rem;
+}
+
+/* Responsive Design for Trigonometry Page */
+@media (max-width: 768px) {
+    .formulas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .formula-card {
+        padding: 1.5rem;
+    }
+    
+    .tip-card {
+        padding: 1.25rem;
+    }
+    
+    .key-principle {
+        padding: 1.5rem;
+    }
+    
+    .formula-large {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .formula-card {
+        padding: 1rem;
+    }
+    
+    .tip-card {
+        padding: 1rem;
+    }
+    
+    .key-principle {
+        padding: 1rem;
+    }
+    
+    .math-pre {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+    }
+}
+
+/* Formulas Page Styles */
+.formulas-page {
+    max-width: 1000px;
+}
+
+.formulas-section {
+    margin: 3rem 0;
+}
+
+.formula-category {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--bg-primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border-left: 4px solid #9b59b6;
+}
+
+.formula-category h2 {
+    color: #8e44ad;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.formula-display {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8f5ff, #e8e2ff);
+    border-radius: var(--border-radius);
+    margin: 1rem 0;
+}
+
+.formula-large {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #8e44ad;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.formula-description {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+}
+
+.formula-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.formula-item {
+    background: var(--bg-secondary);
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 3px solid #9b59b6;
+}
+
+.formula-item code {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.formula-variants {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border-color);
+}
+
+.formula-variants code {
+    display: block;
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Values Table */
+.values-section {
+    margin: 3rem 0;
+}
+
+.values-table {
+    font-family: 'Courier New', monospace;
+}
+
+.values-table th {
+    background: #8e44ad;
+    color: white;
+    text-align: center;
+}
+
+.values-table td {
+    text-align: center;
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.values-table td:first-child {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.table-note {
+    background: #e3f2fd;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.table-note p {
+    margin: 0;
+    color: #1565c0;
+    font-size: 0.95rem;
+}
+
+/* Quick Reference */
+.quick-reference {
+    margin: 3rem 0;
+}
+
+.reference-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.ref-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--accent-color);
+}
+
+.ref-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.ref-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ref-list li {
+    padding: 0.5rem 0;
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.ref-list li::before {
+    content: '•';
+    color: var(--accent-color);
+    font-weight: bold;
+    position: absolute;
+    left: 1rem;
+}
+
+.ref-list code {
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design for Formulas Page */
+@media (max-width: 768px) {
+    .formula-category {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .formula-display {
+        padding: 1rem;
+    }
+    
+    .formula-large {
+        font-size: 1.1rem;
+    }
+    
+    .formula-item {
+        padding: 0.75rem 1rem;
+    }
+    
+    .reference-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .ref-card {
+        padding: 1.5rem;
+    }
+    
+    .values-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .formula-category {
+        padding: 1rem;
+    }
+    
+    .formula-group {
+        gap: 0.75rem;
+    }
+    
+    .formula-item code {
+        font-size: 0.9rem;
+    }
+    
+    .ref-card {
+        padding: 1rem;
+    }
+    
+    .ref-list li {
+        padding-left: 1.5rem;
+    }
+    
+    .ref-list li::before {
+        left: 0.5rem;
+    }
+    
+    .table-note {
+        padding: 1rem;
+    }
+}
+
+/* Proofs Page Styles */
+.proofs-page {
+    max-width: 1000px;
+}
+
+.proofs-section {
+    margin: 3rem 0;
+}
+
+.proof-card {
+    background: var(--bg-primary);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 3rem;
+    border-left: 4px solid #27ae60;
+}
+
+.proof-card h2 {
+    color: #27ae60;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.proof-explanation {
+    line-height: 1.7;
+}
+
+.proof-steps {
+    margin: 2rem 0;
+}
+
+.proof-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    border-left: 3px solid #27ae60;
+}
+
+.step-number {
+    background: #27ae60;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content p {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.proof-visual {
+    background: linear-gradient(135deg, #e8f5e8, #d0efd0);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+    border-left: 4px solid #27ae60;
+}
+
+.visual-note {
+    color: #2e7d32;
+    font-style: italic;
+    margin: 0;
+}
+
+.proof-note {
+    background: #fff3cd;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    border-left: 4px solid #ffc107;
+}
+
+.proof-note strong {
+    color: #856404;
+}
+
+/* Formula Highlight */
+.formula-highlight {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #e8f5e8, #d0efd0);
+    border-radius: var(--border-radius);
+    margin: 1.5rem 0;
+}
+
+/* Proof Methods */
+.proof-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.method {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.method h4 {
+    color: #27ae60;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.method p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Proof Strategies */
+.proof-strategies {
+    margin: 3rem 0;
+}
+
+.strategies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.strategy-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    border-top: 4px solid #3498db;
+    transition: transform 0.3s ease;
+}
+
+.strategy-card:hover {
+    transform: translateY(-5px);
+}
+
+.strategy-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.strategy-card h4 {
+    color: #3498db;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.strategy-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.proof-tips {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+    border-left: 4px solid #2196f3;
+}
+
+.proof-tips h3 {
+    color: #1976d2;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+/* Responsive Design for Proofs Page */
+@media (max-width: 768px) {
+    .proof-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .proof-step {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .step-number {
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+    }
+    
+    .proof-methods {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .method {
+        padding: 1rem;
+    }
+    
+    .strategies-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .strategy-card {
+        padding: 1.5rem;
+    }
+    
+    .formula-highlight {
+        padding: 1.5rem;
+    }
+    
+    .proof-tips {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .proof-card {
+        padding: 1rem;
+    }
+    
+    .proof-step {
+        padding: 0.75rem;
+    }
+    
+    .strategy-card {
+        padding: 1rem;
+    }
+    
+    .strategy-icon {
+        font-size: 2rem;
+    }
+    
+    .proof-tips {
+        padding: 1rem;
+    }
+    
+    .proof-visual {
+        padding: 1rem;
+    }
+    
+    .proof-note {
+        padding: 1rem;
+    }
+}
+
+/* Solver Page Styles */
+.solver-page {
+    max-width: 1000px;
+}
+
+.solver-section {
+    margin: 3rem 0;
+}
+
+.solver-container {
+    background: var(--bg-primary);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border-left: 4px solid #e74c3c;
+}
+
+.input-section h2 {
+    color: #e74c3c;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.equation-input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-family: 'Courier New', monospace;
+    transition: border-color 0.3s ease;
+}
+
+.equation-input:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.solve-btn {
+    padding: 1rem 2rem;
+    white-space: nowrap;
+}
+
+.input-examples {
+    text-align: center;
+}
+
+.example-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.example-btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.example-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Solution Section */
+.solution-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.solution-section h2 {
+    color: #27ae60;
+    margin-bottom: 1.5rem;
+}
+
+.solution-steps {
+    margin: 1.5rem 0;
+}
+
+.solution-step {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    border-left: 3px solid #27ae60;
+}
+
+.step-content p {
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+}
+
+.final-answer {
+    background: linear-gradient(135deg, #e8f5e8, #d0efd0);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    border-left: 4px solid #27ae60;
+}
+
+.final-answer.success {
+    background: linear-gradient(135deg, #e8f5e8, #d0efd0);
+    border-left-color: #27ae60;
+}
+
+.final-answer code {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Error Message */
+.error-message {
+    margin-top: 1rem;
+}
+
+.error-alert {
+    background: #ffeaea;
+    color: #c0392b;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid #e74c3c;
+}
+
+/* Examples Section */
+.examples-section {
+    margin: 3rem 0;
+}
+
+.examples-section .example-card {
+    border-left-color: #3498db;
+}
+
+/* Solver Tips */
+.solver-tips {
+    margin: 3rem 0;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.tip-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border-top: 4px solid #f39c12;
+}
+
+.tip-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.tip-card h4 {
+    color: #f39c12;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.tip-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tip-card li {
+    padding: 0.25rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tip-card li::before {
+    content: '•';
+    color: #f39c12;
+    position: absolute;
+    left: 0.5rem;
+}
+
+.tip-card code {
+    background: var(--bg-secondary);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design for Solver Page */
+@media (max-width: 768px) {
+    .solver-container {
+        padding: 1.5rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .solve-btn {
+        width: 100%;
+    }
+    
+    .example-buttons {
+        flex-direction: column;
+    }
+    
+    .example-btn {
+        text-align: center;
+    }
+    
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .tip-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .solver-container {
+        padding: 1rem;
+    }
+    
+    .equation-input {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+    
+    .solution-step {
+        padding: 1rem;
+    }
+    
+    .tip-card {
+        padding: 1rem;
+    }
+    
+    .tip-card li {
+        padding-left: 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+

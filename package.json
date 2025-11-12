@@ -1,0 +1,13 @@
+{
+  "name": "rowmathwebsite",
+  "version": "1.0.0",
+  "description": "Mathematics education website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server .",
+    "build": "echo 'Build complete'"
+  },
+  "keywords": ["math", "education", "tutoring"],
+  "author": "RowMath",
+  "license": "MIT"
+}
