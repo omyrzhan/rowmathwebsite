@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доказательства тригонометрических тождеств</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- MENU -->
+        <nav class="menu">
+            <ul>
+                <li><a href="intro.html">Главная</a></li>
+                <li><a href="page1.html">Подстановка</a></li>
+                <li><a href="page2.html">Знак =</a></li>
+                <li><a href="page3.html">Тавтология</a></li>
+                <li><a href="page4.html">Алгебра + Триг</a></li>
+                <li><a href="trig-formulas-ru.html">Формулы</a></li>
+                <li><a href="trig-proofs-ru.html">Доказательства</a></li>
+                <li><a href="page11.html">Решатель</a></li>
+            </ul>
+        </nav>
+
+        <!-- CONTENT -->
+        <div class="content">
+            <h1>Доказательства тригонометрических тождеств</h1>
+            <p>Докажем ключевые формулы с помощью подстановки и алгебры.</p>
+
+            <hr>
+
+            <h2>1. Доказательство: sin²α + cos²α = 1</h2>
+            <div class="example">
+                <p>Из теоремы Пифагора в единичной окружности:</p>
+                <pre>
+x² + y² = r²  
+r = 1 → x² + y² = 1  
+cos α = x, sin α = y  
+→ cos²α + sin²α = 1
+                </pre>
+            </div>
+
+            <h2>2. Доказательство: 1 + tan²α = sec²α</h2>
+            <div class="example">
+                <div class="step">Шаг 1: Делим основное тождество на cos²α:</div>
+                <pre>
+(sin²α)/cos²α + cos²α/cos²α = 1/cos²α  
+tan²α + 1 = sec²α
+                </pre>
+            </div>
+
+            <h2>3. Доказательство: sin(α + β)</h2>
+            <div class="example">
+                <p>Из геометрии или комплексных чисел:</p>
+                <pre>
+sin(α + β) = sin α cos β + cos α sin β
+                </pre>
+                <p>Доказывается через поворот на плоскости.</p>
+            </div>
+
+            <hr>
+
+            <h2>Как доказывать?</h2>
+            <ul>
+                <li>Начинайте с известного (аксиомы, основное тождество).</li>
+                <li>Используйте подстановку и алгебраические преобразования.</li>
+                <li>Приводите обе части к одному виду.</li>
+            </ul>
+
+            <footer>
+                <p>© 2025 · Логика доказательств</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

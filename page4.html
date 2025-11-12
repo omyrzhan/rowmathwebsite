@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алгебра и тригонометрия</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- MENU -->
+        <nav class="menu">
+            <ul>
+                <li><a href="intro.html">Главная</a></li>
+                <li><a href="page1.html">Подстановка</a></li>
+                <li><a href="page2.html">Знак =</a></li>
+                <li><a href="page3.html">Тавтология</a></li>
+                <li><a href="page4.html">Алгебра + Триг</a></li>
+                <li><a href="trig-formulas-ru.html">Формулы</a></li>
+                <li><a href="trig-proofs-ru.html">Доказательства</a></li>
+                <li><a href="page11.html">Решатель</a></li>
+            </ul>
+        </nav>
+
+        <!-- CONTENT -->
+        <div class="content">
+            <h1>Алгебра и тригонометрия: союз</h1>
+            <p>Алгебра и тригонометрия — это не враги, а союзники. Тригонометрические функции (<code>sin</code>, <code>cos</code>, <code>tan</code>) можно подставлять, упрощать и решать с помощью алгебраических методов.</p>
+
+            <hr>
+
+            <h2>1. Подстановка в тригонометрию</h2>
+            <p>Используем тавтологии и равенства для упрощения.</p>
+
+            <div class="example">
+                <h3>Пример: sin²θ + cos²θ = 1</h3>
+                <p>Дано: <code>cos θ = 3/5</code>. Найти <code>sin θ</code>.</p>
+                <div class="step">Шаг 1: Используем тавтологию:</div>
+                <pre>sin²θ + cos²θ = 1</pre>
+                <div class="step">Шаг 2: Подставим:</div>
+                <pre>sin²θ + (3/5)² = 1  
+sin²θ + 9/25 = 1  
+sin²θ = 1 - 9/25 = 16/25  
+sin θ = ±4/5</pre>
+            </div>
+
+            <hr>
+
+            <h2>2. Тригонометрические уравнения</h2>
+            <p>Решаются методом подстановки и приведения к квадратному уравнению.</p>
+
+            <div class="example">
+                <h3>Пример: 2sin²x - sin x - 1 = 0</h3>
+                <div class="step">Шаг 1: Замена: пусть <code>u = sin x</code></div>
+                <pre>2u² - u - 1 = 0</pre>
+                <div class="step">Шаг 2: Решаем квадратное:</div>
+                <pre>D = 1 + 8 = 9  
+u = [1 ± 3]/4  
+u₁ = 1, u₂ = -0.5</pre>
+                <div class="step">Шаг 3: Обратно:</div>
+                <pre>sin x = 1 → x = π/2 + 2πk  
+sin x = -0.5 → x = 7π/6 + 2πk, 11π/6 + 2πk</pre>
+            </div>
+
+            <hr>
+
+            <h2>3. Формулы приведения</h2>
+            <p>Это тавтологии, которые позволяют менять угол:</p>
+            <ul>
+                <li><code>sin(π - x) = sin x</code></li>
+                <li><code>cos(π - x) = -cos x</code></li>
+                <li><code>tan(π + x) = tan x</code></li>
+            </ul>
+
+            <h2>Советы</h2>
+            <ul>
+                <li>Всегда проверяйте область определения (<code>sin x ≤ 1</code>).</li>
+                <li>Используйте подстановку <code>t = tan(x/2)</code> для сложных уравнений.</li>
+                <li>Алгебра — ключ к тригонометрии.</li>
+            </ul>
+
+            <footer>
+                <p>© 2025 · Синтез алгебры и тригонометрии</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
