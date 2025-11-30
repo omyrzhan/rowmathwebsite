@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>5. Полиномы — от простого к сложному (с картинками и примерами)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {background:#0f172a; color:#e6eef8; font-family:Arial, sans-serif; padding:20px; line-height:1.7; max-width:1250px; margin:0 auto;}
+        h1, h2, h3 {color:#fcd34d;}
+        section {background:#1e1b4b; padding:30px; margin:30px 0; border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,0.7);}
+        .example {background:#262345; padding:22px; border-radius:12px; margin:20px 0; border-left:7px solid #fcd34d;}
+        .poly {font-size:26px; text-align:center; background:#1e1b4b; padding:18px; border-radius:12px; margin:25px 0; color:#fff;}
+        canvas {background:#1e1b4b; border-radius:12px; margin:20px 0;}
+        table {width:100%; border-collapse:collapse; margin:25px 0;}
+        th, td {padding:15px; border-bottom:2px solid #334155;}
+        th {background:#262345; color:#fcd34d;}
+        .play {background:#262345; padding:20px; border-radius:12px; text-align:center;}
+        input[type=number] {padding:10px; width:80px; margin:5px; border-radius:8px; border:none; background:#334155; color:white;}
+    </style>
+</head>
+<body>
+
+<h1>5. Полиномы — «лего» из степеней x</h1>
+
+<section>
+    <h2>Что такое полином?</h2>
+    <p><strong>Полином</strong> — это сумма нескольких одночленов со степенями x (от 0 и выше).</p>
+
+    <div class="poly">
+        P(x) = aₙ xⁿ + aₙ₋₁ xⁿ⁻¹ + … + a₂ x² + a₁ x + a₀
+    </div>
+
+    <p>Простыми словами: берём любые степени x и складываем их с любыми коэффициентами.</p>
+</section>
+
+<section>
+    <h2>Степень полинома и как он себя ведёт на концах</h2>
+    <table>
+        <tr><th>Степень</th><th>Название</th><th>Пример</th><th>Как ведёт себя при x → ±∞</th><th>Максимум «изгибов»</th></tr>
+        <tr><td>0</td><td>константа</td><td>y = 7</td><td>горизонтальная прямая</td><td>0</td></tr>
+        <tr><td>1</td><td>линейная</td><td>y = 3x − 2</td><td>один конец ↑, другой ↓</td><td>0</td></tr>
+        <tr><td>2</td><td>квадратичная (парабола)</td><td>y = −x² + 4</td><td>оба конца в одну сторону (↑ или ↓)</td><td>1 изгиб</td></tr>
+        <tr><td>3</td><td>кубическая</td><td>y = x³ − 4x</td><td>один конец ↑, другой ↓</td><td>до 2 изгибов</td></tr>
+        <tr><td>4</td><td>четвёртой степени</td><td>y = x⁴ − 5x² + 4</td><td>оба конца ↑</td><td>до 3 изгибов</td></tr>
+        <tr><td>5</td><td>пятой степени</td><td>y = x⁵ − x</td><td>один конец ↑, другой ↓</td><td>до 4 изгибов</td></tr>
+    </table>
+
+    <p style="font-size:20px; text-align:center; color:#fcd34d;">
+        Главное правило: <strong>у полинома степени n не больше n корней</strong> и <strong>не больше (n−1) изгибов</strong>!
+    </p>
+</section>
+
+<section>
+    <h2>Примеры из жизни</h2>
+
+    <div class="example">
+        <h3>Объём коробки без крышки</h3>
+        Из листа 30×30 см вырезаем по углам квадратики со стороной x.<br>
+        Объём V(x) = x·(30−2x)·(30−2x) = 4x³ − 120x² + 900x &nbsp;&nbsp;← полином 3-й степени
+    </div>
+
+    <div class="example">
+        <h3>Траектория полёта снаряда (без сопротивлением пренебрегаем)</h3>
+        y(x) = −0.002x² + 1.5x &nbsp;&nbsp;← парабола (полином 2-й степени)
+    </div>
+
+    <div class="example">
+        <h3>Прибыль компании за 5 лет</h3>
+        Часто моделируют полиномом 3–4 степени — сначала рост, потом спад, потом новый рост.
+    </div>
+</section>
+
+<section>
+    <h2>Поиграй с полиномами сам!</h2>
+    <div class="play">
+        Коэффициенты (от старшей степени):<br><br>
+        x⁵ <input id="c5" type="number" step="any" value="0" oninput="draw()">
+        x⁴ <input id="c4" type="number" step="any" value="0" oninput="draw()">
+        x³ <input id="c3" type="number" step="any" value="0" oninput="draw()">
+        x² <input id="c2" type="number" step="any" value="-5" oninput="draw()">
+        x <input id="c1" type="number" step="any" value="0" oninput="draw()">
+        + <input id="c0" type="number" step="any" value="4" oninput="draw()">
+        <br><br>
+        <strong><span id="formula" style="font-size:22px; color:#fcd34d;">y = −5x² + 4</span></strong>
+    </div>
+    <canvas id="polyChart" height="500"></canvas>
+</section>
+
+<section>
+    <h2>Классические «красивые» полиномы (запомни их!)</h2>
+
+    <div class="example">
+        <strong>y = x³</strong> — простая кубическая парабола<br>
+        <canvas id="cubic1"></canvas>
+    </div>
+
+    <div class="example">
+        <strong>y = x⁴ − 5x² + 4 = (x²−1)(x²−4)</strong> — форма буквы W<br>
+        <canvas id="wshape"></canvas>
+    </div>
+
+    <div class="example">
+        <strong>y = x⁵ − x = x(x⁴ − 1)</strong> — пять корней, четыре изгиба<br>
+        <canvas id="quintic"></canvas>
+    </div>
+</section>
+
+<section>
+    <h2>Шпаргалка по полиномам</h2>
+    <table>
+        <tr><th>Степень n</th><th>Чётная или нечётная</th><th>Концы графика (±∞)</th><th>Макс. корней</th></tr>
+        <tr><td>чётная</td><td>—</td><td>оба конца в одну сторону (↑↑ или ↓↓)</td><td>n</td></tr>
+        <tr><td>нечётная</td><td>—</td><td>концы в разные стороны (↑↓ или ↓↑)</td><td>n</td></tr>
+    </table>
+    <p style="text-align:center; font-size:22px; margin-top:30px; color:#fcd34d;">
+        Полиномы — это как волны: чем выше степень — тем больше «волн» может быть!
+    </p>
+</section>
+
+<script>
+function drawPoly(coef, canvasId, color = '#fcd34d', title = '') {
+    let xs = [];
+    for(let i = -5; i <= 5; i += 0.05) xs.push(i);
+    let ys = xs.map(x => 
+        coef[5]*x**5 + coef[4]*x**4 + coef[3]*x**3 + coef[2]*x**2 + coef[1]*x + coef[0]
+    );
+
+    new Chart(document.getElementById(canvasId), {
+        type: 'line',
+        data: {labels: xs, datasets: [{data: ys, borderColor: color, borderWidth: 4, pointRadius: 0, tension: 0.2, fill: false}]},
+        options: {
+            animation: false,
+            plugins: {legend: {display: false}, title: {display: true, text: title, color: '#e6eef8', font: {size: 18}}},
+            scales: {x: {display: false}, y: {suggestedMin: -20, suggestedMax: 20, grid: {color: '#334155'}}}
+        }
+    });
+}
+
+// Интерактивный полином
+function draw() {
+    let c5 = parseFloat(c5.value) || 0;
+    let c4 = parseFloat(c4.value) || 0;
+    let c3 = parseFloat(c3.value) || 0;
+    let c2 = parseFloat(c2.value) || 0;
+    let c1 = parseFloat(c1.value) || 0;
+    let c0 = parseFloat(c0.value) || 0;
+
+    // Формула над графиком
+    let terms = [];
+    if(c5) terms.push(`${c5}x⁵`);
+    if(c4) terms.push(`${c4>=0?'+':''}${c4}x⁴`);
+    if(c3) terms.push(`${c3>=0?'+':''}${c3}x³`);
+    if(c2) terms.push(`${c2>=0?'+':''}${c2}x²`);
+    if(c1) terms.push(`${c1>=0?'+':''}${c1}x`);
+    if(c0) terms.push(`${c0>=0?'+':''}${c0}`);
+    if(terms.length===0) terms.push('0');
+    document.getElementById('formula').textContent = 'y = ' + terms.join(' ');
+
+    drawPoly([c0,c1,c2,c3,c4,c5], 'polyChart', '#fcd34d');
+}
+draw(); // первый запуск
+
+// Классические примеры
+drawPoly([0,0,0,0,0,1], 'cubic1', '#34d399', 'y = x³');
+drawPoly([4,0,-5,0,1,0], 'wshape', '#f87171', 'y = x⁴ − 5x² + 4');
+drawPoly([0,-1,0,0,0,1], 'quintic', '#60a5fa', 'y = x⁵ − x');
+</script>
+
+<p style="text-align:center; font-size:20px; color:#94a3b8; margin:60px;">
+    Теперь ты понимаешь, почему полиномы могут иметь любую «волнистую» форму!<br>
+    Дальше — дробные, показательные и логарифмические функции. Ты почти профи
+</p>
+
+</body>
+</html>

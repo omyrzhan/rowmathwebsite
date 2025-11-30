@@ -1,0 +1,183 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>9. Модуль и кусочные функции — ломаем график, как хотим</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {background:#0f172a; color:#e6eef8; font-family:Arial, sans-serif; padding:20px; line-height:1.7; max-width:1350px; margin:0 auto;}
+        h1, h2, h3 {color:#fbbf24;}
+        section {background:#1c1917; padding:35px; margin:35px 0; border-radius:18px; box-shadow:0 10px 40px rgba(0,0,0,0.8);}
+        .example {background:#292524; padding:25px; border-radius:14px; margin:25px 0; border-left:8px solid #fbbf24;}
+        .formula {font-size:28px; text-align:center; background:#292524; padding:22px; border-radius:14px; margin:30px 0;}
+        canvas {background:#292524; border-radius:14px; margin:20px 0;}
+        .play {background:#292524; padding:28px; border-radius:14px; text-align:center; font-size:19px;}
+        input {padding:10px 14px; width:90px; margin:5px; border-radius:8px; border:none; background:#44403c; color:white;}
+        table {width:100%; border-collapse:collapse; margin:30px 0;}
+        th, td {padding:16px; border-bottom:1px solid #44403c;}
+        th {background:#292524; color:#fbbf24;}
+    </style>
+</head>
+<body>
+
+<h1>9. Модуль и кусочные функции — когда график «ломается» в углах</h1>
+
+<section>
+    <h2>Что такое модуль |x|? Самое простое объяснение</h2>
+    <div class="formula">
+        |x| = 
+        <span style="color:#fbbf24;">x</span>, если x ≥ 0<br>
+        <span style="color:#f87171;">−x</span>, если x < 0
+    </div>
+    <p>По-русски: модуль — это всегда неотрицательное расстояние от числа до нуля на числовой прямой.</p>
+</section>
+
+<section>
+    <h2>График |x| и его превращения</h2>
+    <div class="play">
+        Попробуй сам:<br><br>
+        y = a ⋅ |x − h| + k<br><br>
+        a (растягивает/сжимает и переворачивает): <input id="a" value="1" oninput="drawAll()"><br>
+        h (сдвиг влево-вправо): <input id="h" value="0" oninput="drawAll()"><br>
+        k (сдвиг вверх-вниз): <input id="k" value="0" oninput="drawAll()">
+    </div>
+    <canvas id="absChart" height="450"></canvas>
+</section>
+
+<section>
+    <h2>Как раскрывать модуль в уравнениях и неравенствах</h2>
+    <table>
+        <tr><th>Задача</th><th>Метод</th><th>Пример</th></tr>
+        <tr><td>|x| = 5</td><td>два случая</td><td>x = 5 или x = −5</td></tr>
+        <tr><td>|x| < 3</td><td>между −a и a</td><td>−3 < x < 3</td></tr>
+        <tr><td>|x| > 2</td><td>снаружи</td><td>x < −2 или x > 2</td></tr>
+        <tr><td>|x − 4| ≤ 7</td><td>расстояние до 4 не больше 7</td><td>−3 ≤ x ≤ 11</td></tr>
+    </table>
+</section>
+
+<section>
+    <h2>Кусочные (кусочно-заданные) функции — собираем график из кусочков</h2>
+    <div class="example">
+        <h3>Самый популярный пример в школе</h3>
+        <div class="formula">
+            f(x) = 
+            <span style="color:#60a5fa;">−x − 2</span>, если x < −1<br>
+            <span style="color:#34d399;">x + 4</span>, если −1 ≤ x < 3<br>
+            <span style="color:#f87171;">2x − 8</span>, если x ≥ 3
+        </div>
+        <canvas id="piecewise1"></canvas>
+    </div>
+
+    <div class="example">
+        <h3>Функция знака, модуль и целая часть</h3>
+        <canvas id="signChart"></canvas>
+        <p style="text-align:center; margin-top:10px;">
+            sgn(x) = −1 при x<0, 0 при x=0, +1 при x>0<br>
+            |x| = x ⋅ sgn(x)
+        </p>
+    </div>
+</section>
+
+<section>
+    <h2>Жизненные примеры модуля и кусочных функций</h2>
+
+    <div class="example">
+        <strong>1. Такси</strong><br>
+        Стоимость = 100 руб (посадка) + 30 руб/км ⋅ |км − 3| если больше 3 км бесплатно<br>
+        → кусочная функция с модулем
+    </div>
+
+    <div class="example">
+        <strong>2. Температура по модулю</strong><br>
+        «По ощущению» в мороз: −15° → ощущается как −22°<br>
+        Часто моделируют |T − 10| и линейные куски
+    </div>
+
+    <div class="example">
+        <strong>3. Штраф за скорость</strong><br>
+        до 60 км/ч — 0 руб<br>
+        61–80 — 500 руб<br>
+        больше 80 — 5000 руб → классическая кусочная функция
+    </div>
+
+    <div class="example">
+        <strong>4. Цена доставки</strong><br>
+        до 5 кг — 300 руб, каждый следующий кг + 50 руб<br>
+        → линейная + константа с модулем
+    </div>
+</section>
+
+<section>
+    <h2>Как строить график любой функции с модулем</h2>
+    <p>Пошаговый рецепт:</p>
+    <ol style="font-size:20px; background:#292524; padding:30px; border-radius:14px;">
+        <li>Найди точки, где выражение внутри модуля = 0 (это «углы»)</li>
+        <li>На каждом промежутке раскрывай модуль (убирай или меняй знак)</li>
+        <li>Строй каждый кусок отдельно</li>
+        <li>В точках «углов» ставь кружки: ◯ если не входит, ● если входит</li>
+    </ol>
+
+    <div class="example">
+        Построй график y = |x² − 4x − 5|<br>
+        x² − 4x − 5 = 0 → (x−5)(x+1)=0 → x=−1 и x=5<br>
+        → три куска: x < −1, −1 ≤ x ≤ 5, x > 5
+        <canvas id="complexAbs"></canvas>
+    </div>
+</section>
+
+<section>
+    <h2>Шпаргалка по модулю</h2>
+    <div style="columns:2; background:#292524; padding:30px; border-radius:14px; font-size:19px;">
+        |a| ⋅ |b| = |a⋅b|  |a|² = a²<br>
+        |a + b| ≤ |a| + |b| (неравенство треугольника)<br>
+        ||a| − |b|| ≤ |a − b| (обратное)<br>
+        |x| = √(x²)  (удобно в уравнениях)<br>
+        max(x, y) = (x + y + |x − y|)/2<br>
+        min(x, y) = (x + y − |x − y|)/2
+    </div>
+</section>
+
+<script>
+function drawAll() {
+    let a = parseFloat(document.getElementById('a').value) || 1;
+    let h = parseFloat(document.getElementById('h').value) || 0;
+    let k = parseFloat(document.getElementById('k').value) || 0;
+
+    let xs = []; for(let x=-10; x<=10; x+=0.1) xs.push(x);
+    let ys = xs.map(x => a * Math.abs(x - h) + k);
+
+    new Chart(absChart, {
+        type:'line', data:{labels:xs, datasets:[{data:ys, borderColor:'#fbbf24', borderWidth:4, pointRadius:0, fill:false}]},
+        options:{animation:false, plugins:{title:{display:true, text:`y = ${a<0?a:' '+a}·|x${h>=0?'-':''}${Math.abs(h)}|${k>=0?'+':''}${k}`, color:'#fff', font:{size:22}}}}
+    });
+}
+drawAll();
+
+// Кусочная классика
+let xs1 = []; for(let x=-8; x<=8; x+=0.05) xs1.push(x);
+let ys1 = xs1.map(x => {
+    if(x < -1) return -x - 2;
+    if(x < 3) return x + 4;
+    return 2*x - 8;
+});
+new Chart(piecewise1, {type:'line', data:{labels:xs1, datasets:[{data:ys1, borderColor:'#60a5fa', borderWidth:4}]}, options:{animation:false}});
+
+// sgn(x)
+let xs2 = []; for(let x=-5; x<=5; x+=0.05) xs2.push(x);
+let ys2 = xs2.map(x => x===0 ? 0 : x>0 ? 1 : -1);
+new Chart(signChart, {type:'line', data:{labels:xs2, datasets:[{label:'sgn(x)', data:ys2, borderColor:'#f87171', borderWidth:4, stepped:true}]}, options:{animation:false}});
+
+// Сложный модуль
+let xs3 = []; for(let x=-3; x<=8; x+=0.05) xs3.push(x);
+let ys3 = xs3.map(x => Math.abs(x*x - 4*x - 5));
+new Chart(complexAbs, {type:'line', data:{labels:xs3, datasets:[{data:ys3, borderColor:'#34d399', borderWidth:4}]}, options:{animation:false, plugins:{title:{display:true, text:'y = |x²−4x−5|', color:'#fff'}}}});
+</script>
+
+<p style="text-align:center; font-size:24px; color:#94a3b8; margin:100px;">
+    Теперь ты умеешь строить и решать любые функции с модулем и кусочные функции!<br>
+    Это одна из самых любимых тем на ЕГЭ и олимпиадах — ты готов
+</p>
+
+</body>
+</html>

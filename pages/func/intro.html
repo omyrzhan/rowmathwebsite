@@ -1,0 +1,186 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>1. Понятие функции — подробно и с примерами</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    body {font-family: Arial, Helvetica, sans-serif; background:#0f172a; color:#e6eef8; line-height:1.6; padding:20px; max-width:1000px; margin:0 auto;}
+    h1, h2, h3 {color:#60a5fa;}
+    section {background:#081524; padding:25px; border-radius:12px; margin-bottom:25px; box-shadow:0 4px 12px rgba(0,0,0,0.3);}
+    .example {background:#112240; padding:15px; border-radius:8px; margin:15px 0;}
+    input, select {padding:8px; border-radius:6px; border:none; margin:5px;}
+    .button {background:#3b82f6; color:white; padding:8px 15px; border:none; border-radius:6px; cursor:pointer;}
+    .button:hover {background:#2563eb;}
+    canvas {margin-top:15px; background:#112240; border-radius:8px;}
+</style>
+</head>
+<body>
+
+<h1>1. Что такое функция? Объясняем с нуля</h1>
+
+<section>
+<h2>Историческая справка (очень коротко)</h2>
+<p>
+Слово «функция» в математику ввёл <strong>Готфрид Лейбниц</strong> в 1673 году. Сначала оно означало «выполнять роль», потом — разные величины, зависящие от других (например, длина дуги от угла).
+<br><br>
+В 1837 году <strong>Пётр Дирихле</strong> и <strong>Николай Лобачевский</strong> почти одновременно дали современное определение: 
+<strong>функция — это правило, по которому каждому элементу одного множества ставится в соответствие ровно один элемент другого множества.</strong>
+</p>
+</section>
+
+<section>
+<h2>Два способа понимать функцию</h2>
+
+<h3>1. Интуитивный подход: функция — это «машина»</h3>
+<div class="example">
+<p>Представьте автомат в кафе:</p>
+<ul>
+    <li>Вы бросаете монетку (вход = 50 рублей)</li>
+    <li>Нажимаете кнопку «Кола»</li>
+    <li>Автомат выдаёт банку колы (выход)</li>
+</ul>
+<p>Для каждой монетки и каждой кнопки автомат всегда выдаёт одну и ту же банку. Нельзя получить одновременно колу и фанта — только что-то одно.</p>
+<p><strong>Функция работает точно так же:</strong> берёт число x → делает с ним какие-то действия → выдаёт одно-единственное число y.</p>
+</div>
+
+<div style="background:#112240;padding:20px;border-radius:8px;margin:20px 0;">
+    <strong>Интерактивная «машина»</strong><br><br>
+    Введите число x: <input id="xMachine" type="number" value="5" style="width:80px;">
+    <select id="operation">
+        <option value="square">x² (квадрат)</option>
+        <option value="double">2x (удвоить)</option>
+        <option value="plus3">x+3</option>
+        <option value="sin">sin(x) в радианах</option>
+    </select>
+    <button class="button" onclick="runMachine()">Запустить машину</button>
+    <p>Результат y = <span id="resultMachine" style="font-size:1.5em;color:#60a5fa;">?</span></p>
+</div>
+</section>
+
+<section>
+<h3>2. Теоретико-множественный подход (современное строгое определение)</h3>
+<p>Функция f: A → B — это правило, которое:</p>
+<ol>
+    <li>Каждому элементу множества A (область определения) ставит в соответствие</li>
+    <li>Ровно один элемент множества B (область значений)</li>
+</ol>
+
+<div class="example">
+<p><strong>Пример:</strong></p>
+Пусть A = {1, 2, 3, 4} — ученики класса<br>
+B = {А, Б, В, Г, Д} — возможные оценки<br><br>
+Функция «оценка по математике» сопоставляет:<br>
+1 → В<br>
+2 → А<br>
+3 → Б<br>
+4 → А<br><br>
+Это функция, потому что каждому ученику соответствует ровно одна оценка.<br>
+Если бы ученик 3 получил одновременно Б и В — это уже не функция.
+</div>
+</section>
+
+<section>
+<h2>Классический школьный пример: линейная функция</h2>
+<p>Самая простая функция после постоянной — линейная: <strong>f(x) = kx + b</strong></p>
+
+<div class="example" style="padding:20px;">
+    f(x) = <input id="k" type="number" value="2" style="width:60px;"> x +
+           <input id="b" type="number" value="3" style="width:60px;">
+    <button class="button" onclick="updateAll()">Обновить всё</button>
+
+    <p>Введите x: <input id="x1" type="number" value="4" style="width:80px;">
+       → f(x) = <span id="res1" style="font-size:1.3em;color:#60a5fa;">11</span></p>
+</div>
+
+<canvas id="graph" height="400"></canvas>
+</section>
+
+<section>
+<h2>Главное правило функции</h2>
+<p style="font-size:1.3em; text-align:center; background:#1e2933; padding:20px; border-radius:10px;">
+Одному x — всегда одно и то же y.<br>
+Если для одного и того же x функция может выдать два разных ответа — это уже НЕ функция.
+</p>
+</section>
+
+<script>
+// Первая простая функция
+function calcSimple() {
+    let x = parseFloat(document.getElementById('x1').value);
+    let k = parseFloat(document.getElementById('k').value);
+    let b = parseFloat(document.getElementById('b').value);
+    let y = k*x + b;
+    document.getElementById('res1').textContent = isNaN(y) ? '?' : y;
+}
+
+// «Машина»
+function runMachine() {
+    let x = parseFloat(document.getElementById('xMachine').value);
+    let op = document.getElementById('operation').value;
+    let y;
+    switch(op) {
+        case 'square': y = x*x; break;
+        case 'double': y = 2*x; break;
+        case 'plus3':  y = x+3; break;
+        case 'sin':    y = Math.sin(x).toFixed(4); break;
+    }
+    document.getElementById('resultMachine').textContent = y;
+}
+
+// График
+let ctx = document.getElementById('graph').getContext('2d');
+let chart;
+
+function updateGraph() {
+    let k = parseFloat(document.getElementById('k').value) || 1;
+    let b = parseFloat(document.getElementById('b').value) || 0;
+
+    let labels = [];
+    let data = [];
+    for(let x = -10; x <= 10; x += 0.5) {
+        labels.push(x);
+        data.push(k*x + b);
+    }
+
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: `f(x) = ${k}x + ${b >=0 ? '' : ''}${b}`,
+                data: data,
+                borderColor: '#60a5fa',
+                backgroundColor: 'rgba(96,165,250,0.1)',
+                fill: true,
+                tension: 0.1,
+                pointRadius: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { labels: { color: '#e6eef8' } } },
+            scales: {
+                x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+                y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } }
+            }
+        }
+    });
+}
+
+function updateAll() {
+    calcSimple();
+    updateGraph();
+}
+
+// Инициализация
+updateAll();
+document.getElementById('x1').addEventListener('input', calcSimple);
+document.getElementById('xMachine').addEventListener('input', runMachine);
+runMachine(); // первый запуск машины
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Возведение в степень — правила и интуиция</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+  <style>
+    body {font-family: Inter, Segoe UI, Roboto, Arial; background: #f8fafc; color: #0f172a; padding: 24px;}
+    .container {max-width: 900px; margin: auto; background: white; padding: 24px; border-radius: 12px; box-shadow: 0 6px 24px rgba(2,6,23,.08);}
+    h1, h2, h3 {color: #1e293b;}
+    p {line-height: 1.6; margin: 10px 0;}
+    code {background: #f1f5f9; padding: 2px 5px; border-radius: 4px;}
+    .card {background: #fefeff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 10px; margin: 12px 0;}
+    ul {margin-left: 20px;}
+    .example {background: #f1f5f9; border-left: 4px solid #3b82f6; padding: 10px; margin: 10px 0; border-radius: 6px;}
+   canvas {width: 100%; height: 400px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;}
+footer {font-size: 0.85rem; color: #475569; margin-top: 20px;}
+input, button {padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1;}
+button {background: #2563eb; color: white; cursor: pointer; border: none;}
+button:hover {background: #1d4ed8;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" class="logo-link">RowMath</a>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="intro.html" class="nav-link" role="menuitem">Главная</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page1.html" class="nav-link" role="menuitem">Подстановка</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page2.html" class="nav-link active" role="menuitem">Знак =</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page3.html" class="nav-link" role="menuitem">Тавтология</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page4.html" class="nav-link" role="menuitem">Алгебра + Триг</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-formulas-ru.html" class="nav-link" role="menuitem">Формулы</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-proofs-ru.html" class="nav-link" role="menuitem">Доказательства</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page11.html" class="nav-link" role="menuitem">Решатель</a>
+                </li>
+                <!-- Special link to English version -->
+                <li class="nav-item" role="none">
+                    <a href="../index.html" class="nav-link special-link" role="menuitem">English Version</a>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+  <div class="container">
+    <h1>Возведение в степень — правила и интуиция</h1>
+    <p><strong>Возведение в степень</strong> — это математическая операция, показывающая, сколько раз нужно перемножить одно и то же число само на себя. Если записано <code>a<sup>n</sup></code>, это означает <em>умножить a само на себя n раз</em>.</p>
+
+    <div class="card">
+      <h2>Интуитивное объяснение</h2>
+      <p>Пусть <code>a</code> — основание степени, а <code>n</code> — показатель. Тогда:</p>
+      <div class="example">a<sup>n</sup> = a × a × a × ... × a (n раз)</div>
+      <p>Например, <code>2<sup>3</sup> = 2 × 2 × 2 = 8</code>. Степень — это способ коротко записать повторное умножение.</p>
+    </div>
+
+    <h2>Пять основных правил возведения в степень</h2>
+
+    <div class="card">
+      <h3>1️⃣ Правило умножения степеней с одинаковым основанием</h3>
+      <p><strong>Формула:</strong> \(a^x · a^y = a^{x + y}\)</p>
+      <p><strong>Интуиция:</strong> мы просто складываем количество одинаковых множителей. Ведь <code>a<sup>x</sup></code> — это x множителей a, а <code>a<sup>y</sup></code> — ещё y множителей. Вместе их x + y.</p>
+      <div class="example">\(a^3 · a^2 = (a·a·a)·(a·a) = a^5\)</div>
+    </div>
+
+    <div class="card">
+      <h3>2️⃣ Деление степеней с одинаковым основанием</h3>
+      <p><strong>Формула:</strong> \(\dfrac{a^x}{a^y} = a^{x - y}\)</p>
+      <p><strong>Интуиция:</strong> при делении одинаковые множители сокращаются. Если в числителе и знаменателе стоят одинаковые a, они взаимно уничтожаются.</p>
+      <div class="example">\(a^5 / a^2 = (a·a·a·a·a)/(a·a) = a^3\)</div>
+    </div>
+
+    <div class="card">
+      <h3>3️⃣ Возведение степени в степень</h3>
+      <p><strong>Формула:</strong> \((a^x)^y = a^{x·y}\)</p>
+      <p><strong>Интуиция:</strong> если мы повторяем операцию «умножить само на себя» y раз, а внутри уже есть x множителей, всего получится x·y множителей a.</p>
+      <div class="example">\((a^2)^3 = (a²)·(a²)·(a²) = a⁶\)</div>
+    </div>
+
+    <div class="card">
+      <h3>4️⃣ Степень произведения</h3>
+      <p><strong>Формула:</strong> \((a·b)^x = a^x · b^x\)</p>
+      <p><strong>Интуиция:</strong> если перемножить a и b x раз, каждый множитель a и b тоже появится x раз, то есть мы можем «разнести» степень на множители.</p>
+      <div class="example">\((2·3)^4 = 6⁴ = 1296,\ а\ 2⁴·3⁴ = 16·81 = 1296\)</div>
+    </div>
+
+    <div class="card">
+      <h3>5️⃣ Степень частного</h3>
+      <p><strong>Формула:</strong> \(\left(\dfrac{a}{b}\right)^x = \dfrac{a^x}{b^x}\)</p>
+      <p><strong>Интуиция:</strong> при делении мы тоже повторяем отношение a/b x раз, поэтому степень действует на числитель и знаменатель отдельно.</p>
+      <div class="example">\((\dfrac{2}{3})^3 = \dfrac{8}{27}\)</div>
+    </div>
+
+    <div class="card">
+      <h2>Интерактивная проверка</h2>
+      <p>Введите основание и показатель степени:</p>
+      <label>Основание a: <input type="number" id="aVal" value="2"></label>
+      <label>Показатель n: <input type="number" id="nVal" value="3"></label>
+      <button id="calcBtn">Вычислить</button>
+      <pre id="result">Результат появится здесь...</pre>
+    </div>
+<div class="card">
+<h2>Графическая визуализация y = aˣ</h2>
+<p>Попробуйте изменить значение <em>a</em> и посмотрите, как меняется форма графика.</p>
+<canvas id="graph"></canvas>
+</div>
+
+
+<script>
+const canvas = document.getElementById('graph');
+const ctx = canvas.getContext('2d');
+canvas.width = canvas.clientWidth;
+canvas.height = 400;
+
+
+function drawGraph(a) {
+const w = canvas.width;
+const h = canvas.height;
+ctx.clearRect(0, 0, w, h);
+// оси координат
+ctx.strokeStyle = '#94a3b8';
+ctx.beginPath();
+ctx.moveTo(0, h / 2);
+ctx.lineTo(w, h / 2);
+ctx.moveTo(w / 2, 0);
+ctx.lineTo(w / 2, h);
+ctx.stroke();
+
+
+// график y = a^x
+ctx.strokeStyle = '#2563eb';
+ctx.beginPath();
+const scaleX = 30; // пикселей на единицу x
+const scaleY = 30;
+const xCenter = w / 2;
+const yCenter = h / 2;
+
+
+for (let px = 0; px < w; px++) {
+const x = (px - xCenter) / scaleX;
+const y = Math.pow(a, x);
+const py = yCenter - y * scaleY;
+if (px === 0) ctx.moveTo(px, py);
+else ctx.lineTo(px, py);
+}
+ctx.stroke();
+
+
+// подпись
+ctx.fillStyle = '#1e293b';
+ctx.fillText(`y = ${a.toFixed(2)}^x`, 20, 20);
+}
+
+
+function updateGraph() {
+const a = parseFloat(document.getElementById('aVal').value);
+if (!isNaN(a) && a > 0) drawGraph(a);
+}
+
+
+document.getElementById('aVal').addEventListener('input', updateGraph);
+
+
+document.getElementById('calcBtn').addEventListener('click', () => {
+const a = Number(document.getElementById('aVal').value);
+const n = Number(document.getElementById('nVal').value);
+const resultElem = document.getElementById('result');
+if (isNaN(a) || isNaN(n)) {
+resultElem.textContent = 'Введите числовые значения.';
+return;
+}
+const result = a ** n;
+resultElem.textContent = `${a}^${n} = ${result}`;
+try { MathJax.typesetPromise(); } catch(e) {}
+updateGraph();
+});
+
+
+drawGraph(2);
+</script>
+</body>
+</html>

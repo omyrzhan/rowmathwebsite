@@ -1,0 +1,164 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Наивная теория множеств — 5. Упражнения и парадокс Рассела</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+         max-width:980px;margin:50px auto;padding:0 24px;color:#0f172a;line-height:1.7}
+    header{border-left:12px solid #f59e0b;padding:24px 32px;background:#fffbeb;border-radius:0 16px 16px 0;margin-bottom:40px}
+    h1{margin:0;font-size:2.1rem;color:#d97706}
+    h2{margin:40px 0 20px;font-size:1.8rem;color:#b45309}
+    .task{background:#fffbeb;border:2px solid #fcd34d;border-radius:14px;padding:20px;margin:30px 0;position:relative}
+    .task-num{position:absolute;top:-12px;left:20px;background:#f59e0b;color:white;padding:4px 14px;border-radius:20px;font-weight:bold}
+    .answer{margin-top:16px;padding:16px;background:#f0fdf4;border-left:6px solid #22c55e;border-radius:8px;display:none}
+    .show-answer{color:#16a34a;cursor:pointer;font-weight:bold}
+    .paradox{background:#fef2f2;border:4px double #ef4444;padding:28px;border-radius:16px;margin:40px 0;font-size:1.15rem}
+    .russel{font-family:"Comic Sans MS",cursive;font-size:1.8rem;text-align:center;margin:30px 0;color:#dc2626}
+    button, input{padding:12px 16px;font-size:1.1rem;border-radius:10px;margin:8px 4px}
+    button{background:#f59e0b;color:white;border:none;cursor:pointer;font-weight:bold}
+    button:hover{background:#d97706}
+    .check{background:#22c55e}
+    .wrong{color:#dc2626}
+    footer{margin-top:100px;padding:30px;border-top:5px solid #f59e0b;text-align:center;font-size:1.1rem;color:#92400e}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Наивная теория множеств — 5. Упражнения и великий парадокс</h1>
+  <p style="font-size:1.2rem;margin-top:12px">
+    Закрепляем всё, проверяем себя и… узнаём, почему «наивная» теория множеств привела к грандиозному кризису в математике 100 лет назад
+  </p>
+</header>
+
+<h2>Интерактивные упражнения (проверяются мгновенно)</h2>
+
+<div class="task">
+  <div class="task-num">1</div>
+  <p><strong>Пусть A = {1, 3, 5, 7}, B = {3, 5, 7, 9}</strong><br>
+  Найдите A ∪ B, A ∩ B, A \ B и B \ A.</p>
+  <input id="t1a" placeholder="A ∪ B" style="width:300px">
+  <input id="t1b" placeholder="A ∩ B">
+  <input id="t1c" placeholder="A \ B">
+  <input id="t1d" placeholder="B \ A">
+  <button class="check" onclick="check1()">Проверить</button>
+  <div id="res1" style="margin-top:12px;font-weight:bold"></div>
+</div>
+
+<div class="task">
+  <div class="task-num">2</div>
+  <p><strong>Является ли это функцией?</strong><br>
+  { (Маша, 12), (Петя, 11), (Маша, 13) }</p>
+  <button onclick="toggleAns('a2')">Показать ответ и объяснение</button>
+  <div id="a2" class="answer">
+    Нет! Маша не может одновременно иметь возраст и 12, и 13 лет.<br>
+    Правило функции нарушено: один вход → два разных выхода.
+  </div>
+</div>
+
+<div class="task">
+  <div class="task-num">3</div>
+  <p>Универсальное множество U = {1,2,3,4,5,6,7,8,9,10}<br>
+  A = все чётные числа в U. Найдите A и Aᶜ (дополнение).</p>
+  <input id="t3a" placeholder="A =">
+  <input id="t3b" placeholder="Aᶜ =">
+  <button class="check" onclick="check3()">Проверить</button>
+  id="res3"></div>
+</div>
+
+<div class="task">
+  <div class="task-num">4</div>
+  <p>Сколько элементов в множестве всех подмножеств множества {a, b, c}?<br>
+  (Это называется булеаном или степенным множеством)</p>
+  <input id="t4" type="number" placeholder="введите число">
+  <button class="check" onclick="check4()">Проверить</button>
+  <div id="res4"></div>
+  <button onclick="toggleAns('a4')">Подсказка-подсчёт</button>
+  <div id="a4" class="answer">
+    Подмножества: ∅, {a}, {b}, {c}, {a,b}, {a,c}, {b,c}, {a,b,c} → всего 8 = 2³<br>
+    Правило: для n элементов → 2ⁿ подмножеств.
+  </div>
+</div>
+
+<h2 style="color:#dc2626">Великий парадокс Бертрана Рассела (1901 год)</h2>
+
+<div class="paradox">
+  <p class="russel">
+    «А существует ли множество всех множеств,<br>
+    которые не содержат сами себя в качестве элемента?»
+  </p>
+
+  <p>Обозначим это множество буквой R:</p>
+  <pre>R = { X | X — множество и X ∉ X }</pre>
+
+  <p>Теперь задаём коварный вопрос:</p>
+  <p style="font-size:2rem;text-align:center;font-weight:bold;color:#991b1b">
+    Принадлежит ли R самому себе?<br>
+    R ∈ R ?
+  </p>
+
+  <p>Рассуждаем:</p>
+  <ul style="font-size:1.2rem">
+    <li>Если R ∈ R → по определению R в R должно выполняться R ∉ R → противоречие</li>
+    <li>Если R ∉ R → по определению R в R попадают только те, кого в себе нет → значит R ∈ R → снова противоречие</li>
+  </ul>
+
+  <p style="font-size:1.8rem;text-align:center;margin:30px 0;color:#dc2626">
+    В любом случае — противоречие!
+  </p>
+
+  <p>Вывод Рассела: в «наивной» теории множеств (где можно писать «множество всех множеств с любым свойством») возникают парадоксы.<br>
+  Поэтому математики придумали более строгую аксиоматическую теорию множеств (Цермело — Френкеля), где такие «слишком большие» множества запрещены.</p>
+</div>
+
+<div class="task">
+  <div class="task-num">R</div>
+  <p style="font-size:1.4rem">Попробуй сам ответить:</p>
+  <p>Можно ли в обычной математике создать множество всех книг, в которых про эту книгу ничего не написано?</p>
+  <button onclick="toggleAns('r1')">Ответ</button>
+  <div id="r1" class="answer">
+    Точно такой же парадокс! Это и есть знаменитый «парадокс библиотекаря» — ещё одна формулировка парадокса Рассела.
+  </div>
+</div>
+
+<footer>
+  ← <a href="04-отношения-и-функции.html">4. Отношения и функции</a><br><br>
+  <strong>Курс закончен! Поздравляю — ты теперь понимаешь основы теории множеств</strong><br><br>
+  Хочешь продолжение (кардинальные числа, континуум, аксиомы ZFC) — пиши, сделаем 6-ю часть
+</footer>
+
+<script>
+function toggleAns(id){document.getElementById(id).style.display = 
+     document.getElementById(id).style.display==='block'?'none':'block'}
+
+function check1(){
+  const a=document.getElementById('t1a').value.trim()
+  const b=document.getElementById('t1b').value.trim()
+  const c=document.getElementById('t1c').value.trim()
+  const d=document.getElementById('t1d').value.trim()
+  const ok = a==="{1,3,5,7,9}" && b==="{3,5,7}" && c==="{1}" && d==="{9}"
+  document.getElementById('res1').innerHTML = ok ?
+    'Всё верно! Молодец!' : 'Где-то ошибка. Правильные ответы: {1,3,5,7,9}, {3,5,7}, {1}, {9}'
+  document.getElementById('res1').style.color = ok?'#16a34a':'#dc2626'
+}
+
+function check3(){
+  const a=document.getElementById('t3a').value.trim()
+  const b=document.getElementById('t3b').value.trim()
+  const ok = /2.*4.*6.*8.*10/.test(a) && /1.*3.*5.*7.*9/.test(b)
+  document.getElementById('res3').innerHTML = ok?'Супер!':'Проверь порядок и запятые'
+  document.getElementById('res3').style.color=ok?'#16a34a':'#dc2626'
+}
+
+function check4(){
+  const v=+document.getElementById('t4').value
+  const ok = v===8
+  document.getElementById('res4').innerHTML = ok?'Точно! 2³ = 8':'Попробуй ещё раз =)'
+  document.getElementById('res4').style.color=ok?'#16a34a':'#dc2626'
+}
+</script>
+</body>
+</html>

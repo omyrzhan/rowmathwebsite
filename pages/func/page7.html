@@ -1,0 +1,194 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>8. Тригонометрия — наука о колебаниях и кругах</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {background:#0f172a; color:#e6eef8; font-family:Arial, sans-serif; padding:20px; line-height:1.7; max-width:1350px; margin:0 auto;}
+        h1, h2, h3 {color:#60a5fa;}
+        section {background:#0f1b2d; padding:35px; margin:35px 0; border-radius:18px; box-shadow:0 10px 40px rgba(0,0,0,0.8);}
+        .example {background:#1a2b47; padding:25px; border-radius:14px; margin:25px 0; border-left:8px solid #60a5fa;}
+        .formula {font-size:28px; text-align:center; background:#1a2b47; padding:22px; border-radius:14px; margin:30px 0;}
+        canvas {background:#1a2b47; border-radius:14px; margin:20px 0;}
+        .play {background:#1a2b47; padding:28px; border-radius:14px; text-align:center; font-size:18px;}
+        input, select {padding:10px 12px; margin:5px; border-radius:8px; border:none; background:#1e3a5a; color:white; font-size:16px;}
+        table {width:100%; border-collapse:collapse; margin:30px 0;}
+        th, td {padding:16px; border-bottom:1px solid #1e3a5a;}
+        th {background:#1a2b47; color:#60a5fa;}
+        .circle {width:300px; height:300px; margin:30px auto; position:relative;}
+    </style>
+</head>
+<body>
+
+<h1>8. Тригонометрия — всё, что качается, крутится и волнуется</h1>
+
+<section>
+    <h2>Самое главное за 10 секунд</h2>
+    <p style="font-size:28px; text-align:center; background:#1a2b47; padding:30px; border-radius:16px;">
+        sin и cos — это координаты точки на окружности радиуса 1<br>
+        tan = sin/cos  и всё остальное из этого следует
+    </p>
+</section>
+
+<section>
+    <h2>Единичная окружность — сердце тригонометрии</h2>
+    <div style="text-align:center;">
+        <div class="circle" id="unitCircle">
+            <canvas id="circleCanvas" width="300" height="300"></canvas>
+            <div style="margin-top:20px; font-size:22px;">
+                Угол: <input type="range" id="angle" min="0" max="360" value="0" oninput="updateCircle()">
+                <span id="deg">0°</span> → 
+                sin = <span id="sinVal" style="color:#f87171;">0</span> 
+                cos = <span id="cosVal" style="color:#34d399;">1</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Поиграй с синусом и косинусом вживую!</h2>
+    <div class="play">
+        Амплитуда A: <input id="A" type="number" step="0.5" value="1" oninput="drawWaves()"><br>
+        Частота ω: <input id="omega" type="number" step="0.1" value="1" oninput="drawWaves()"><br>
+        Сдвиг фазы φ (в градусах): <input id="phi" type="number" value="0" oninput="drawWaves()"><br><br>
+        <strong style="font-size:24px; color:#60a5fa;" id="waveEq">y = sin(x)</strong>
+    </div>
+    <canvas id="waveChart" height="500"></canvas>
+</section>
+
+<section>
+    <h2>Основные тригонометрические функции</h2>
+    <table>
+        <tr><th>Функция</th><th>Как выглядит</th><th>Период</th><th>Амплитуда</th></tr>
+        <tr><td>sin x</td><td>волна от –1 до 1</td><td>360° или 2π</td><td>1</td></tr>
+        <tr><td>cos x</td><td>та же волна, но сдвинута влево на 90°</td><td>360°</td><td>1</td></tr>
+        <tr><td>tan x</td><td>«пилы» с вертикальными асимптотами</td><td>180°</td><td>∞</td></tr>
+        <tr><td>cot x</td><td>перевёрнутый tan</td><td>180°</td><td>∞</td></tr>
+    </table>
+</section>
+
+<section>
+    <h2>Где в жизни встречается тригонометрия?</h2>
+
+    <div class="example">
+        <strong>1. Переменный ток в розетке</strong><br>
+        U(t) = 310 ⋅ sin(100πt) вольт (50 Гц в России)
+    </div>
+
+    <div class="example">
+        <strong>2. Звук и музыка</strong><br>
+        Нота Ля (440 Гц) → давление воздуха = A ⋅ sin(880πt)
+    </div>
+
+    <div class="example">
+        <strong>3. Маятник, качели, пружина</strong><br>
+        x(t) = A ⋅ cos(ωt + φ) — чистый гармонический колебательный процесс
+    </div>
+
+    <div class="example">
+        <strong>4. Волны на воде, свет, радиоволны</strong><br>
+        Всё — синусоиды!
+    </div>
+
+    <div class="example">
+        <strong>5. День и ночь, времена года</strong><br>
+        Количество света ≈ 12 + 10 ⋅ cos( (2π/365) ⋅ день )
+    </div>
+</section>
+
+<section>
+    <h2>Главные значения (запомни навсегда)</h2>
+    <table>
+        <tr><th>Угол</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th><th>180°</th><th>270°</th></tr>
+        <tr><td>sin</td><td>0</td><td>1/2</td><td>√2/2</td><td>√3/2</td><td>1</td><td>0</td><td>−1</td></tr>
+        <tr><td>cos</td><td>1</td><td>√3/2</td><td>√2/2</td><td>1/2</td><td>0</td><td>−1</td><td>0</td></tr>
+        <tr><td>tan</td><td>0</td><td>1/√3</td><td>1</td><td>√3</td><td>—</td><td>0</td><td>—</td></tr>
+    </table>
+</section>
+
+<section>
+    <h2>Тангенс и котангенс — «бешеные» функции</h2>
+    <canvas id="tanChart" height="400"></canvas>
+</section>
+
+<section>
+    <h2>Формулы-приведения (шпаргалка для 10–11 класса)</h2>
+    <div style="columns:2; background:#1a2b47; padding:25px; border-radius:14px;">
+        sin(180° − x) = sin x  cos(180° − x) = −cos x<br>
+        sin(180° + x) = −sin x  cos(180° + x) = −cos x<br>
+        sin(360° − x) = −sin x  cos(360° − x) = cos x<br>
+        tan(x + 180°) = tan x<br>
+        sin²x + cos²x = 1<br>
+        1 + tan²x = 1/cos²x
+    </div>
+</section>
+
+<script>
+// Единичная окружность
+const canvas = document.getElementById('circleCanvas');
+const ctx = canvas.getContext('2d');
+function updateCircle() {
+    let deg = document.getElementById('angle').value;
+    let rad = deg * Math.PI / 180;
+    let sin = Math.sin(rad).toFixed(3);
+    let cos = Math.cos(rad).toFixed(3);
+    document.getElementById('deg').textContent = deg + '°';
+    document.getElementById('sinVal').textContent = sin;
+    document.getElementById('cosVal').textContent = cos;
+
+    ctx.clearRect(0,0,300,300);
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(150,150,120,0,Math.PI*2); ctx.stroke(); // окружность
+    ctx.beginPath(); ctx.moveTo(150,150); ctx.lineTo(150+120*cos,150-120*sin); ctx.strokeStyle='#60a5fa'; ctx.lineWidth=4; ctx.stroke();
+    // оси
+    ctx.strokeStyle='#475569'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(0,150); ctx.lineTo(300,150); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(150,0); ctx.lineTo(150,300); ctx.stroke();
+    // точка
+    ctx.fillStyle = '#f87171';
+    ctx.beginPath(); ctx.arc(150+120*cos,150-120*sin,8,0,Math.PI*2); ctx.fill();
+}
+updateCircle();
+
+// Волны
+function drawWaves() {
+    let A = parseFloat(document.getElementById('A').value) || 1;
+    let omega = parseFloat(document.getElementById('omega').value) || 1;
+    let phi = (parseFloat(document.getElementById('phi').value) || 0) * Math.PI/180;
+
+    let xs = []; for(let x=-2*Math.PI; x<=4*Math.PI; x+=0.05) xs.push(x);
+    let sinY = xs.map(x => A * Math.sin(omega*x + phi));
+    let cosY = xs.map(x => A * Math.cos(omega*x + phi));
+
+    document.getElementById('waveEq').textContent = `y = ${A} ⋅ sin(${omega}x + ${document.getElementById('phi').value}°)`;
+
+    new Chart(waveChart, {
+        type:'line',
+        data:{
+            labels:xs,
+            datasets:[
+                {label:'sin', data:sinY, borderColor:'#f87171', borderWidth:3, pointRadius:0},
+                {label:'cos', data:cosY, borderColor:'#34d399', borderWidth:3, pointRadius:0}
+            ]
+        },
+        options:{animation:false, scales:{x:{grid:{color:'#334155'}}, y:{suggestedMin:-3, suggestedMax:3}}}
+    });
+}
+drawWaves();
+
+// Тангенс
+let tanX = []; for(let x=-5; x<5; x+=0.02) if(Math.abs(x%Math.PI)>0.01) tanX.push(x);
+let tanY = tanX.map(x => Math.tan(x));
+new Chart(tanChart, {type:'line', data:{labels:tanX, datasets:[{label:'y = tan x', data:tanY, borderColor:'#fcd34d', borderWidth:3, pointRadius:0}]},
+    options:{animation:false, scales:{y:{suggestedMin:-10,suggestedMax:10}}}});
+</script>
+
+<p style="text-align:center; font-size:24px; color:#94a3b8; margin:90px;">
+    Теперь ты понимаешь, почему весь мир вокруг — это синусоиды!<br>
+    Дальше — комплексные числа, пределы или производные? Ты уже почти готов к ЕГЭ и вузу!
+</p>
+
+</body>
+</html>

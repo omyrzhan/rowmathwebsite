@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Метод Подстановки в Алгебре</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-size: 1em;
+    }
+    .example {
+        border-left: 4px solid #3498db;
+        padding-left: 15px;
+        margin: 15px 0;
+    }
+    .step {
+        margin: 10px 0;
+        padding: 8px;
+        background: #eef5fc;
+        border-radius: 4px;
+    }
+    .highlight {
+        background-color: #fff3cd;
+        padding: 2px 5px;
+        border-radius: 3px;
+    }
+    footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #777;
+    }
+    .interactive {
+        background: #e8f7e8;
+        border: 1px solid #a0d9a0;
+        padding: 15px;
+        border-radius: 6px;
+        margin-top: 25px;
+    }
+    input {
+        width: 100%;
+        margin: 5px 0;
+        padding: 8px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #2980b9;
+    }
+    #steps {
+        margin-top: 15px;
+    }
+    .fade {
+        animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" class="logo-link">RowMath</a>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="intro.html" class="nav-link" role="menuitem">Главная</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page1.html" class="nav-link" role="menuitem">Подстановка</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page2.html" class="nav-link active" role="menuitem">Знак =</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page3.html" class="nav-link" role="menuitem">Тавтология</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page4.html" class="nav-link" role="menuitem">Алгебра + Триг</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-formulas-ru.html" class="nav-link" role="menuitem">Формулы</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-proofs-ru.html" class="nav-link" role="menuitem">Доказательства</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page11.html" class="nav-link" role="menuitem">Решатель</a>
+                </li>
+                <!-- Special link to English version -->
+                <li class="nav-item" role="none">
+                    <a href="../index.html" class="nav-link special-link" role="menuitem">English Version</a>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+    <div class="container">
+
+
+        <h1>Интерактивный решатель систем уравнений</h1>
+        <p>Введите две строки с уравнениями, например: <code>2x + y = 8</code> и <code>3x - y = 2</code>. Переменные должны быть <strong>x</strong> и <strong>y</strong>.</p>
+
+        <div class="interactive">
+            <input type="text" id="eq1" placeholder="Первое уравнение (например: 2x + y = 8)">
+            <input type="text" id="eq2" placeholder="Второе уравнение (например: 3x - y = 2)">
+            <button onclick="solveSystem()">Решить методом подстановки</button>
+
+            <div id="steps"></div>
+        </div>
+
+        <hr>
+
+        <h2>Почему метод подстановки работает</h2>
+        <ul>
+            <li>Он <strong>сводит систему</strong> к одному уравнению с одной переменной.</li>
+            <li>Используется свойство равенства: если <code>a = b</code>, то вместо <code>a</code> можно подставить <code>b</code>.</li>
+            <li>Подходит, если хотя бы одно уравнение можно легко выразить через одну переменную.</li>
+        </ul>
+
+        <footer>
+            <p>Создано в учебных целях | &copy; 2025 Центр изучения алгебры</p>
+        </footer>
+    </div>
+
+<script>
+function parseEquation(eq) {
+    alert('Parsing equation: ' + eq);
+    // Убираем пробелы
+    eq = eq.replace(/\s+/g, '');
+    // Разделяем по знаку =
+    const parts = eq.split('=');
+    if (parts.length !== 2) throw 'Уравнение должно содержать знак =';
+    const left = parts[0];
+    const right = parseFloat(parts[1]);
+    // Извлекаем коэффициенты
+    let a = 0, b = 0;
+    // x-коэффициент
+    const xMatch = left.match(/([+-]?\d*\.?\d*)x/);
+    if (xMatch) a = parseFloat(xMatch[1] || '1');
+    // y-коэффициент
+    const yMatch = left.match(/([+-]?\d*\.?\d*)y/);
+    
+    const yMatch1 = yMatch[1];
+   
+    if (yMatch1) b = parseFloat(yMatch1[1] || '1');
+    
+    
+    if (yMatch1 && yMatch1[0] === '-') b = -b;
+    // Свободный член
+    const consts = left.replace(/([+-]?\d*\.?\d*)x/g, '').replace(/([+-]?\d*\.?\d*)y/g, '');
+    const c = right - (parseFloat(consts) || 0);
+    
+
+    return {a, b, c};
+    
+}
+
+function solveSystem() {
+    const eq1 = document.getElementById('eq1').value;
+    const eq2 = document.getElementById('eq2').value;
+    const steps = document.getElementById('steps');
+    steps.innerHTML = '';
+
+    try {
+        const E1 = parseEquation(eq1);
+        const E2 = parseEquation(eq2);
+
+        // Проверяем, какая переменная проще изолируется
+        let isolate = Math.abs(E1.a) === 1 ? 'x' : (Math.abs(E1.b) === 1 ? 'y' : 'auto');
+        let html = `<div class='step fade'><strong>Шаг 1:</strong> Запишем систему:<br>
+        ${eq1}<br>${eq2}</div>`;
+
+        // Если удобно выразить y из первого уравнения
+        let yExpr;
+        if (E1.b !== 0) {
+            yExpr = `(${E1.c} - ${E1.a}x) / ${E1.b}`;
+            html += `<div class='step fade'><strong>Шаг 2:</strong> Выразим <code>y</code> из первого уравнения:<br>y = ${yExpr}</div>`;
+        } else {
+            throw 'Первое уравнение не содержит y. Попробуйте поменять порядок.';
+        }
+
+        // Подставляем во второе уравнение
+        html += `<div class='step fade'><strong>Шаг 3:</strong> Подставим это выражение во второе уравнение:</div>`;
+        html += `<pre>${E2.a}x + ${E2.b}(${yExpr}) = ${E2.c}</pre>`;
+
+        // Решаем относительно x
+        const x = (E2.c - (E2.b * E1.c) / E1.b) / (E2.a - (E2.b * E1.a) / E1.b);
+        const y = (E1.c - E1.a * x) / E1.b;
+
+        html += `<div class='step fade'><strong>Шаг 4:</strong> После упрощения получаем x = ${x.toFixed(3)}</div>`;
+        html += `<div class='step fade'><strong>Шаг 5:</strong> Подставляем найденное значение x в выражение для y:</div>`;
+        html += `<div class='step fade'>y = ${y.toFixed(3)}</div>`;
+        html += `<div class='step fade'><strong>Ответ:</strong> <code>(x, y) = (${x.toFixed(3)}, ${y.toFixed(3)})</code></div>`;
+
+        steps.innerHTML = html;
+    } catch (e) {
+        steps.innerHTML = `<div style="color:red;">Ошибка: ${e}</div>`;
+    }
+}
+</script>
+</body>
+</html>

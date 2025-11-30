@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доказательства всех формул</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <style>
+        :root {
+            --primary: #1b5e20;
+            --accent: #66bb6a;
+            --bg: #f1f8e9;
+            --card: #ffffff;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.9;
+            background: linear-gradient(135deg, var(--bg), #dcedc8);
+            color: var(--primary);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            background: var(--card);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+        h1 { text-align: center; color: var(--primary); font-size: 2.4em; margin-bottom: 20px; }
+        h2 {
+            color: #2e7d32;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+            font-size: 1.8em;
+        }
+        .proof {
+            background: #f9fff9;
+            border-left: 6px solid var(--accent);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .step {
+            background: #e8f5e9;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+        .math {
+            text-align: center;
+            font-size: 1.4em;
+            margin: 18px 0;
+            padding: 14px;
+            background: #fafafa;
+            border: 2px dashed #a5d6a7;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid var(--accent);
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #2e7d32;
+            margin: 20px 0;
+        }
+        .back {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 16px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .back:hover { background: #4caf50; }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #ddd;
+        }
+        .axiom { background: #fff8e1; padding: 10px; border-left: 4px solid #ffb300; margin: 8px 0; font-style: italic; }
+    </style>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" class="logo-link">RowMath</a>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="intro.html" class="nav-link" role="menuitem">Главная</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page1.html" class="nav-link" role="menuitem">Подстановка</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page2.html" class="nav-link active" role="menuitem">Знак =</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page3.html" class="nav-link" role="menuitem">Тавтология</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page4.html" class="nav-link" role="menuitem">Алгебра + Триг</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-formulas-ru.html" class="nav-link" role="menuitem">Формулы</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-proofs-ru.html" class="nav-link" role="menuitem">Доказательства</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page11.html" class="nav-link" role="menuitem">Решатель</a>
+                </li>
+                <!-- Special link to English version -->
+                <li class="nav-item" role="none">
+                    <a href="../index.html" class="nav-link special-link" role="menuitem">English Version</a>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Доказательства всех формул</h1>
+        <p style="text-align:center;">
+            <a href="trig-formulas-ru.html" class="back">Назад к формулам</a>
+        </p>
+
+        <div class="axiom">
+            <strong>6 аксиом:</strong><br>
+            1. sin(a+b) = sin a cos b + cos a sin b<br>
+            2. cos(a+b) = cos a cos b − sin a sin b<br>
+            3. sin(a−b) = sin a cos b − cos a sin b<br>
+            4. cos(a−b) = cos a cos b + sin a sin b<br>
+            5. sin²a + cos²a = 1<br>
+            6. sin 30° = 1/2
+        </div>
+
+        <!-- Тангенс -->
+        <h2 id="proof-tan">tan θ = sin θ / cos θ</h2>
+        <div class="proof"><div class="step">tan θ = sin θ / cos θ (по определению)</div></div>
+
+        <h2 id="proof-cot-def">cot θ = cos θ / sin θ</h2>
+        <div class="proof"><div class="step">cot θ = 1 / tan θ = cos θ / sin θ</div></div>
+
+        <!-- Пифагора -->
+        <h2 id="proof-tan2">1 + tan²θ = sec²θ</h2>
+        <div class="proof">
+            <div class="step">sin²θ + cos²θ = 1 → делим на cos²θ:</div>
+            <div class="math">tan²θ + 1 = sec²θ</div>
+        </div>
+
+        <h2 id="proof-cot2">1 + cot²θ = csc²θ</h2>
+        <div class="proof">
+            <div class="step">Делим на sin²θ → 1 + cot²θ = csc²θ</div>
+        </div>
+
+        <!-- Чётность -->
+        <h2 id="proof-sin-neg">sin(−θ) = −sin θ</h2>
+        <div class="proof">
+            <div class="step">sin(−θ) = sin(0 − θ) = −sin θ</div>
+        </div>
+
+        <!-- Двойной угол -->
+        <h2 id="proof-sin2">sin 2θ = 2 sin θ cos θ</h2>
+        <div class="proof">
+            <div class="step">sin(θ+θ) = 2 sin θ cos θ</div>
+        </div>
+
+        <!-- Сумма синусов -->
+        <h2 id="proof-sum-sin">sin a + sin b = 2 sin((a+b)/2) cos((a−b)/2)</h2>
+        <div class="proof">
+            <div class="step">sin a + sin b = sin x + sin y, где x = (a+b)/2 + (a−b)/2, y = (a+b)/2 − (a−b)/2</div>
+            <div class="step">= 2 sin((a+b)/2) cos((a−b)/2)</div>
+        </div>
+
+        <!-- Произведение → Сумма (ВОССТАНОВЛЕНО) -->
+        <h2 id="proof-prod-sin">sin a sin b = (1/2)[cos(a−b) − cos(a+b)]</h2>
+        <div class="proof">
+            <div class="step">cos(a+b) + cos(a−b) = 2 cos a cos b</div>
+            <div class="step">cos(a+b) − cos(a−b) = −2 sin a sin b</div>
+            <div class="math">→ sin a sin b = (1/2)[cos(a−b) − cos(a+b)]</div>
+        </div>
+
+        <h2 id="proof-prod-cos">cos a cos b = (1/2)[cos(a−b) + cos(a+b)]</h2>
+        <div class="proof">
+            <div class="step">cos(a+b) + cos(a−b) = 2 cos a cos b</div>
+            <div class="math">→ cos a cos b = (1/2)[cos(a−b) + cos(a+b)]</div>
+        </div>
+
+        <h2 id="proof-prod-sincos">sin a cos b = (1/2)[sin(a+b) + sin(a−b)]</h2>
+        <div class="proof">
+            <div class="step">sin(a+b) + sin(a−b) = 2 sin a cos b</div>
+            <div class="math">→ sin a cos b = (1/2)[sin(a+b) + sin(a−b)]</div>
+        </div>
+
+        <h2 id="proof-prod-cossin">cos a sin b = (1/2)[sin(a+b) − sin(a−b)]</h2>
+        <div class="proof">
+            <div class="step">sin(a+b) − sin(a−b) = 2 cos a sin b</div>
+            <div class="math">→ cos a sin b = (1/2)[sin(a+b) − sin(a−b)]</div>
+        </div>
+
+        <!-- Котангенс суммы -->
+        <h2 id="proof-cot-sum">cot(α ± β) = (cot α cot β ∓ 1) / (cot β ± cot α)</h2>
+        <div class="proof">
+            <div class="step">cot(α + β) = cos(α+β) / sin(α+β)</div>
+            <div class="step">Делим на sin α sin β → (cot α cot β − 1) / (cot α + cot β)</div>
+        </div>
+
+        <!-- Значения -->
+        <h2 id="proof-cos30">cos 30° = √3/2</h2>
+        <div class="proof">
+            <div class="step">sin²30° + cos²30° = 1 → cos 30° = √3/2</div>
+        </div>
+
+        <footer>
+            <p><a href="trig-formulas-ru.html">Все формулы</a> | © 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

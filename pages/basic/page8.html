@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Метод подстановки — Полное визуальное и интуитивное объяснение</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background: #f7f7f7;
+        color: #222;
+    }
+
+    header {
+        background: linear-gradient(135deg, #4a90e2, #2b4f8c);
+        padding: 30px 20px;
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    section {
+        background: white;
+        margin: 20px auto;
+        padding: 25px;
+        max-width: 1000px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    }
+
+    h2, h3 {
+        color: #333;
+    }
+
+    .example-box {
+        background: #eef4ff;
+        padding: 15px;
+        border-left: 6px solid #4a90e2;
+        margin: 15px 0;
+        border-radius: 8px;
+    }
+
+    .deep-box {
+        background: #e8fff0;
+        padding: 15px;
+        border-left: 6px solid #27b35a;
+        margin: 15px 0;
+        border-radius: 8px;
+    }
+
+    .sub-arrow {
+        text-align: center;
+        font-size: 32px;
+        margin: 10px 0;
+        color: #4a90e2;
+    }
+
+    pre {
+        background: #f3f3f3;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 18px;
+        overflow-x: auto;
+    }
+
+    .highlight {
+        background: yellow;
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+
+    .interactive {
+        background: #fff7d6;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 5px solid #e2b100;
+        margin-top: 20px;
+    }
+
+    input {
+        padding: 7px;
+        width: 120px;
+        font-size: 16px;
+    }
+
+    .result {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .big-meaning {
+        background: #e5e5ff;
+        padding: 20px;
+        border-radius: 12px;
+        border-left: 8px solid #7b5de3;
+        margin-top: 25px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<header>Метод подстановки — Полное, глубокое и визуальное объяснение</header>
+
+<section>
+
+<!-- ВВЕДЕНИЕ -->
+<h2>1. Что такое подстановка?</h2>
+
+<p>
+Подстановка — это фундаментальное математическое действие, которое позволяет заменить
+одно выражение другим, если они имеют одно и то же значение.
+</p>
+
+<div class="example-box">
+    Если две величины равны, то в любом выражении одну можно заменить другой —  
+    и смысл выражения не изменится.
+</div>
+
+<p>
+Например, если <code>x = 7</code>, то:
+</p>
+
+<div class="sub-arrow">↓</div>
+
+<pre>
+3x + 1 → 3·7 + 1 → 22
+</pre>
+
+
+<!-- СМЫСЛ -->
+<h2>2. Интуитивный смысл подстановки</h2>
+
+<p>
+Подстановка — это способ дать «имя» числу или выражению.  
+Это имя мы можем потом использовать для удобства, а затем заменить обратно истинным значением.
+</p>
+
+<div class="deep-box">
+    Подстановка меняет форму записи, но не меняет смысла выражения.
+</div>
+
+<h3>Жизненные примеры подстановки</h3>
+
+<ul>
+    <li><code>"George Washington"</code> → <code>"1st U.S. President"</code></li>
+    <li><code>"Москва"</code> → <code>"столица России"</code></li>
+    <li><code>"π"</code> → <code>"отношение длины окружности к диаметру"</code></li>
+    <li><code>"два"</code> → <code>"2"</code></li>
+    <li><code>"two"</code> → <code>"2"</code></li>
+</ul>
+
+<p>
+Форма меняется, объект остаётся тем же.  
+Именно это делает подстановку настолько мощным инструментом.
+</p>
+
+
+<!-- ИМЯ ОДНО ЧИСЛО -->
+<h2>3. Важное правило: одно имя — одно значение</h2>
+
+<p>
+Внутри одного контекста нельзя использовать одну и ту же переменную для разных чисел.
+</p>
+
+<div class="example-box">
+Если определили <code>a = 2</code>,  
+в этом же контексте нельзя потом написать <code>a = 3</code> без переопределения.
+</div>
+
+<p>
+Это похоже на то, как в тексте имя человека всегда означает одного и того же человека,
+пока вы явно не сменили тему.
+</p>
+
+
+<!-- ГЛУБОКОЕ ОБЪЯСНЕНИЕ -->
+<h2>4. Почему подстановка так важна?</h2>
+
+<div class="big-meaning">
+Подстановка — это механизм, на котором работает почти вся алгебра.<br><br>
+• решение уравнений  
+• работа с формулами  
+• упрощение выражений  
+• вычисления в физике и программировании  
+• построение моделей  
+• доказательства  
+<br><br>
+Фактически, подстановка — это «язык», на котором алгебра объясняет мир.
+</div>
+
+
+<!-- ВИЗУАЛЬНАЯ ДЕМОНСТРАЦИЯ -->
+<h2>5. Визуальный пример с шагами</h2>
+
+<p>Пусть дано выражение:</p>
+
+<pre id="expr-step1">
+3 × <span class="highlight">x</span> + 1
+</pre>
+
+<div class="sub-arrow">↓ подставляем x = 5 ↓</div>
+
+<pre id="expr-step2">
+3 × <span class="highlight" id="x-value">5</span> + 1
+</pre>
+
+<div class="sub-arrow">↓ считаем ↓</div>
+
+<pre id="expr-step3">
+15 + 1 = 16
+</pre>
+
+
+<!-- ИНТЕРАКТИВНЫЙ ПРИМЕР 1 -->
+<h2>6. Интерактивный пример №1: подставьте своё число</h2>
+
+<div class="interactive">
+    <label>Введите значение x: </label>
+    <input type="number" id="userX" value="5" oninput="updateCalc()">
+
+    <div class="result" id="calcResult">
+        3 × 5 + 1 = 16
+    </div>
+</div>
+
+
+<!-- ИНТЕРАКТИВНЫЙ ПРИМЕР 2 -->
+<h2>7. Интерактивный пример №2: подстановка выражения в выражение</h2>
+
+<p>
+Подстановка работает не только для чисел, но и для целых выражений.
+Например, пусть:
+</p>
+
+<pre>
+x = t + 2
+</pre>
+
+<p>Тогда выражение <code>3x − 4</code> превращается в:</p>
+
+<div class="sub-arrow">↓</div>
+
+<pre>
+3(t + 2) − 4
+</pre>
+
+<h3>Попробуйте сами!</h3>
+
+<div class="interactive">
+    <label>Введите выражение вместо x: </label>
+    <input id="exprInput" value="t + 2" oninput="updateExpr()">
+
+    <div class="result" id="exprOut">
+        3( t + 2 ) − 4
+    </div>
+</div>
+
+<script>
+function updateCalc() {
+    const x = Number(document.getElementById('userX').value);
+    document.getElementById('x-value').textContent = x;
+    document.getElementById('calcResult').textContent =
+        "3 × " + x + " + 1 = " + (3*x + 1);
+}
+
+function updateExpr() {
+    const e = document.getElementById('exprInput').value;
+    document.getElementById('exprOut').textContent =
+        "3( " + e + " ) − 4";
+}
+</script>
+
+
+<!-- ДОПОЛНИТЕЛЬНЫЕ ПРИМЕРЫ -->
+<h2>8. Дополнительные примеры подстановки</h2>
+
+<h3>Математические</h3>
+<ul>
+    <li>если <code>y = 4x</code>, то в выражении <code>2y + 3</code> можно заменить y → 4x</li>
+    <li>если <code>a = b + 1</code>, то <code>a²</code> превращается в <code>(b + 1)²</code></li>
+    <li>если <code>v = s/t</code>, то <code>s = vt</code></li>
+</ul>
+
+<h3>Языковые</h3>
+<ul>
+    <li>«Солнце» → «звезда, вокруг которой вращается Земля»</li>
+    <li>«квадрат» → «фигура с четырьмя равными сторонами»</li>
+</ul>
+
+<h3>Из реальной жизни</h3>
+<ul>
+    <li>«мой номер комнаты: 208» → теперь слово «комната» означает 208</li>
+    <li>«бензин стоит 230 тг/л» → цена = 230, и вы подставляете это в расчёты</li>
+    <li>«скорость = расстояние/время» → подставляете числа для расчёта</li>
+</ul>
+
+
+<!-- ЗАКЛЮЧЕНИЕ -->
+<h2>9. Итог</h2>
+
+<div class="deep-box">
+Подстановка — это универсальный механизм замены,  
+который позволяет работать с числами, выражениями, формулами и моделями.  
+Она сохраняет смысл, меняя только форму записи.
+</div>
+
+</section>
+
+</body>
+</html>

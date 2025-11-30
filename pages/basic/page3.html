@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Преобразование уравнения: подстановка и тавтология</title>
+     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1a3e59;
+        }
+        .container {
+            max-width: 980px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        h1 {
+            text-align: center;
+            color: #0d47a1;
+            font-size: 2.3em;
+            margin-bottom: 22px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1565c0;
+            border-bottom: 3px solid #42a5f5;
+            padding-bottom: 10px;
+            margin-top: 35px;
+            font-size: 1.6em;
+        }
+        p {
+            font-size: 1.12em;
+            margin: 18px 0;
+            text-align: justify;
+        }
+        .example {
+            background: #f5fbff;
+            border-left: 6px solid #1e88e5;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 10px 10px 0;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .step {
+            background: #e3f2fd;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 14px 0;
+            font-weight: 600;
+            display: inline-block;
+            min-width: 70%;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+        .math {
+            font-family: Georgia, serif;
+            font-size: 1.4em;
+            color: #0d47a1;
+            text-align: center;
+            margin: 25px 0;
+            padding: 16px;
+            background: #fafafa;
+            border: 2px dashed #90caf9;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .highlight {
+            background-color: #fff59d;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #5d4037;
+        }
+        .tip {
+            background: #e8f5e8;
+            border: 1px solid #66bb6a;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-style: italic;
+            color: #2e7d32;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .arrow {
+            font-size: 1.8em;
+            color: #1976d2;
+            font-weight: bold;
+            margin: 0 12px;
+            vertical-align: middle;
+        }
+        .note {
+            background: #fff8e1;
+            border-left: 5px solid #ffb300;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95em;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 25px;
+            color: #546e7a;
+            font-size: 0.95em;
+            border-top: 1px solid #ddd;
+        }
+        .visual {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.3em;
+            color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" class="logo-link">RowMath</a>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="intro.html" class="nav-link" role="menuitem">Главная</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page1.html" class="nav-link" role="menuitem">Подстановка</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page2.html" class="nav-link active" role="menuitem">Знак =</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page3.html" class="nav-link" role="menuitem">Тавтология</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page4.html" class="nav-link" role="menuitem">Алгебра + Триг</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-formulas-ru.html" class="nav-link" role="menuitem">Формулы</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-proofs-ru.html" class="nav-link" role="menuitem">Доказательства</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page11.html" class="nav-link" role="menuitem">Решатель</a>
+                </li>
+                <!-- Special link to English version -->
+                <li class="nav-item" role="none">
+                    <a href="../index.html" class="nav-link special-link" role="menuitem">English Version</a>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+    <div class="container">
+
+        <h1>Преобразование уравнения: подстановка и тавтология</h1>
+
+        <p>
+            Давайте подойдём к идее <strong>преобразования обеих частей уравнения</strong> с совершенно другой, но очень мощной стороны — через <em>подстановку</em> и <em>тавтологию</em>.
+        </p>
+
+        <p>
+            Это не просто технический приём — это <strong>философия равенства</strong>: если две вещи равны, то <em>всё, что верно для одной, верно и для другой</em>.
+        </p>
+
+        <hr>
+
+        <h2>Исходное уравнение</h2>
+        <div class="math">x + 8 = 4</div>
+
+        <p>
+            Обозначим <strong>левую часть</strong> уравнения буквой <span class="highlight">A</span>:
+        </p>
+        <div class="math">A = x + 8</div>
+
+        <p>
+            Тогда исходное уравнение можно переписать так:
+        </p>
+        <div class="math">A = 4</div>
+
+        <div class="visual">
+            A = 4
+            <br><span style="font-size:0.8em;">(где A — это x + 8)</span>
+        </div>
+
+        <hr>
+
+        <h2>Ключевая идея: A можно заменить на 4 (и наоборот)</h2>
+
+        <p>
+            Поскольку <span class="highlight">A = 4</span>, то <strong>вместо 4 мы можем писать A</strong>, и наоборот — <strong>вместо A можем писать 4</strong>.
+        </p>
+
+        <p>
+            Это даёт нам удивительную свободу. Посмотрим:
+        </p>
+
+        <div class="example">
+            <p>Возьмём правую часть: <code>4</code></p>
+            <p>Заменим <code>4</code> на <code>A</code>:</p>
+            <div class="step">A = A</div>
+        </div>
+
+        <p>
+            Получилось <strong>тавтология</strong> — утверждение, которое <em>всегда истинно</em>, потому что левая и правая части — <em>одно и то же</em>.
+        </p>
+
+        <div class="tip">
+            <strong>Тавтология</strong> — это как сказать: «я — это я». Это не даёт новой информации, но подтверждает равенство.
+        </div>
+
+        <hr>
+
+        <h2>Теперь применим преобразование</h2>
+
+        <p>
+            У нас есть: <code>A = A</code>
+        </p>
+
+        <p>
+            Давайте <strong>вычтем 8</strong> из <em>обеих сторон</em>:
+        </p>
+
+        <div class="example">
+            <div class="step">A − 8 = A − 8</div>
+        </div>
+
+        <p>
+            Снова тавтология! Но теперь давайте <strong>восстановим значение A</strong>:
+        </p>
+
+        <div class="math">
+            A − 8 = A − 8
+            <br><span class="arrow">↓</span> (подставляем A = x + 8)
+            <br>x + 8 − 8 = 4 − 8
+        </div>
+
+        <div class="example">
+            <div class="step">x + 8 − 8 = 4 − 8</div>
+            <div class="step"><span class="arrow">⇒</span> x = −4</div>
+        </div>
+
+        <hr>
+
+        <h2>А если подставить в обратном порядке?</h2>
+
+        <p>
+            Начнём с <code>A = 4</code> и сразу подставим <code>A = x + 8</code> в правую часть:
+        </p>
+
+        <div class="math">
+            x + 8 = 4
+            <br>↓
+            <br>x + 8 = A
+        </div>
+
+        <p>
+            Теперь вычтем 8:
+        </p>
+
+        <div class="example">
+            <div class="step">x + 8 − 8 = A − 8</div>
+            <div class="step">x = A − 8</div>
+            <div class="step">x = 4 − 8</div>
+            <div class="step"><span class="arrow">⇒</span> x = −4</div>
+        </div>
+
+        <p><strong>Одинаковый результат!</strong></p>
+
+        <hr>
+
+        <h2>Почему это работает? Глубинный смысл</h2>
+
+        <ul style="font-size:1.1em; line-height:1.9;">
+            <li><strong>Равенство — это эквивалентность</strong>: A и 4 — это <em>разные записи одного и того же числа</em>.</li>
+            <li><strong>Подстановка сохраняет истину</strong>: если A = 4, то любое выражение с A можно заменить на то же с 4.</li>
+            <li><strong>Тавтология — основа логики</strong>: A = A — это аксиома. Любое преобразование, сохраняющее форму, остаётся верным.</li>
+            <li><strong>Мы не "решаем" — мы раскрываем</strong>: уравнение уже содержит ответ. Мы лишь убираем "обёртку".</li>
+        </ul>
+
+        <div class="note">
+            <strong>Аналогия:</strong> Представьте, что у вас в кармане 100 рублей, но вы называете их "деньги на обед". 
+            Вы можете сказать: "деньги на обед = 100 рублей". 
+            Если вы потратите 30 рублей, то "деньги на обед − 30 = 100 − 30". 
+            Это то же самое, что и подстановка!
+        </div>
+
+        <hr>
+
+        <h2>Обобщение: метод подстановки в любом уравнении</h2>
+
+        <p>Для любого уравнения вида:</p>
+        <div class="math">выражение = число</div>
+
+        <ol style="font-size:1.1em; margin-left:20px;">
+            <li>Обозначьте выражение буквой (например, <code>B</code>)</li>
+            <li>Получите: <code>B = число</code></li>
+            <li>Выполните нужное действие с <code>B</code> с обеих сторон</li>
+            <li>Подставьте обратно выражение</li>
+        </ol>
+
+        <div class="example">
+            <p>Пример: <code>5x − 7 = 13</code></p>
+            <div class="step">Пусть B = 5x − 7</div>
+            <div class="step">B = 13</div>
+            <div class="step">B + 7 = 13 + 7</div>
+            <div class="step">B + 7 = 20</div>
+            <div class="step">5x − 7 + 7 = 20</div>
+            <div class="step">5x = 20</div>
+            <div class="step">x = 4</div>
+        </div>
+
+        <hr>
+
+        <h2>Вывод: равенство — это свобода</h2>
+
+        <p>
+            Подход через <strong>подстановку и тавтологию</strong> показывает: 
+            <em>уравнение — это не загадка, а утверждение о равенстве двух форм одного и того же</em>.
+        </p>
+
+        <p>
+            Мы не "находим" x — мы <strong>раскрываем</strong>, чем является левая часть, используя тот факт, что она равна правой.
+        </p>
+
+        <div class="tip" style="text-align:center; font-weight:bold; font-size:1.1em;">
+            Знак «=» — это не стена. Это <span style="color:#d32f2f;">мост</span>.<br>
+            По нему можно идти в обе стороны.
+        </div>
+
+        <footer>
+            <p>Образовательный материал по алгебре | Метод подстановки и тавтологии | © 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

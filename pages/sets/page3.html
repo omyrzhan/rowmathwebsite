@@ -1,0 +1,273 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Наивная теория множеств — 4. Отношения и функции</title>
+  <style>
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      max-width:960px;
+      margin:44px auto;
+      padding:0 24px;
+      color:#111;
+      line-height:1.7;
+    }
+    }
+    header{
+      border-left:10px solid #6366f1;
+      padding:20px 28px;
+      background:#eef2ff;
+      border-radius:0 14px 14px 0;
+      margin-bottom:36px;
+    }
+    h1{margin:0;font-size:2rem}
+    h2{margin:40px 0 16px;font-size:1.7rem}
+    h3{margin:28px 0 14px}
+    pre{
+      background:#f8fafc;
+      padding:16px;
+      border-radius:10px;
+      border:1px solid #e0e7ff;
+      overflow:auto;
+      font-size:0.95rem;
+    }
+    code{
+      background:#e0e7ff;
+      color:#4f46e5;
+      padding:3px 9px;
+      border-radius:6px;
+      font-weight:600;
+    }
+    table{
+      border-collapse:collapse;
+      width:100%;
+      margin:20px 0;
+      font-size:1rem;
+    }
+    td, th{
+      border:1px solid #c7d2fe;
+      padding:12px;
+      text-align:center;
+    }
+    th{background:#eef2ff}
+    .card{
+      background:#ffffff;
+      border:3px solid #a5b4fc;
+      border-radius:16px;
+      padding:24px;
+      margin:32px 0;
+      box-shadow:0 6px 20px rgba(99,102,241,0.12);
+    }
+    input{
+      width:100%;
+      padding:14px;
+      font-size:1.1rem;
+      border:2px solid #c7d2fe;
+      border-radius:10px;
+      margin-top:8px;
+    }
+    label{font-weight:bold;color:#4f46e5}
+    .result{
+      margin-top:20px;
+      padding:18px;
+      background:#f0f9ff;
+      border-radius:12px;
+      border:2px solid #60a5fa;
+      font-size:1.1rem;
+    }
+    .example{
+      background:#fefce8;
+      border-left:6px solid #facc15;
+      padding:18px;
+      border-radius:8px;
+      margin:28px 0;
+    }
+    footer{
+      margin-top:80px;
+      padding-top:24px;
+      border-top:4px solid #a5b4fc;
+      color:#4f46e5;
+      font-size:1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Наивная теория множеств — 4. Отношения и функции</h1>
+    <p style="margin:10px 0 0;font-size:1.15rem">
+      Как элементы одного множества «связаны» с элементами другого.<br>
+      От простых пар до настоящих функций — с примерами из жизни и живым проверялкой!
+    </p>
+  </header>
+
+  <section>
+    <h2>Что такое отношение?</h2>
+    <p>
+      <strong>Отношение</strong> R между множествами A и B — это просто набор пар <code>(a, b)</code>, где a ∈ A, b ∈ B.<br>
+      Формально: R ⊆ A × B (декартово произведение).
+    </p>
+    <pre>Пример:
+A = {1, 2, 3}
+B = {кот, собака, хомяк}
+R = {(1, кот), (2, собака), (2, кот), (3, собака)}
+
+→ это отношение «ребёнок → его любимое животное»</pre>
+  </section>
+
+  <section class="example">
+    <h3>Примеры отношений из жизни</h3>
+    <ul style="font-size:1.1rem">
+      <li>«является родителем» — между множеством людей</li>
+      <li>«любит» — между людьми и едой/музыкой/фильмами</li>
+      <li>«меньше» (<) — между числами</li>
+      <li>«живёт в» — между людьми и городами</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Что такое функция? (самое важное!)</h2>
+    <p>
+      <strong>Функция</strong> f: A → B — это особое отношение, в котором <strong>каждому</strong> элементу из A соответствует <strong>ровно один</strong> элемент из B.
+    </p>
+    <p>Говорим:</p>
+    <ul style="font-size:1.15rem">
+      <li>A — <strong>область отправления</strong> (или область определения, домен)</li>
+      <li>B — <strong>область прибытия</strong> (кодомен)</li>
+      <li>f(a) — <strong>образ</strong> элемента a</li>
+      <li>{f(a) | a ∈ A} — <strong>область значений</strong> (может быть меньше B)</li>
+    </ul>
+  </section>
+
+  <div style="background:#f0f9ff;padding:20px;border-radius:12px;margin:30px 0">
+    <h3>Главное правило функции</h3>
+    <p style="font-size:1.4rem;text-align:center;color:#1d4ed8;font-weight:bold">
+      ОДНОМУ входу — ТОЛЬКО ОДИН выход!<br>
+      Запрещено: один a → два разных b
+    </p>
+  </div>
+
+  <section class="example">
+    <h3>Примеры функций</h3>
+    <table>
+      <tr><th>Функция</th><th>A (откуда)</th><th>B (куда)</th><th>Правило</th><th>Это функция?</th></tr>
+      <tr><td>возраст человека</td><td>люди</td><td>числа 0..120</td><td>Петя → 12</td><td>Да</td></tr>
+      <tr><td>мама человека</td><td>люди</td><td>женщины</td><td>Петя → Анна</td><td>Да (у каждого одна мама)</td></tr>
+      <tr><td>любимое животное</td><td>дети</td><td>животные</td><td>Маша → кот и собака</td><td>Нет! (два ответа)</td></tr>
+      <tr><td>квадрат числа</td><td>ℝ</td><td>ℝ</td><td>x → x²</td><td>Да</td></tr>
+      <tr><td>пол человека</td><td>люди</td><td>{м, ж}</td><td>Саша → ?</td><td>Нет (Саша может быть и мальчиком, и девочкой)</td></tr>
+    </table>
+  </section>
+
+  <div class="card">
+    <h3>Живой проверятель: это функция или просто отношение?</h3>
+    <p>Заполни множества и пары в формате <code>элемент->образ</code> (например: <code>1->a, 2->b</code>)</p>
+
+    <div style="margin-top:16px">
+      <label>Множество A (откуда)</label><br>
+      <input id="rA" placeholder="например: Петя, Маша, Коля, Саша" value="1,2,3"/>
+    </div>
+    <div style="margin-top:12px">
+      <label>Множество B (куда)</label><br>
+      <input id="rB" placeholder="например: a, b, c, d" value="a,b,c"/>
+    </div>
+    <div style="margin-top:12px">
+      <label>Пары (через запятую)</label><br>
+      <input id="pairs" placeholder="например: 1->a, 2->b, 2->c, 3->a" value="1->a,2->b,3->a"/>
+    </div>
+
+    <div class="result" id="relOut"></div>
+  </div>
+
+  <section class="example">
+    <h3>Ещё примеры функций из школы</h3>
+    <pre>f(x) = x + 5          → функция из ℝ в ℝ
+g(x) = 2x − 3          → тоже функция
+h(n) = «последняя цифра числа n» → функция из натуральных чисел в {0,1,2,...,9}
+
+«любимый цвет» — НЕ функция, потому что у одного человека может быть несколько любимых цветов</pre>
+  </pre>
+  </section>
+
+  <section>
+    <h2>Кратко: в чём разница?</h2>
+    <table>
+      <tr><th></th><th>Отношение</th><th>Функция</th></tr>
+      <tr><td>Сколько выходов у одного входа?</td><td>0, 1 или много</td><td>Ровно один</td></tr>
+      <tr><td>Каждый элемент A участвует?</td><td>Не обязательно</td><td>Да (в полной функции — да)</td></tr>
+      <tr><td>Обозначается</td><td>R ⊆ A × B</td><td>f: A → B</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h3>Мини-викторина</h3>
+    <ol style="font-size:1.15rem;line-height:1.9">
+      <li>Является ли «брат» функцией от людей к людям? → Нет (у человека может быть 0, 1 или несколько братьев)</li>
+      <li>Является ли «отец» функцией? → Да (у каждого один биологический отец)</li>
+      <li>f(x) = ±√x — функция из положительных чисел в ℝ? → Нет (два значения)</li>
+    </ol>
+  </section>
+
+  <footer>
+    ← <a href="03-операции.html">3. Операции над множествами</a>  |  
+    <strong>Далее → <a href="05-упражнения.html">5. Упражнения и задачи</a></strong>
+  </footer>
+
+  <script>
+    function parse(s) {
+      if (!s.trim()) return [];
+      return [...new Set(s.split(',').map(x => x.trim()).filter(Boolean))];
+    }
+
+    function checkFunction() {
+      const A = parse(document.getElementById('rA').value);
+      const B = parse(document.getElementById('rB').value);
+      const rawPairs = document.getElementById('pairs').value.split(',').map(p => p.trim()).filter(Boolean);
+
+      const pairs = [];
+      const map = {};           // элемент A → его образ
+      const used = new Set();   // какие элементы A уже встретились
+      let isFunction = true;
+      let domainCovered = true;
+
+      rawPairs.forEach(str => {
+        const parts = str.split('->').map(x => x.trim());
+        if (parts.length === 2) {
+          const [from, to] = parts;
+          pairs.push([from, to]);
+          if (used.has(from) && map[from] !== to) isFunction = false;
+          map[from] = to;
+          used.add(from);
+        }
+      });
+
+      // Проверяем, что каждый элемент из A имеет образ
+      A.forEach(a => { if (map[a] === undefined) domainCovered = false; });
+
+      const pairStr = pairs.length ? pairs.map(p => `${p[0]} → ${p[1]}`).join(', ') : 'нет пар';
+
+      let message = `<strong>Пары:</strong> ${pairStr}<br><br>`;
+
+      if (pairs.length === 0) {
+        message += 'Функция? Нет — нет ни одной пары';
+      } else if (!domainCovered) {
+        message += '<span style="color:#dc2626">Не функция</span> — не все элементы из A имеют образ';
+      } else if (!isFunction) {
+        message += '<span style="color:#dc2626">Не функция</span> — один элемент A указывает на разные образы';
+      } else {
+        message += '<span style="color:#16a34a;font-size:1.3rem">Да — это функция!</span><br>Каждому элементу из A соответствует ровно один элемент из B';
+      }
+
+      document.getElementById('relOut').innerHTML = message;
+    }
+
+    ['rA', 'rB', 'pairs'].forEach(id => {
+      document.getElementById(id).addEventListener('input', checkFunction);
+    });
+
+    checkFunction(); // при загрузке
+  </script>
+</body>
+</html>

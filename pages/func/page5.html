@@ -1,0 +1,182 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>6. Рациональные функции — где появляются «дырки» и «запрещённые линии»</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {background:#0f172a; color:#e6eef8; font-family:Arial, sans-serif; padding:20px; line-height:1.7; max-width:1250px; margin:0 auto;}
+        h1, h2, h3 {color:#f87171;}
+        section {background:#1e1b2e; padding:32px; margin:30px 0; border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,0.7);}
+        .example {background:#2d1b3b; padding:22px; border-radius:12px; margin:22px 0; border-left:7px solid #f87171;}
+        .formula {font-size:26px; text-align:center; background:#2d1b3b; padding:20px; border-radius:12px; margin:25px 0; color:#fff;}
+        canvas {background:#1e1b2e; border-radius:12px; margin:20px 0;}
+        .play {background:#2d1b3b; padding:25px; border-radius:12px; text-align:center;}
+        input[type=number] {padding:10px; width:80px; margin:5px; border-radius:8px; border:none; background:#334155; color:white;}
+        table {width:100%; border-collapse:collapse; margin:30px 0;}
+        th, td {padding:15px; border-bottom:1px solid #444;}
+        th {background:#2d1b3b; color:#f87171;}
+    </style>
+</head>
+<body>
+
+<h1>6. Рациональные функции — когда в знаменателе появляется x</h1>
+
+<section>
+    <h2>Что такое рациональная функция?</h2>
+    <p>Это любая функция вида</p>
+    <div class="formula">
+        f(x) = P(x) / Q(x)
+    </div>
+    <p>где P(x) и Q(x) — полиномы, а Q(x) ≠ 0.</p>
+    <p>Простыми словами: обыкновенная дробь, но в числителе и знаменателе — выражения с x.</p>
+</section>
+
+<section>
+    <h2>Самые важные новые слова</h2>
+    <table>
+        <tr><th>Понятие</th><th>Что это значит</th><th>Как выглядит на графике</th></tr>
+        <tr><td>Вертикальная асимптота</td><td>Знаменатель = 0 (но числитель ≠ 0</td><td>График уходит в ±∞ слева и справа от прямой x = k</td></tr>
+        <tr><td>Дырка (устранимая точка)</td><td>И числитель, и знаменатель = 0 в одной точке</td><td>Просто пустая точка (можно доопределить)</td></tr>
+        <tr><td>Горизонтальная асимптота</td><td>К чему стремится функция при x → ±∞</td><td>Горизонтальная прямая y = L</td></tr>
+        <tr><td>Наклонная асимптота</td><td>Когда степень числителя на 1 больше знаменателя</td><td>Прямая y = mx + b</td></tr>
+    </table>
+</section>
+
+<section>
+    <h2>Поиграй сам — меняй числитель и знаменатель!</h2>
+    <div class="play">
+        Числитель: <input id="p1" value="1" oninput="draw()"> x + <input id="p0" value="0" oninput="draw()"><br><br>
+        Знаменатель: <input id="q1" value="1" oninput="draw()"> x + <input id="q0" value="2" oninput="draw()"><br><br>
+        <strong style="font-size:22px; color:#f87171;">
+            f(x) = <span id="frac">(x)/(x+2)</span>
+        </strong>
+    </div>
+    <canvas id="mainChart" height="500"></canvas>
+</section>
+
+<section>
+    <h2>Классические примеры (обязательно запомни!)</h2>
+
+    <div class="example">
+        <h3>1. Гипербола y = 1/x</h3>
+        Вертикальная асимптота x = 0<br>
+        Горизонтальная асимптота y = 0<br>
+        <canvas id="hyperbola"></canvas>
+    </div>
+
+    <div class="example">
+        <h3>2. y = (x²−1)/(x−1) = x+1 (при x≠1)</h3>
+        На самом деле это прямая y = x+1, но с дыркой в точке x=1<br>
+        <canvas id="hole"></canvas>
+    </div>
+
+    <div class="example">
+        <h3>3. y = (2x+3)/(x²−4) = (2x+3)/((x−2)(x+2))</h3>
+        Две вертикальные асимптоты: x = 2 и x = −2<br>
+        Горизонтальная асимптота y = 0<br>
+        <canvas id="twoasymp"></canvas>
+    </div>
+
+    <div class="example">
+        <h3>4. y = (x²+1)/(x) = x + 1/x</h3>
+        Наклонная асимптота y = x<br>
+        <canvas id="oblique"></canvas>
+    </div>
+</section>
+
+<section>
+    <h2>Жизненные примеры рациональных функций</h2>
+
+    <div class="example">
+        <strong>Средняя скорость</strong><br>
+        vₛᵣ = общее расстояние / время = 120 / t<br>
+        При t → 0+ средняя скорость → +∞ (классическая гипербола)
+    </div>
+
+    <div class="example">
+        <strong>Концентрация лекарства в крови</strong><br>
+        C(t) = доза / (объём крови + скорость выведения·t) → рациональная функция
+    </div>
+
+    <div class="example">
+        <strong>Затраты на одного человека</strong><br>
+        Поездка стоит 50 000 руб фиксировано + 2000 руб на человека.<br>
+        Затраты на одного = (50 000 + 2000n)/n = 2000 + 50 000/n<br>
+        Чем больше людей — тем дешевле каждому (горизонтальная асимптота 2000 руб)
+    </div>
+
+    <div class="example">
+        <strong>Закон Кулона, закон всемирного тяготения</strong><br>
+        Сила ∝ 1/r² — тоже рациональные функции!
+    </div>
+</section>
+
+<section>
+    <h2>Как быстро находить асимптоты (шпаргалка)</h2>
+    <table>
+        <tr><th>Ситуация</th><th>Вертикальные</th><th>Горизонтальная / наклонная</th></tr>
+        <tr><td>степень числителя < знаменателя</td><td>корни знаменателя</td><td>y = 0</td></tr>
+        <tr><td>степень числителя = знаменателю</td><td>корни знаменателя</td><td>y = старший коэф. числителя / старший коэф. знаменателя</td></tr>
+        <tr><td>степень числителя = степень знаменателя + 1</td><td>корни знаменателя</td><td>наклонная (делим полиномы)</td></tr>
+        <tr><td>разница > 1</td><td>корни знаменателя</td><td>нет горизонтальной/наклонной, уходит в ∞</td></tr>
+    </table>
+</section>
+
+<section>
+    <h2>Краткая шпаргалка</h2>
+    <div style="background:#2d1b3b;padding:25px;border-radius:12px;font-size:18px;">
+        • Знаменатель = 0 → вертикальная асимптота (если не сокращается)<br>
+        • Если и числитель, и знаменатель = 0 → дырка<br>
+        • При x → ±∞ смотрим на старшие степени<br>
+        • График никогда не пересекает вертикальную асимптоту<br>
+        • Может пересекать горизонтальную/наклонную асимптоту
+    </div>
+</section>
+
+<script>
+function drawChart(id, num, den, color = '#f87171', title = '') {
+    let xs = [];
+    let ys = [];
+    for(let x = -10; x <= 10; x += 0.05) {
+        if (Math.abs(den(x)) > 0.0001) {  // избегаем деления на 0
+            xs.push(x);
+            ys.push(num(x)/den(x));
+        }
+    }
+    new Chart(document.getElementById(id), {
+        type: 'line',
+        data: {labels: xs, datasets: [{data: ys, borderColor: color, borderWidth: 3, pointRadius: 0, tension: 0.1}]},
+        options: {
+            animation: false,
+            plugins: {legend:{display:false}, title:{display:true, text:title, color:'#e6eef8', font:{size:20}}},
+            scales: {x:{grid:{color:'#334155'}}, y:{grid:{color:'#334155'}, suggestedMin:-10, suggestedMax:10}}
+        }
+    });
+}
+
+// Интерактивный график
+function draw() {
+    let p1 = parseFloat(p1.value)||0, p0 = parseFloat(p0.value)||0;
+    let q1 = parseFloat(q1.value)||1, q0 = parseFloat(q0.value)||0;
+    document.getElementById('frac').textContent = `${p1||''}x${p0>=0?'+':''}${p0} / ${q1||''}x${q0>=0?'+':''}${q0}`;
+
+    drawChart('mainChart', x=>p1*x+p0, x=>q1*x+q0, '#f87171', 'Твоя рациональная функция');
+}
+draw();
+
+// Классические примеры
+drawChart('hyperbola',   x=>1,          x=>x,          '#f87171', 'y = 1/x');
+drawChart('hole',        x=>x*x-1,      x=>x-1,        '#60a5fa', 'y = (x²−1)/(x−1) → дырка в x=1');
+drawChart('twoasymp',    x=>2*x+3,      x=>x*x-4,      '#34d399', 'y = (2x+3)/(x²−4)');
+drawChart('oblique',     x=>x*x+1,      x=>x,          '#fcd34d', 'y = x + 1/x → наклонная y = x');
+</script>
+
+<p style="text-align:center; font-size:20px; color:#94a3b8; margin:70px 0;">
+    Теперь ты понимаешь, почему графики иногда «рвутся» и «улетают в бесконечность»!<br>
+    Дальше — показательные и логарифмические функции. Ты уже почти мастер функций
+</p>
+
+</body>
+</html>

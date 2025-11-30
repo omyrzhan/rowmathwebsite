@@ -1,0 +1,185 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Наивная теория множеств — 2. Обозначения и названия</title>
+  <style>
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      max-width:900px;
+      margin:40px auto;
+      padding:0 20px;
+      color:#1a1a1a;
+      line-height:1.6;
+    }
+    header{
+      border-left:8px solid #10b981;      /* зелёный акцент */
+      padding:16px 20px;
+      margin-bottom:24px;
+      background:#f0fdf4;
+      border-radius:0 8px 8px 0;
+    }
+    h1{margin:0;font-size:1.8rem}
+    h2{margin-top:32px}
+    h3{margin-top:24px}
+    pre{
+      background:#f3faca;
+      padding:14px;
+      border-radius:8px;
+      overflow:auto;
+      border:1px solid #e5e7eb;
+      font-size:0.95rem;
+    }
+    code{
+      background:#f1f5f9;
+      padding:2px 8px;
+      border-radius:4px;
+      font-family: 'Courier New', monospace;
+    }
+    .card{
+      border:2px solid #86efac;
+      background:#f0fdf4;
+      padding:18px;
+      border-radius:12px;
+      margin:24px 0;
+    }
+    input, button{
+      padding:10px 14px;
+      font-size:1rem;
+      border-radius:8px;
+      border:1px solid #94a3b8;
+    }
+    input{width:68%}
+    button{
+      background:#10b981;
+      color:white;
+      border:none;
+      cursor:pointer;
+      font-weight:bold;
+    }
+    button:hover{background:#059669}
+    .example{
+      background:#fffbeb;
+      border:1px solid #fcd34d;
+      padding:16px;
+      border-radius:10px;
+      margin:20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Наивная теория множеств — 2. Обозначения и названия</h1>
+    <p style="margin:6px 0 0;opacity:.9;font-size:1.98rem">
+      Самые важные математические символы и как их правильно читать вслух
+    </p>
+  </header>
+
+  <section>
+    <h2>Как называть и записывать множества</h2>
+    <p>Обычно множества обозначают большими латинскими буквами:</p>
+    <pre>A = {1, 3, 5, 7, 9}          ← множество A
+B = {красный, синий, зелёный}  ← множество B
+C = { }                        ← пустое множество (можно также писать ∅)</pre>
+
+    <p>Элементы множества обозначают маленькими буквами:</p>
+    <pre>x ∈ A    → «икс принадлежит множеству А»
+5 ∉ B    → «пятёрка НЕ принадлежит множеству B»</pre>
+  </section>
+
+  <section>
+    <h2>Главные символы, которые нужно знать</h2>
+    <ul style="font-size:1.1rem;line-height:2">
+      <li><code>A = {1, 2, 3}</code> — «Множество A равно множеству из элементов 1, 2, 3»</li>
+      <li><code>a ∈ A</code> — «a принадлежит A» или «a является элементом A»</li>
+      <li><code>a ∉ A</code> — «a не принадлежит A»</li>
+      <li><code>∅</code> или <code>{}</code> — «пустое множество» (в нём вообще ничего нет)</li>
+      <li><code>A ⊆ B</code> — «A является подмножеством B»<br>
+          <small>Означает: каждый элемент из A есть и в B (A может быть равно B)</small></li>
+      <li><code>A ⊂ B</code> — «A является строгим (собственным) подмнножеством B»<br>
+          <small>A ⊆ B, но A ≠ B — в B есть что-то лишнее</small></li>
+      <li><code>A ⊇ B</code> — «A содержит B» (то же самое, что B ⊆ A)</li>
+      <li><code>A = B</code> — «множества A и B равны» (у них полностью одинаковые элементы)</li>
+      <li><code>|A|</code> или <code>card(A)</code> — мощность (количество элементов) множества A</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h3>Интерактив: собери своё множество</h3>
+    <p>Введи любые элементы через запятую. Повторы и порядок будут автоматически убраны — так работает настоящее множество!</p>
+    
+    <input id="buildInput" placeholder="например:  кот,  собака,  кот,  3,  яблоко,  3" />
+    <button id="buildBtn">Создать множество</button>
+    
+    <div id="built" style="margin-top:16px;font-size:1.2rem;font-weight:bold;color:#065f46;"></div>
+  </section>
+
+  <section class="example">
+    <h3>Примеры равенства множеств (важная идея!)</h3>
+    <p>Множества равны, если у них <strong>одинаковые элементы</strong>, а порядок и повторения не важны:</p>
+    <pre>{1, 2, 3}     = {3, 2, 1, 1}          → да, равны!
+{яблоко, груша} = {груша, яблоко, яблоко} → да, равны!
+{2, 4, 6}     = {2, 2, 4, 6, 6}        → да, равны!</pre>
+  </section>
+
+  <section class="example">
+    <h3>Примеры подмножества из жизни</h3>
+    <p>Пусть B = {все ученики 10-А класса}</p>
+    <ul>
+      <li>A = {Маша, Петя, Катя}  → A ⊆ B  (все трое учатся в 10-А)</li>
+      <li>C = {Ваня}              → C ⊆ B  (Ваня тоже в 10-А)</li>
+      <li>D = {Маша, Петя, Катя, Ваня, Оля} → D ⊈ B  (Оля из 10-Б!</li>
+    </ul>
+    <p>А вот пример строгого подмножества:</p>
+    <pre>{1, 2} ⊂ {1, 2, 3, 4, 5}    ← строгое, потому что в правом множестве есть лишние числа</pre>
+  </section>
+
+  <section>
+    <h3>Мини-викторина для закрепления</h3>
+    <ol>
+      <li>Верно ли, что <code>{a, b} ⊆ {a, b, c}</code>? → Да</li>
+      <li>Верно ли, что <code>{a, b, c} ⊂ {a, b, c}</code>? → Нет (не строгое, они равны)</li>
+      <li>Сколько элементов в множестве <code>{1, 1, 2, 2, 2, 3}</code>? → 3</li>
+    </ol>
+  </section>
+
+  <footer style="margin-top:60px;padding-top:20px;border-top:2px solid #86efac;color:#065f46;font-size:1rem">
+    ← <a href="01-введение.html">1. Введение</a>  |  
+    <strong>Далее → <a href="03-operations.html">3. Операции над множествами (объединение, пересечение и др.)</a></strong>
+  </footer>
+
+  <script>
+    const inp = document.getElementById('buildInput');
+    const btn = document.getElementById('buildBtn');
+    const out = document.getElementById('built');
+
+    btn.onclick = () => {
+      // Разбиваем по запятым, убираем пробелы, удаляем пустые строки
+      const items = inp.value
+                       .split(',')
+                       .map(s => s.trim())
+                       .filter(s => s !== '');
+
+      // Убираем дубликаты с помощью Set
+      const unique = [...new Set(items)];
+
+      if (unique.length === 0) {
+        out.textContent = 'Множество пустое: ∅';
+      } else {
+        out.textContent = `Твоё множество: { ${unique.join(', ')} }`;
+      }
+
+      // Немного красоты
+      out.style.color = '#065f46';
+    };
+
+    // Можно нажать Enter
+    inp.addEventListener('keypress', e => {
+      if (e.key === 'Enter') btn.click();
+    });
+  </script>
+</body>
+</html>

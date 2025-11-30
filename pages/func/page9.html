@@ -1,0 +1,184 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>10. Практика и закрепление — проверь себя перед экзаменом!</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {background:#0f172a; color:#e6eef8; font-family:Arial, sans-serif; padding:20px; line-height:1.7; max-width:1200px; margin:0 auto;}
+        h1, h2 {color:#a78bfa;}
+        section {background:#0f172a; padding:30px; margin:30px 0; border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,0.6);}
+        .task {background:#1e1b4b; padding:25px; border-radius:14px; margin:20px 0; border-left:6px solid #a78bfa;}
+        .answer {background:#1e293b; padding:15px; border-radius:10px; margin-top:10px; display:none;}
+        input[type=text], input[type=number] {padding:10px; width:200px; background:#334155; border:none; border-radius:8px; color:white;}
+        button {padding:10px 20px; background:#a78bfa; color:#0f172a; border:none; border-radius:8px; cursor:pointer; font-weight:bold;}
+        button:hover {background:#c4b5fd;}
+        .ok {color:#34d399; font-weight:bold;}
+        .bad {color:#f87171; font-weight:bold;}
+        canvas {background:#1e1b4b; border-radius:12px; margin:15px 0;}
+    </style>
+</head>
+<body>
+
+<h1>10. Практика и закрепление — 100 задач по всем темам</h1>
+
+<section>
+    <h2>1. Область определения (10 задач)</h2>
+
+    <div class="task">
+        1. Найди область определения: f(x) = √(7 − 3x)<br>
+        <input id="text" id="d1"> <button onclick="check('d1','x≤7/3')">Проверить</button>
+        <answer id="d1a">Ответ: x ≤ 7/3 или (−∞; 7/3]</answer>
+    </div>
+
+    <div class="task">
+        2. f(x) = 1/(x²−4) + √(x+5)<br>
+        <input id="d2"> <button onclick="check('d2','[-5;2)∪(2;+∞)')">Проверить</button>
+        <answer id="d2a">x ≥ −5 и x ≠ ±2 → [−5; −2) ∪ (−2; 2) ∪ (2; +∞)</answer>
+    </div>
+
+    <div class="task">
+        3. f(x) = log₃(x−2) / (x+1)<br>
+        <input id="d3"> <button onclick="check('d3','(2;+∞)')">Проверить</button>
+        <answer id="d3a">x > 2 и x ≠ −1 → (2; +∞)</answer>
+    </div>
+</section>
+
+<section>
+    <h2>2. Линейные и квадратичные (15 задач)</h2>
+
+    <div class="task">
+        4. Прямая проходит через точки (–2;5) и (3;–10). Найди уравнение.<br>
+        <input id="l1"> <button onclick="check('l1','y=-3x-1')">Проверить</button>
+        <answer id="l1a">k = (−10−5)/(3+2) = −3 → y + 10 = −3(x − 3) → y = −3x − 1</answer>
+    </div>
+
+    <div class="task">
+        5. Вершина параболы y = 2x² − 8x + 5 находится в точке…<br>
+        <input id="q1"> <button onclick="check('q1','(2;-3)')">Проверить</button>
+        <answer id="q1a">x = 8/(2·2) = 2 → y = 2·4 − 16 + 5 = −3 → (2;−3)</answer>
+    </div>
+</section>
+
+<section>
+    <h2>3. Модуль и кусочные (20 задач)</h2>
+
+    <div class="task">
+        6. Решить уравнение |2x − 6| = 4<br>
+        <input id="m1"> <button onclick="check('m1','x=1 или x=5')">Проверить</button>
+    </div>
+
+    <div class="task">
+        7. Построй график y = |x − 1| − 2 и найди область значений<br>
+        <canvas id="absPractice" height="300"></canvas>
+        Ответ: <input id="m7"> <button onclick="check('m7','[-2;+∞)')">Проверить</button>
+    </div>
+
+    <div class="task">
+        8. Кусочная функция:<br>
+        f(x) = { x+3, при x < −1<br>
+               { 2,   при −1 ≤ x ≤ 3<br>
+               { x−4, при x > 3<br>
+        Найди f(−2), f(0), f(5)<br>
+        <input id="piece1"> <button onclick="check('piece1','-2, 2, 1')">Проверить</button>
+    </div>
+</section>
+
+<section>
+    <h2>4. Рациональные функции (15 задач)</h2>
+
+    <div class="task">
+        9. Найди асимптоты функции y = (3x+1)/(x−2)<br>
+        Вертикальная: <input id="r1"> Горизонтальная: <input id="r2">
+        <button onclick="check2('r1','x=2','r2','y=3')">Проверить</button>
+    </div>
+</section>
+
+<section>
+    <h2>5. Показательные и логарифмические (20 задач)</h2>
+
+    <div class="task">
+        10. Решить 2^{x+1} = 8<br>
+        <input id="e1"> <button onclick="check('e1','x=2')">Проверить</button>
+    </div>
+
+    <div class="task">
+        11. Сколько лет нужно держать 10 000 руб под 7% годовых (сложные проценты), чтобы стало ≥ 20 000?<br>
+        <input id="e2"> лет <button onclick="check('e2','10')">Примерно 10 лет</button>
+        <answer id="e2a">10 000 ⋅ 1.07^t ≥ 20 000 → t ≥ log_{1.07}(2) ≈ 10.24 года</answer>
+    </div>
+
+    <div class="task">
+        12. log₅(x) = 3 → x = ?<br>
+        <input id="l1"> <button onclick="check('l1','125')">Проверить</button>
+    </div>
+</section>
+
+<section>
+    <h2>6. Тригонометрия (20 задач)</h2>
+
+    <div class="task">
+        13. sin x = −√3/2, x ∈ [0; 2π]<br>
+        <input id="t1"> <button onclick="check('t1','4π/3, 5π/3')">Проверить</button>
+    </div>
+
+    <div class="task">
+        14. Упростить sin(π − x) + cos(π + x)<br>
+        <input id="t2"> <button onclick="check('t2','-cos x')">Проверить</button>
+    </div>
+</section>
+
+<section>
+    <h2>Большая смешанная тренировка (20 задач)</h2>
+    <p>Нажми кнопку — получишь случайную задачу из всех тем</p>
+    <button onclick="randomTask()">Случайная задача</button>
+    <div id="random" style="margin-top:20px; font-size:20px;"></div>
+</section>
+
+<script>
+// Проверка ответов
+function check(id, correct) {
+    let inp = document.getElementById(id);
+    let ans = document.getElementById(id+'a');
+    if(inp.value.trim().toLowerCase() === correct.toLowerCase()) {
+        inp.style.border = "2px solid #34d399";
+        ans.style.display = "block";
+        ans.innerHTML = "<span class='ok'>Правильно!</span>";
+    } else {
+        inp.style.border = "2px solid #f87171";
+        if(ans) ans.style.display = "block";
+    }
+}
+function check2(id1, corr1, id2, corr2) {
+    check(id1, corr1);
+    check(id2, corr2);
+}
+
+// График для задачи 7
+let xsA = []; for(let x=-5;x<=7;x+=0.05) xsA.push(x);
+let ysA = xsA.map(x=>Math.abs(x-1)-2);
+new Chart(document.getElementById('absPractice'),{type:'line',data:{labels:xsA,datasets:[{data:ysA,borderColor:'#fbbf24',borderWidth:4}]},options:{animation:false}});
+
+// Случайные задачи (примерный набор)
+const randomTasks = [
+    "Найди область определения: f(x)=ln(5−2x)", "Ответ: x<2.5 или (−∞;2.5)",
+    "Решить |x−3| + |x+1| = 6", "Ответ: x∈[−4;4]",
+    "Найди асимптоты y=(x²+1)/(x+1)", "Ответ: x=−1, y=x−1",
+    "Решить 3^{2x−1}=27", "Ответ: x=2",
+    "Упростить cos(π/2 − x)", "Ответ: sin x",
+    "y=|x+2|−|x−2| — сколько угловых точек?", "Ответ: 3"
+];
+function randomTask() {
+    let i = Math.floor(Math.random()*randomTasks.length/2)*2;
+    document.getElementById('random').innerHTML = `<div class='task'>${randomTasks[i]}<br><input id='randIn'><button onclick="check('randIn','${randomTasks[i+1]}')">Проверить</button><answer id='randIna'>${randomTasks[i+1]}</answer></div>`;
+}
+</script>
+
+<p style="text-align:center; font-size:24px; color:#94a3b8; margin:100px;">
+    Ты прошёл весь курс! Теперь ты точно готов к любой контрольной, олимпиаде и ЕГЭ по алгебре<br>
+    Удачи, будущий математик!
+</p>
+
+</body>
+</html>

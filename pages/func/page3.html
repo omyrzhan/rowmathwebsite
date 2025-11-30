@@ -1,0 +1,192 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>4. Квадратичные функции и параболы — всё с примерами и картинками</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {background:#0f172a; color:#e6eef8; font-family:Arial, sans-serif; padding:20px; line-height:1.7; max-width:1200px; margin:0 auto;}
+        h1, h2, h3 {color:#a78bfa;}
+        section {background:#0f172a linear-gradient(135deg, #1e1b4b, #0f172a); padding:30px; margin:30px 0; border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,0.6);}
+        .example {background:#1e1b4b; padding:20px; border-radius:12px; margin:20px 0; border-left:6px solid #c084fc;}
+        .calc {background:#1e293b; padding:20px; border-radius:12px; text-align:center; font-size:18px;}
+        input[type=number] {padding:10px; width:90px; margin:0 8px; border-radius:8px; border:none; background:#334155; color:white; font-size:16px;}
+        canvas {background:#1e1b4b; border-radius:12px; margin-top:20px;}
+        table {width:100%; border-collapse:collapse; margin:25px 0;}
+        th, td {padding:14px; border-bottom:1px solid #334155;}
+        th {background:#1e1b4b; color:#c084fc;}
+        .formula {font-size:24px; background:#1e1b4b; padding:15px; border-radius:10px; text-align:center; margin:20px 0;}
+    </style>
+</head>
+<body>
+
+<h1>4. Квадратичные функции — это параболы!</h1>
+
+<section>
+    <h2>Что такое квадратичная функция?</h2>
+    <p>Квадратичная функция — это функция, в которой самая высокая степень x равна 2.</p>
+    
+    <div class="formula">
+        <strong>y = a x² + b x + c</strong> или <strong>f(x) = a x² + b x + c</strong>
+    </div>
+
+    <p>График любой квадратичной функции — это <strong>парабола</strong>.</p>
+
+    <ul>
+        <li><strong>a</strong> — главный герой: решает, вверх или вниз открыта парабола и насколько она узкая/широкая</li>
+        <li><strong>b</strong> слегка сдвигает параболу влево-вправо</li>
+        <li><strong>c</strong> сдвиг вверх-вниз (это точка пересечения с осью Y)</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Поиграй с параболой в реальном времени!</h2>
+    <div class="calc">
+        a = <input id="a4" type="number" step="0.1" value="1" oninput="u4()">
+        &nbsp;&nbsp;b = <input id="b4" type="number" step="0.5" value="0" oninput="u4()">
+        &nbsp;&nbsp;c = <input id="c4" type="number" step="0.5" value="0" oninput="u4()">
+        <br><br>
+        <strong><span id="equation" style="color:#c084fc; font-size:20px;">y = 1x² + 0x + 0</span>
+    </div>
+    <canvas id="g4" height="450"></canvas>
+</section>
+
+<section>
+    <h2>Как a влияет на параболу? (самое важное!)</h2>
+
+    <div class="example">
+        <h3>a > 0 → парабола открыта вверх (улыбка)</h3>
+        <p>Есть минимум. Например: y = x², y = 2x², y = 0.5x²</p>
+        <p>Чем больше a — тем уже и круче парабола!</p>
+    </div>
+
+    <div class="example">
+        <h3>a < 0 парабола открыта вниз (грустная)</h3>
+        <p>Есть максимум. Например: y = −x² (перевёрнутая чашка), y = −3x²</p>
+    </div>
+
+    <div class="example">
+        <h3>a = 0 это уже НЕ квадратичная, а линейная функция!</h3>
+    </div>
+</section>
+
+<section>
+    <h2>Вершина параболы — самая важная точка</h2>
+    <p>У каждой параболы есть <strong>вершина</strong> — самая высокая или самая низкая точка.</p>
+    <p>Координата x вершины: <strong>xᵥ = −b/(2a)</strong> (запомни навсегда!)</strong></p>
+
+    <div class="example">
+        Найдём вершину для y = 2x² − 8x + 5<br>
+        xᵥ = −(−8)/(2·2) = 8/4 = 2<br>
+        yᵥ = 2·4 − 8·2 + 5 = 8 − 16 + 5 = −3<br>
+        Вершина в точке (2; −3) — это минимум
+    </div>
+</section>
+
+<section>
+    <h2>Жизненные примеры квадратичных функций</h2>
+
+    <div class="example">
+        <strong>1. Бросок мяча вверх</strong><br>
+        Высота h(t) = −5t² + 20t + 1.5 (парабола вниз, максимум — высшая точка полёта)
+    </div>
+
+    <div class="example">
+        <strong>2. Прибыль магазина</strong><br>
+        Если слишком поднять цену — покупателей станет меньше.<br>
+        Прибыль P(x) = −2x² + 100x − 1000 (есть оптимальная цена!)
+    </div>
+
+    <div class="example">
+        <strong>3. Площадь прямоугольника с фиксированным периметром</strong><br>
+        Периметр 40 м → P = 2(l + w), l + w = 20<br>
+        S = l·w = l·(20 − l) = −l² + 20l максимум при l = 10 м (квадрат!)
+    </div>
+
+    <div class="example">
+        <strong>4. Арка моста, траектория фонтана, параболическая антенна</strong>
+    </div>
+</section>
+
+<section>
+    <h2>Как найти корни (где парабола пересекает ось X)?</h2>
+    <table>
+        <tr><th>Количество корней</th><th>Дискриминант D = b² − 4ac</th><th>Пример</th></tr>
+        <tr><td>Два корня</td><td>D > 0</td><td>y = x² − 5x + 6 → D=25−24=1 → корни 2 и 3</td></tr>
+        <tr><td>Один корень (касается оси)</td><td>D = 0</td><td>y = x² + 2x + 1 → D=4−4=0 → корень −0.5</td></tr>
+        <tr><td>Нет действительных корней</td><td>D < 0</td><td>y = x² + 1 → всегда положительна</td></tr>
+    </table>
+</section>
+
+<section>
+    <h2>Шпаргалка по квадратичным функциям</h2>
+    <table>
+        <tr><th>Что нужно знать</th><th>Формула / Правило</th></tr>
+        <tr><td>Направление ветвей</td><td>a > 0 → вверх, a < 0 → вниз</td></tr>
+        <tr><td>Вершина по x</td><td>x = −b/(2a)</td></tr>
+        <tr><td>Дискриминант</td><td>D = b² − 4ac</td></tr>
+        <tr><td>Корни</td><td>x = [−b ± √D] / (2a)</td></tr>
+        <tr><td>Область значений</td><td>если a>0 → [yᵥ; +∞), если a<0 → (−∞; yᵥ]</td></tr>
+    </table>
+</section>
+
+<script>
+function u4() {
+    let a = parseFloat(document.getElementById('a4').value) || 0;
+    let b = parseFloat(document.getElementById('b4').value) || 0;
+    let c = parseFloat(document.getElementById('c4').value) || 0;
+
+    // Обновляем уравнение над графиком
+    let signB = b >= 0 ? '+' : '';
+    let signC = c >= 0 ? '+' : '';
+    document.getElementById('equation').textContent = `y = ${a}x² ${signB}${b}x ${signC}${c}`;
+
+    let xs = [];
+    for (let i = -10; i <= 10; i += 0.2) xs.push(i);
+
+    let ys = xs.map(x => a*x*x + b*x + c);
+
+    new Chart(document.getElementById('g4'), {
+        type: 'line',
+        data: {
+            labels: xs,
+            datasets: [{
+                label: `y = ${a}x² ${b>=0?'+'+b:b}x ${c>=0?'+'+c:c}`,
+                data: ys,
+                borderColor: a >= 0 ? '#c084fc' : '#f87171',
+                backgroundColor: 'rgba(167,139,250,0.1)',
+                borderWidth: 4,
+                pointRadius: 0,
+                tension: 0.3,
+                fill: false
+            }]
+        },
+        options: {
+            animation: false,
+            scales: {
+                x: {grid: {color: '#334155'}},
+                y: {grid: {color: '#334155'}, suggestedMin: -20, suggestedMax: 20}
+            },
+            plugins: {
+                legend: {display: false},
+                title: {
+                    display: true,
+                    text: a > 0 ? 'Парабола направлена вверх' : a < 0 ? 'Парабола направлена вниз' : 'Это уже не парабола!',
+                    color: '#e6eef8',
+                    font: {size: 18}
+                }
+            }
+        }
+    });
+}
+u4();
+</script>
+
+<p style="text-align:center; font-size:18px; color:#94a3b8; margin-top:60px;">
+    Теперь ты мастер парабол! Дальше — дробно-линейные, степенные и показательные функции<br>
+    Удачи в математике — ты уже на полпути к отличной оценке!
+</p>
+
+</body>
+</html>

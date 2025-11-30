@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>3. Линейная функция — всё просто и с примерами</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {background:#0f172a; color:#e6eef8; font-family:Arial, sans-serif; padding:20px; line-height:1.7; max-width:1100px; margin:0 auto;}
+        h1, h2, h3 {color:#60a5fa;}
+        section {background:#081524; padding:30px; margin:30px 0; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.5);}
+        .example {background:#112240; padding:20px; border-radius:10px; margin:20px 0; border-left:6px solid #34d399;}
+        .calc {background:#1e293b; padding:20px; border-radius:12px; font-size:18px/1.5 monospace;}
+        input[type=number] {padding:10px; width:90px; border-radius:8px; border:none; font-size:16px; background:#334155;}
+        input[type=number]:focus {outline:3px solid #60a5fa;}
+        canvas {background:#112240; border-radius:12px; margin-top:20px;}
+        table {width:100%; border-collapse:collapse; margin:20px 0;}
+        th, td {padding:12px; text-align:left; border-bottom:1px solid #334155;}
+        th {background:#1e293b; color:#60a5fa;}
+    </style>
+</head>
+<body>
+
+<h1>3. Линейная функция — самая простая и самая важная функция</h1>
+
+<section>
+    <h2>Что такое линейная функция?</h2>
+    <p>Линейная функция — это функция, график которой — <strong>прямая линия</strong>.</p>
+    <p>Записывается в самом простом виде так:</p>
+    <p style="font-size:28px; text-align:center; background:#1e293b; padding:15px; border-radius:10px;">
+        <strong>y = m x + b</strong> или <strong>f(x) = m x + b</strong>
+    </p>
+
+    <ul>
+        <li><strong>m</strong> — коэффициент наклона (угловой коэффициент). Показывает, <strong>насколько круто</strong> идёт прямая.</li>
+        <li><strong>b</strong> — свободный член. Это <strong>точка пересечения с осью Y</strong> (когда x = 0).</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Поиграй сам — меняй m и b и смотри, как меняется прямая!</h2>
+    <div class="calc">
+        Введи m (наклон): <input id="m3" type="number" step="0.5" value="2" oninput="update3()">
+        &nbsp;&nbsp;&nbsp;
+        Введи b (сдвиг по Y): <input id="b3" type="number" step="0.5" value="1" oninput="update3()">
+    </div>
+    <canvas id="g3" height="400"></canvas>
+</section>
+
+<section>
+    <h2>Что означает m на практике? (очень важные примеры)</h2>
+
+    <div class="example">
+        <h3>m = 3 → прямая круто поднимается вверх</h3>
+        <p>За каждый шаг вправо на 1, функция растёт на 3.</p>
+        <p>Пример из жизни: цена такси = 100 руб (посадка) + 30 руб × километры</p>
+        <p style="font-size:20px">y = 30x + 100 &nbsp;&nbsp;→&nbsp;&nbsp; m = 30 (руб/км)</p>
+    </div>
+
+    <div class="example">
+        <h3>m = 0 → горизонтальная прямая</h3>
+        <p>y = 5 &nbsp;&nbsp;→&nbsp;&nbsp; это тоже линейная функция! Просто наклон нулевой.</p>
+        <p>Пример: температура в холодильнике всегда +4 °C, сколько ни жди.</p>
+    </div>
+
+    <div class="example">
+        <h3>m = −2 → прямая идёт вниз</h3>
+        <p>За каждый шаг вправо на 1, функция падает на 2.</p>
+        <p>Пример: бак с водой теряет 2 литра в минуту.</p>
+        <p>y = −2x + 50 &nbsp;&nbsp;(начальный объём 50 л)</p>
+    </div>
+</section>
+
+<section>
+    <h2>Г

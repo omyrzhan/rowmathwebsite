@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все тригонометрические формулы</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <style>
+        :root {
+            --primary: #1b5e20;
+            --accent: #66bb6a;
+            --bg: #e8f5e9;
+            --card: #ffffff;
+            --link: #2e7d32;
+            --note: #558b2f;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, var(--bg), #c8e6c9);
+            color: var(--primary);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            background: var(--card);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.4em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #2e7d32;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 8px;
+            margin: 35px 0 20px;
+            font-size: 1.7em;
+        }
+        .formula {
+            background: #f9fff9;
+            border-left: 5px solid var(--accent);
+            padding: 16px;
+            margin: 14px 0;
+            border-radius: 0 10px 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.25em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .formula a {
+            color: var(--link);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.75em;
+            vertical-align: super;
+            margin-left: 8px;
+        }
+        .formula a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            font-size: 0.9em;
+            color: var(--note);
+            font-style: italic;
+            margin-top: 6px;
+        }
+        .axiom {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" class="logo-link">RowMath</a>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="intro.html" class="nav-link" role="menuitem">Главная</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page1.html" class="nav-link" role="menuitem">Подстановка</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page2.html" class="nav-link active" role="menuitem">Знак =</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page3.html" class="nav-link" role="menuitem">Тавтология</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page4.html" class="nav-link" role="menuitem">Алгебра + Триг</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-formulas-ru.html" class="nav-link" role="menuitem">Формулы</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-proofs-ru.html" class="nav-link" role="menuitem">Доказательства</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page11.html" class="nav-link" role="menuitem">Решатель</a>
+                </li>
+                <!-- Special link to English version -->
+                <li class="nav-item" role="none">
+                    <a href="../index.html" class="nav-link special-link" role="menuitem">English Version</a>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Все тригонометрические формулы</h1>
+        <p style="text-align:center; font-style:italic; color:#2e7d32;">
+            Все формулы с доказательствами из 6 аксиом
+        </p>
+
+        <!-- 1. Тангенс и котангенс -->
+        <h2>Тангенс и котангенс</h2>
+        <div class="formula">tan θ = sin θ / cos θ <a href="trig-proofs-ru.html#proof-tan">доказать</a></div>
+        <div class="formula">cot θ = cos θ / sin θ <a href="trig-proofs-ru.html#proof-cot-def">доказать</a></div>
+
+        <!-- 2. Пифагора -->
+        <h2>Тождества Пифагора</h2>
+        <div class="formula">sin²θ + cos²θ = 1 <span class="axiom">(аксиома)</span></div>
+        <div class="formula">1 + tan²θ = sec²θ <a href="trig-proofs-ru.html#proof-tan2">доказать</a></div>
+        <div class="formula">1 + cot²θ = csc²θ <a href="trig-proofs-ru.html#proof-cot2">доказать</a></div>
+
+        <!-- 3. Чётность/нечётность -->
+        <h2>Чётные и нечётные функции</h2>
+        <div class="formula">sin(−θ) = −sin θ <a href="trig-proofs-ru.html#proof-sin-neg">доказать</a></div>
+        <div class="formula">cos(−θ) = cos θ <a href="trig-proofs-ru.html#proof-cos-neg">доказать</a></div>
+        <div class="formula">tan(−θ) = −tan θ <a href="trig-proofs-ru.html#proof-tan-neg">доказать</a></div>
+
+        <!-- 4. Периодичность -->
+        <h2>Периодические свойства</h2>
+        <div class="formula">sin(θ + 2πn) = sin θ <span class="note">n ∈ ℤ</span> <a href="trig-proofs-ru.html#proof-period-sin">доказать</a></div>
+        <div class="formula">cos(θ + 2πn) = cos θ <a href="trig-proofs-ru.html#proof-period-cos">доказать</a></div>
+        <div class="formula">tan(θ + πn) = tan θ <a href="trig-proofs-ru.html#proof-period-tan">доказать</a></div>
+
+        <!-- 5. Двойной угол -->
+        <h2>Формулы двойного угла</h2>
+        <div class="formula">sin 2θ = 2 sin θ cos θ <a href="trig-proofs-ru.html#proof-sin2">доказать</a></div>
+        <div class="formula">cos 2θ = cos²θ − sin²θ <a href="trig-proofs-ru.html#proof-cos2-diff">доказать</a></div>
+        <div class="formula">cos 2θ = 1 − 2 sin²θ <a href="trig-proofs-ru.html#proof-cos2-sin">доказать</a></div>
+        <div class="formula">cos 2θ = 2 cos²θ − 1 <a href="trig-proofs-ru.html#proof-cos2-cos">доказать</a></div>
+        <div class="formula">tan 2θ = (2 tan θ) / (1 − tan²θ) <a href="trig-proofs-ru.html#proof-tan2">доказать</a></div>
+
+        <!-- 6. Половина угла -->
+        <h2>Формулы половинного угла</h2>
+        <div class="formula">sin(θ/2) = ±√((1 − cos θ)/2) <a href="trig-proofs-ru.html#proof-half-sin">доказать</a></div>
+        <div class="formula">cos(θ/2) = ±√((1 + cos θ)/2) <a href="trig-proofs-ru.html#proof-half-cos">доказать</a></div>
+        <div class="formula">tan(θ/2) = ±√((1 − cos θ)/(1 + cos θ)) <a href="trig-proofs-ru.html#proof-half-tan">доказать</a></div>
+
+        <!-- 7. Сумма и разность -->
+        <h2>Формулы суммы и разности</h2>
+        <div class="formula">sin(α ± β) = sin α cos β ± cos α sin β <span class="axiom">(аксиома)</span></div>
+        <div class="formula">cos(α ± β) = cos α cos β ∓ sin α sin β <span class="axiom">(аксиома)</span></div>
+        <div class="formula">tan(α ± β) = (tan α ± tan β) / (1 ∓ tan α tan β) <a href="trig-proofs-ru.html#proof-tan-sum">доказать</a></div>
+        <div class="formula">cot(α ± β) = (cot α cot β ∓ 1) / (cot β ± cot α) <a href="trig-proofs-ru.html#proof-cot-sum">доказать</a></div>
+
+        <!-- 8. Сумма синусов и косинусов -->
+        <h2>Сумма синусов и косинусов</h2>
+        <div class="formula">sin a + sin b = 2 sin((a+b)/2) cos((a−b)/2) <a href="trig-proofs-ru.html#proof-sum-sin">доказать</a></div>
+        <div class="formula">sin a − sin b = 2 cos((a+b)/2) sin((a−b)/2) <a href="trig-proofs-ru.html#proof-diff-sin">доказать</a></div>
+        <div class="formula">cos a + cos b = 2 cos((a+b)/2) cos((a−b)/2) <a href="trig-proofs-ru.html#proof-sum-cos">доказать</a></div>
+        <div class="formula">cos a − cos b = −2 sin((a+b)/2) sin((a−b)/2) <a href="trig-proofs-ru.html#proof-diff-cos">доказать</a></div>
+
+        <!-- 9. Произведение → Сумма (ВОССТАНОВЛЕНО) -->
+        <h2>Преобразование произведения в сумму</h2>
+        <div class="formula">sin a sin b = (1/2)[cos(a−b) − cos(a+b)] <a href="trig-proofs-ru.html#proof-prod-sin">доказать</a></div>
+        <div class="formula">cos a cos b = (1/2)[cos(a−b) + cos(a+b)] <a href="trig-proofs-ru.html#proof-prod-cos">доказать</a></div>
+        <div class="formula">sin a cos b = (1/2)[sin(a+b) + sin(a−b)] <a href="trig-proofs-ru.html#proof-prod-sincos">доказать</a></div>
+        <div class="formula">cos a sin b = (1/2)[sin(a+b) − sin(a−b)] <a href="trig-proofs-ru.html#proof-prod-cossin">доказать</a></div>
+
+        <!-- 10. Градусы ↔ Радианы -->
+        <h2>Градусы ↔ Радианы</h2>
+        <div class="formula">θ° = (π θ / 180) рад <span class="note">конверсия</span></div>
+
+        <!-- 11. Конкретные значения -->
+        <h2>Значения для стандартных углов</h2>
+        <div class="formula">sin 30° = 1/2 <span class="axiom">(аксиома)</span></div>
+        <div class="formula">cos 30° = √3/2 <a href="trig-proofs-ru.html#proof-cos30">доказать</a></div>
+        <div class="formula">sin 45° = cos 45° = √2/2 <a href="trig-proofs-ru.html#proof-sin45">доказать</a></div>
+        <div class="formula">sin 60° = √3/2 <a href="trig-proofs-ru.html#proof-sin60">доказать</a></div>
+        <div class="formula">sin 90° = 1, cos 90° = 0 <a href="trig-proofs-ru.html#proof-sin90-val">доказать</a></div>
+
+        <footer>
+            <p><a href="trig-proofs-ru.html">Перейти к доказательствам</a> | © 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Наивная теория множеств — 3. Операции над множествами</title>
+  <style>
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      max-width:940px;
+      margin:40px auto;
+      padding:0 20px;
+      color:#1f2937;
+      line-height:1.7;
+    }
+    header{
+      border-left:10px solid #ef4444;
+      padding:18px 24px;
+      background:#fef2f2;
+      border-radius:0 12px 12px 0;
+      margin-bottom:30px;
+    }
+    h1{margin:0;font-size:1.9rem}
+    h2{margin:36px 0 16px;font-size:1.6rem}
+    h3{margin:28px 0 12px}
+    pre{
+      background:#fefce8;
+      padding:16px;
+      border-radius:10px;
+      border:1px solid #fde68a;
+      overflow:auto;
+      font-size:0.95rem;
+    }
+    code{
+      background:#fee2e2;
+      color:#991b1b;
+      padding:3px 8px;
+      border-radius:6px;
+      font-weight:600;
+    }
+    .card{
+      background:#ffffff;
+      border:3px solid #fca5a5;
+      border-radius:16px;
+      padding:20px;
+      margin:30px 0;
+      box-shadow:0 4px 12px rgba(239,68,68,0.1);
+    }
+    label{font-weight:bold;color:#b91c1c}
+    input{
+      width:100%;
+      padding:12px 14px;
+      font-size:1.1rem;
+      border:2px solid #fecaca;
+      border-radius:10px;
+      margin-top:6px;
+    }
+    .inputs{display:flex;gap:20px;margin-top:10px;flex-wrap:wrap}
+    .inputs > div{flex:1;min-width:280px}
+    .result{
+      margin-top:20px;
+      padding:18px;
+      background:#fff7ed;
+      border-radius:12px;
+      border:2px dashed #f97316;
+      font-size:1.15rem;
+      line-height:2;
+    }
+    .example{
+      background:#fef3c7;
+      border-left:6px solid #f59e0b;
+      padding:16px;
+      border-radius:8px;
+      margin:24px 0;
+    }
+    footer{
+      margin-top:70px;
+      padding-top:20px;
+      border-top:3px solid #fca5a5;
+      color:#991b1b;
+      font-size:1.05rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Наивная теория множеств — 3. Операции над множествами</h1>
+    <p style="margin:8px 0 0;font-size:1.1rem;opacity:.9">
+      Объединение, пересечение, разность, дополнение — с кучей примеров и живой диаграммой Венна в браузере!
+    </p>
+  </header>
+
+  <section>
+    <h2>Четыре главные операции</h2>
+
+    <ul style="font-size:1.15rem;line-height:2.2">
+      <li><strong>Объединение</strong> <code>A ∪ B</code> — всё, что есть хотя бы в одном из множеств<br>
+          <small>«ИЛИ»: элемент принадлежит A или B (или обоим)</small></li>
+      <li><strong>Пересечение</strong> <code>A ∩ B</code> — только то, что есть и там, и там<br>
+          <small>«И»: элемент принадлежит одновременно A и B</small></li>
+      <li><strong>Разность</strong> <code>A \ B</code> или <code>A − B</code> — элементы из A, которых нет в B</li>
+      <li><strong>Дополнение</strong> <code>A^c</code> (или <code>¯A</code>) — всё, чего нет в A (относительно универсального множества U)</li>
+    </ul>
+  </section>
+
+  <div class="card">
+    <h3>Живой конструктор множеств (диаграмма Венна в действии)</h3>
+    <p>Вводи элементы через запятую. Повторы и пробелы игнорируются. Результаты обновляются мгновенно!</p>
+
+    <div class="inputs">
+      <div>
+        <label>Множество A</label><br>
+        <input id="setA" placeholder="например:  Маша, Петя, Катя, Саша" value="1, 2, 3, 4"/>
+      </div>
+      <div>
+        <label>Множество B</label><br>
+        <input id="setB" placeholder="например:  3, 4, 5, 6" value="3, 4, 5, 6"/>
+      </div>
+    </div>
+
+    <div class="result" id="ops"></div>
+  </div>
+
+  <section class="example">
+    <h3>Примеры из жизни</h3>
+    <p>Пусть A = {дети, которые любят мороженое}<br>
+         B = {дети, которые любят шоколад}</p>
+    <ul>
+      <li>A ∪ B — дети, которым нравится мороженое <strong>или</strong> шоколад (или оба)</li>
+      <li>A ∩ B — дети, которым нравится и то, и другое (шоколадное мороженое — их мечта!)</li>
+      <li>A \ B — любят мороженое, но <strong>не любят</strong> шоколад</li>
+      <li>B \ A — обожают шоколад, но мороженое — фу!</li>
+    </ul>
+  </section>
+
+  <section class="example">
+    <h3>Ещё примеры (с цифрами и буквами)</h3>
+    <pre>A = {1, 2, 3, 4, 5}
+B = {3, 4, 5, 6, 7}
+
+A ∪ B = {1, 2, 3, 4, 5, 6, 7}
+A ∩ B = {3, 4, 5}
+A \ B = {1, 2}
+B \ A = {6, 7}</pre>
+  </section>
+
+  <section>
+    <h2>Дополнение (очень важная операция)</h2>
+    <p>Универсальное множество U — это всё, что мы рассматриваем в задаче.</p>
+    <pre>U = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+A = {2, 4, 6, 8, 10}
+
+A^c (дополнение A) = {1, 3, 5, 7, 9}   ← все чётные убрали, остались нечётные</pre>
+    <p>Пример из жизни: U = все ученики школы, A = ученики 10-го класса → A^c = все, кто НЕ в 10-м классе.</p>
+  </section>
+
+  <section>
+    <h2>Мини-доказательства и свойства (для любопытных)</h2>
+    <ul>
+      <li><code>A ⊆ A ∪ B</code> — очевидно: всё из A точно попадает в объединение</li>
+      <li><code>A ∩ B ⊆ A</code> — пересечение не может быть больше исходных множеств</li>
+      <li><code>A ∩ A = A</code>, <code>A ∪ A = A</code> — идемпотентность</li>
+      <li><code>A ∩ ∅ = ∅</code>, <code>A ∪ ∅ = A</code> — пустое множество ничего не меняет</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Быстрая викторина</h3>
+    <ol style="font-size:1.1rem">
+      <li>A = {a, b, c}, B = {b, c, d}. Чему равно A ∩ B? → <code>{b, c}</code></li>
+      <li>A ∪ B из предыдущего примера? → <code>{a, b, c, d}</code></li>
+      <li>A \ B? → <code>{a}</code></li>
+      <li>Если U = {1,2,3,4,5,6} и A = {1,3,5}, то A^c = ? → <code>{2,4,6}</code></li>
+    </ol>
+  </section>
+
+  <footer>
+    ← <a href="02-обозначения.html">2. Обозначения</a>  |  
+    <strong>Далее → <a href="04-relations.html">4. Отношения и функции</a></strong>
+  </footer>
+
+  <script>
+    function parseSet(str) {
+      if (!str.trim()) return [];
+      return [...new Set(
+        str.split(',')
+           .map(x => x.trim())
+           .filter(Boolean)
+      )];
+    }
+
+    function update() {
+      const A = parseSet(document.getElementById('setA').value);
+      const B = parseSet(document.getElementById('setB').value);
+
+      const union = [...new Set([...A, ...B])];
+      const inter = A.filter(x => B.includes(x));
+      const diffAB = A.filter(x => !B.includes(x));
+      const diffBA = B.filter(x => !A.includes(x));
+
+      const empty = (arr) => arr.length === 0 ? '∅' : `{ ${arr.join(', ')} }`;
+
+      document.getElementById('ops').innerHTML = `
+        <div><strong>Множество A</strong> = ${empty(A)}</div>
+        <div><strong>Множество B</strong> = ${empty(B)}</div>
+        <div style="margin-top:16px;color:#dc2626"><strong>A ∪ B (объединение)</strong> = ${empty(union)}</div>
+        <div style="color:#0891b2"><strong>A ∩ B (пересечение)</strong> = ${empty(inter)}</div>
+        <div style="color:#7c2d12"><strong>A \\ B (разность)</strong> = ${empty(diffAB)}</div>
+        <div style="color:#6b7280"><strong>B \\ A</strong> = ${empty(diffBA)}</div>
+      `;
+    }
+
+    // Обновляем при любом изменении и сразу при загрузке
+    document.getElementById('setA').addEventListener('input', update);
+    document.getElementById('setB').addEventListener('input', update);
+    update();
+  </script>
+</body>
+</html>

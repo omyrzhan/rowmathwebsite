@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>2. Область определения и область значений функции</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {background:#0f172a; color:#e6eef8; font-family:Arial, sans-serif; padding:20px; line-height:1.6;}
+        h1, h2, h3 {color:#60a5fa;}
+        section {background:#081524; padding:25px; margin:25px 0; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.4);}
+        .example {background:#112240; padding:15px; border-left:5px solid #60a5fa; margin:15px 0;}
+        input[type=number] {padding:8px; width:100px; border-radius:6px; border:none;}
+        canvas {max-width:100%; height:300px; margin-top:20px; background:#112240; border-radius:8px;}
+        .calc {background:#1e293b; padding:15px; border-radius:8px; margin:15px 0;}
+    </style>
+</head>
+<body>
+
+<h1>2. Область определения и область значений функции</h1>
+
+<section>
+    <h2>Что такое область определения (D(f))?</h2>
+    <p><strong>Область определения</strong> — это все те значения переменной <code>x</code>, которые мы <strong>можем подставить</strong> в функцию, и при этом функция будет иметь смысл (не будет «ломаться»).</p>
+    <p>Представь, что функция — это машина. Ты кидаешь внутрь число x, а она выдаёт результат y = f(x). Но не каждое число можно кидать — некоторые числа машина просто «не переваривает».</p>
+
+    <div class="example">
+        <h3>Пример 1: Квадратный корень</h3>
+        <p>Рассмотрим функцию <code>f(x) = √(x − 2)</code></p>
+        <p>Внутри корня должно быть <strong>неотрицательное</strong> число (в обычной школьной математике корень из отрицательного не берём).</p>
+        <p>Значит: <code>x − 2 ≥ 0</code> → <code>x ≥ 2</code></p>
+        <p><strong>Область определения:</strong> <code>x ≥ 2</code> или в интервальной записи <code>[2; +∞)</code></p>
+
+        <div class="calc">
+            Попробуй сам: f(x) = √(x−2)<br>
+            <input id="x1" type="number" value="4" oninput="calc1()"> →
+            <strong><span id="r1" style="color:#60a5fa">2</span></strong>
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>Пример 2: Деление на ноль — нельзя!</h3>
+        <p><code>f(x) = 1/(x−3)</code></p>
+        <p>Знаменатель не может быть равен нулю → <code>x − 3 ≠ 0</code> → <code>x ≠ 3</code></p>
+        <p><strong>Область определения:</strong> все действительные числа, кроме x = 3<br>
+        В интервалах: <code>(−∞; 3) ∪ (3; +∞)</code></p>
+
+        <div class="calc">
+            Введи x: <input id="x2" type="number" step="0.1" value="5" oninput="calc2()"> →
+            <strong><span id="r2" style="color:#60a5fa"></span></strong>
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>Пример 3: Логарифм</h3>
+        <p><code>f(x) = log₂(x)</code> (логарифм по основанию 2)</p>
+        <p>Под логарифм можно подставлять только <strong>положительные</strong> числа.</p>
+        <p>Значит: <code>x > 0</code></p>
+        <p><strong>Область определения:</strong> <code>(0; +∞)</code></p>
+
+        <div class="calc">
+            x = <input id="x3" type="number" step="0.1" value="8" oninput="calc3()"> →
+            <strong><span id="r3" style="color:#60a5fa"></span></strong>
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>Пример 4: Сложная функция</h3>
+        <p><code>f(x) = √(x+1)/(x−5)</code></p>
+        <p>Требования одновременно:</p>
+        <ul>
+            <li>Под корнем: <code>x + 1 ≥ 0</code> → <code>x ≥ −1</code></li>
+            <li>Знаменатель ≠ 0: <code>x ≠ 5</code></li>
+        </ul>
+        <p><strong>Область определения:</strong> <code>[−1; 5) ∪ (5; +∞)</code></p>
+    </div>
+</section>
+
+<section>
+    <h2>Область значений (E(f)) — какие ответы может выдавать функция</h2>
+    <p>Это все возможные y, которые функция может «выдать» при допустимых x.</p>
+
+    <div class="example">
+        <h3>Пример: f(x) = x²</h3>
+        <p>Квадрат любого действительного числа ≥ 0.</p>
+        <p><strong>Область значений:</strong> <code>[0; +∞)</code></p>
+        <canvas id="chart1"></canvas>
+    </div>
+
+    <div class="example">
+        <h3>Пример: f(x) = √(x−2)</h3>
+        <p>Корень всегда ≥ 0, и может быть сколь угодно большим.</p>
+        <p><strong>Область значений:</strong> <code>[0; +∞)</code></p>
+        <canvas id="chart2"></canvas>
+    </div>
+
+    <div class="example">
+        <h3>Пример: f(x) = 1/x</h3>
+        <p>Функция никогда не равна 0, может быть любой другой число (положительное и отрицательное).</p>
+        <p><strong>Область значений:</strong> <code>ℝ \ {0}</code> (все действительные, кроме нуля)</p>
+        <canvas id="chart3"></canvas>
+    </div>
+</section>
+
+<section>
+    <h2>Краткая шпаргалка: когда что запрещено</h2>
+    <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+        <tr style="background:#1e293b;"><th>Операция</th><th>Условие для области определения</th></tr>
+        <tr><td>√(выражение)</td><td>выражение ≥ 0</td></tr>
+        <tr><td>log(выражение)</td><td>выражение > 0</td></tr>
+        <tr><td>1/(выражение) или деление</td><td>выражение ≠ 0</td></tr>
+        <tr><td>tg(x), ctg(x)</td><td>cos(x) ≠ 0 и sin(x) ≠ 0 соответственно</td></tr>
+   

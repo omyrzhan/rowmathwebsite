@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Наивная теория множеств — 1. Введение</title>
+  <style>
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      max-width:900px;margin:28px auto;padding:0 18px;color:#111;
+      line-height:1.5;
+    }
+    header{border-left:6px solid #4f46e5;padding:12px 18px;margin-bottom:16px}
+    h1{margin:0;font-size:1.6rem}
+    h2{margin-top:0}
+    section{margin-bottom:28px}
+    pre{background:#f3f4f6;padding:12px;border-radius:6px;overflow:auto;font-size:0.95rem}
+    .card{border:1px solid #e6e7eb;padding:16px;border-radius:8px;background:#fff}
+    input,button{padding:8px 12px;margin:6px 0;border-radius:6px;border:1px solid #ccc;font-size:1rem}
+    button{background:#4f46e5;color:white;cursor:pointer;border:none}
+    button:hover{background:#4338ca}
+    .example{background:#fff7ed;padding:14px;border-radius:8px;border:1px solid #fde2b4}
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Наивная теория множеств — 1. Введение</h1>
+    <p style="margin:6px 0 0;opacity:.8">Основные понятия: что такое множество, примеры, принадлежности элемента.</p>
+  </header>
+
+  <section>
+    <h2>Что такое множество?</h2>
+    <p>
+      <strong>Множество</strong> — это собрание различных объектов, которые называются 
+      <em>элементами</em> или <em>членами</em> множества.
+    </p>
+    <p>Множества записываются в фигурных скобках:</p>
+    <pre>{1, 2, 3}
+{красный, зелёный, синий}
+{яблоко, банан, вишня}</pre>
+
+    <p>Важные свойства:</p>
+    <ul>
+      <li>Порядок элементов не важен: <code>{1, 2, 3}</code> = <code>{3, 1, 2}</code></li>
+      <li>Повторения игнорируются: <code>{1, 2, 2, 3}</code> = <code>{1, 2, 3}</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Обозначения</h2>
+    <ul>
+      <li><code>a ∈ A</code> — «a принадлежит множеству A» (a является элементом A)</li>
+      <li><code>a ∉ A</code> — «a не принадлежит множеству A»</li>
+      <li><code>∅</code> или <code>{}</code> — пустое множество (в нём нет ни одного элемента)</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h3>Интерактив: проверь принадлежность</h3>
+    <p>Множество A = <code>{apple, banana, cherry}</code><br>
+    Введите слово и нажмите кнопку (регистр не важен).</p>
+
+    <input id="memberInput" placeholder="например, banana или яблоко" />
+    <button id="checkBtn">Проверить</button>
+    <div id="checkResult" style="margin-top:12px;font-weight:bold;font-size:1.1rem;"></div>
+  </section>
+
+  <section class="example">
+    <h3>Ещё примеры множеств из жизни</h3>
+    <ul>
+      <li>Множество планет Солнечной системы:<br>
+          <code>{Меркурий, Венера, Земля, Марс, Юпитер, Сатурн, Уран, Нептун}</code></li>
+      <li>Множество чётных цифр:<br><code>{0, 2, 4, 6, 8}</code></li>
+      <li>Множество гласных букв русского алфавита:<br><code>{а, е, ё, и, о, у, ы, э, ю, я}</code></li>
+      <li>Множество всех натуральных чисел:<br><code>{1, 2, 3, 4, 5, …}</code> (бесконечное)</li>
+      <li>Пустое множество:<br><code>∅</code> или <code>{}</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Мини-тест для новичков</h3>
+    <p>Принадлежит ли число 5 множеству <code>{1, 2, 3, 4}</code>?</p>
+    <p>Нет → записываем <code>5 ∉ {1, 2, 3, 4}</code></p>
+
+    <p>Принадлежит ли «банан» множеству <code>{яблоко, банан, вишня}</code>?</p>
+    <p>Да → <code>банан ∈ {яблоко, банан, вишня}</code></p>
+  </section>
+
+  <footer style="margin-top:50px;padding-top:15px;border-top:1px solid #eee;color:#555">
+    Далее → <a href="02-notation.html">2. Более подробные обозначения и операции</a>
+  </footer>
+
+  <script>
+    const A = ['apple', 'banana', 'cherry'];
+
+    const input = document.getElementById('memberInput');
+    const btn   = document.getElementById('checkBtn');
+    const out   = document.getElementById('checkResult');
+
+    btn.onclick = function() {
+      const val = input.value.trim().toLowerCase();
+
+      if (val === '') {
+        out.textContent = 'Сначала введите что-нибудь!';
+        out.style.color = 'red';
+        return;
+      }
+
+      if (A.includes(val)) {
+        out.textContent = `Да! "${val}" ∈ A`;
+        out.style.color = 'green';
+      } else {
+        out.textContent = `Нет, "${val}" ∉ A`;
+        out.style.color = '#b45309';
+      }
+    };
+
+    // Можно нажать Enter в поле ввода
+    input.addEventListener('keypress', e => {
+      if (e.key === 'Enter') btn.click();
+    });
+  </script>
+</body>
+</html>
