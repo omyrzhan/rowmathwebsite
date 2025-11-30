@@ -1,0 +1,430 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Метод подстановки — интерактивно</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--accent:#06b6d4;--muted:#94a3b8;--glass: rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system; background:linear-gradient(180deg,#071029 0%, #071a2a 100%); color:#e6eef6}
+    .wrap{max-width:1000px;margin:32px auto;padding:24px}
+    header{display:flex;gap:16px;align-items:center}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 18px;color:var(--muted)}
+    .panel{display:grid;grid-template-columns: 1fr 420px;gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 24px rgba(2,6,23,0.7)}
+
+    /* left area */
+    .workspace{min-height:420px;display:flex;flex-direction:column;gap:12px}
+    .equations{display:flex;flex-direction:column;gap:12px}
+    .eq-row{display:flex;gap:12px;align-items:center}
+    .eq{padding:10px 14px;border-radius:10px;background:var(--glass);min-width:160px}
+    .eq.k{border:2px solid transparent}
+    .eq.highlight{box-shadow:0 8px 30px rgba(6,182,212,0.12);border-color:var(--accent);background:linear-gradient(180deg, rgba(6,182,212,0.04), rgba(6,182,212,0.01))}
+    .note{font-size:13px;color:var(--muted)}
+
+    /* controls */
+    .controls{display:flex;gap:8px;align-items:center;margin-top:6px}
+    button {background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit;padding:8px 10px;border-radius:8px;cursor:pointer}
+    button.primary{background:linear-gradient(90deg,var(--accent),#60a5fa);color:#06212a;border:none}
+
+    /* right area */
+    .sidebar{display:flex;flex-direction:column;gap:12px}
+    .examples{display:flex;flex-direction:column;gap:8px}
+    .example-btn{padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);cursor:pointer}
+
+    /* arrows */
+    .svg-wrap{position:relative;height:120px}
+    svg{width:100%;height:100%}
+
+    /* equation rendering area */
+    .math-block{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:10px}
+
+    footer{margin-top:14px;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media (max-width:900px){.panel{grid-template-columns:1fr;}.sidebar{order:2}}
+  </style>
+  <!-- MathJax for nice rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(180deg,#60a5fa,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#012;">Σ</div>
+      <div>
+        <h1>Интерактив: Метод подстановки</h1>
+        <p class="lead">Понимание метода подстановки в алгебре
+
+Метод подстановки — это не просто приём для решения уравнений.
+Это воплощение самой идеи равенства и замещения: если две величины обозначают одно и то же, то одна может заменить другую без потери смысла.
+
+В этом и заключается логика алгебры: заменяя часть выражения на эквивалентную, мы не изменяем объект, а лишь смотрим на него с другой стороны, делая задачу проще и понятнее.
+Так математика учит видеть за формой — сущность.
+
+Что такое подстановка
+
+Суть метода подстановки в том, что одну переменную заменяют эквивалентным выражением. Это позволяет:
+
+уменьшить количество неизвестных,
+
+преобразовать систему в одно уравнение,
+
+шаг за шагом приблизиться к решению.
+
+Иными словами, мы «встраиваем» одно равенство в другое, сохраняя истину и раскрывая скрытую связь между переменными.
+
+1. Простые уравнения и идея замещения
+
+Даже в простейших уравнениях подстановка отражает глубокий принцип:
+равенство допускает замену эквивалентного на эквивалентное.
+
+Когда мы в уравнении заменяем выражение на его значение — мы совершаем подстановку. Это не просто вычисление, а осознанный переход от общего к конкретному.
+
+Пример 1. Простое линейное уравнение
+
+Решим:
+3x + 5 = 20
+
+Шаг 1. Вычтем 5 из обеих частей:
+3x = 15
+
+Шаг 2. Разделим на 3:
+x = 5
+
+Здесь каждый шаг — не механика, а логика:
+мы заменяем «20 − 5» на эквивалентное число 15, чтобы яснее увидеть, что «3x» — это тоже конкретное число.
+
+Пример 2. Использование подстановки между уравнениями
+
+Дано:
+y = 2x − 1
+3x + y = 10
+
+Шаг 1. Подставляем первое во второе:
+3x + (2x − 1) = 10
+
+Шаг 2. Преобразуем:
+5x − 1 = 10
+5x = 11
+x = 11/5 = 2.2
+
+Шаг 3. Подставляем x обратно:
+y = 2(2.2) − 1 = 3.4
+
+Комментарий: Мы связали два уравнения одной логической нитью: выражение для y вошло в другое уравнение и превратило систему в одно уравнение с одной неизвестной.
+Так подстановка упрощает — не нарушая смысла.
+
+2. Решение систем уравнений методом подстановки
+
+Когда у нас несколько уравнений, подстановка становится инструментом свёртывания системы: мы исключаем лишние переменные, пока не остаётся одно неизвестное.
+
+Это как развязать узел: сначала находишь одну нить, тянешь за неё — и всё распутывается.
+
+Пример 3. Система линейных уравнений
+
+{y=2x+1
+3x+2y=13
+{
+y=2x+1
+3x+2y=13
+	​
+
+
+Шаг 1. Подставляем первое во второе:
+3x + 2(2x + 1) = 13
+
+Шаг 2. Упрощаем:
+3x + 4x + 2 = 13
+7x = 11
+x = 11/7 ≈ 1.571
+
+Шаг 3. Подставляем обратно:
+y = 2(11/7) + 1 = 29/7 ≈ 4.143
+
+Ответ: (x ≈ 1.57, y ≈ 4.14)
+
+Смысл: Мы не «удалили» уравнение, а «вплели» его в другое — получив концентрированную форму всей системы.
+
+Пример 4. Когда нужно выразить переменную
+
+{2x+y=8
+3x−y=2
+{
+2x+y=8
+3x−y=2
+	​
+
+
+Шаг 1. Из первого: y = 8 − 2x
+Шаг 2. Подставим во второе:
+3x − (8 − 2x) = 2
+5x − 8 = 2
+x = 2
+y = 8 − 2(2) = 4
+
+Ответ: (x, y) = (2, 4)
+
+Комментарий: Мы использовали принцип зеркальности равенства: из первого уравнения извлекли зависимость и внедрили её во второе.
+Вся система «схлопнулась» в одно простое уравнение.
+
+Почему метод подстановки работает
+
+Метод подстановки — это не трюк и не формальная процедура. Он основан на фундаментальном свойстве равенства:
+
+Если 
+a=b
+a=b, то в любом выражении можно заменить 
+a
+a на 
+b
+b,
+и значение не изменится.
+
+Эта идея лежит в сердце всей математики — от простых чисел до теории множеств и анализа.
+Каждая подстановка — это акт тождественного преобразования, сохранения смысла при изменении формы.
+
+Математически:
+
+f(a)=f(b), если a=b
+f(a)=f(b), если a=b
+
+А философски:
+
+Замена — это способ увидеть одно и то же в разных формах.
+
+Советы по использованию
+
+Выбирайте уравнение с «удобной» переменной.
+Если коэффициент при ней равен 1 или −1 — выразить её будет проще.
+
+Будьте внимательны при упрощении.
+Любое упущение знака или дроби может исказить смысл подстановки.
+
+После нахождения одной переменной всегда возвращайтесь к исходной системе.
+Это замыкает логический круг — проверяет, что обе связи выполняются.
+
+Подстановка — это логика в действии.
+Она учит видеть, что за каждым преобразованием стоит не механика, а сохранение тождества.
+
+Мысленно отслеживайте, что вы заменяете и почему.
+Это развивает алгебраическое мышление — способность удерживать эквивалентность в процессе изменений.
+
+Итог
+
+Метод подстановки — это язык равенства, средство, через которое алгебра говорит о том, что формы могут меняться, но смысл — оставаться тем же.
+Это умение видеть в разных выражениях одну и ту же идею, и постепенно раскрывать её до простого и ясного результата.
+
+Алгебра — это искусство сохранять смысл при изменении формы.
+Подстановка — её первый урок.Показаны шаги подстановки с подсветкой выражений и стрелками, связывающими уравнения.</p>
+      </div>
+    </header>
+
+    <div class="panel" style="margin-top:18px">
+      <div class="card">
+        <div class="workspace">
+          <div class="equations" id="eq-area">
+            <!-- equations will be injected here -->
+          </div>
+
+          <div class="svg-wrap card" id="svg-area" style="background:transparent;padding:8px">
+            <svg id="arrows-svg" viewBox="0 0 1000 120" preserveAspectRatio="none"></svg>
+          </div>
+
+          <div class="math-block" id="step-explanation">
+            <!-- step text -->
+          </div>
+
+          <div class="controls">
+            <button id="prev">◀ Предыдущий</button>
+            <button id="next" class="primary">Следующий ▶</button>
+            <div style="flex:1"></div>
+            <label class="note">Шаг: <span id="step-index">0</span>/<span id="step-total">0</span></label>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="card">
+          <strong>Примеры</strong>
+          <div class="examples" id="examples-list">
+            <!-- example buttons -->
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>Подсказки</strong>
+          <ul style="margin:8px 0 0 16px;color:var(--muted)">
+            <li>Ищите уравнения с простым коэффициентом.</li>
+            <li>Следите за знаками при раскрытии скобок.</li>
+            <li>Проверяйте найденные значения в исходной системе.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer>Нажмите «Примеры» → затем "Следующий" для пошаговой демонстрации. Вы можете редактировать пример в коде.</footer>
+  </div>
+
+  <script>
+    // Examples data: each example has initial equations and an ordered list of steps.
+    const examples = [
+      {
+        id: 'simple-1',
+        title: 'Простой линейный: 3x + 5 = 20',
+        equations: ['3x + 5 = 20'],
+        steps: [
+          { highlight:[0], explanation: 'Исходное уравнение.' },
+          { highlight:[0], transform: ['3x = 20 - 5'], explanation: 'Вычитаем 5 с обеих сторон: 3x = 15 (мы временно показываем форму с правой частью).' },
+          { highlight:[0], transform: ['x = 15 / 3'], explanation: 'Делим на 3: x = 5.' }
+        ]
+      },
+
+      {
+        id: 'sub-1',
+        title: 'Подстановка: y = 2x − 1, 3x + y = 10',
+        equations: ['y = 2x - 1','3x + y = 10'],
+        steps: [
+          { highlight:[0,1], explanation: 'Исходная система. Первое уравнение выражает y через x.' },
+          { highlight:[1], arrow:[{from:0,to:1,fromAnchor:'right',toAnchor:'left'}], transform:[null,'3x + (2x - 1) = 10'], explanation: 'Подставляем y = 2x - 1 во второе уравнение.' },
+          { highlight:[1], transform:[null,'5x - 1 = 10'], explanation: 'Собираем подобные члены: 5x - 1 = 10.' },
+          { highlight:[1], transform:[null,'5x = 11','x = 11/5'], explanation: 'Прибавляем 1, затем делим: x = 11/5.' },
+          { highlight:[0], transform:['y = 2(11/5) - 1 = 22/5 - 1 = 17/5'], explanation: 'Подставляем найденное x в выражение для y.' }
+        ]
+      },
+
+      {
+        id: 'system-1',
+        title: 'Система: 2x + y = 8, 3x - y = 2',
+        equations: ['2x + y = 8','3x - y = 2'],
+        steps: [
+          { highlight:[0,1], explanation: 'Исходная система. Можно выразить y из первого уравнения.' },
+          { highlight:[0], transform:['y = 8 - 2x'], explanation: 'Из первого: y = 8 - 2x.' },
+          { highlight:[1], arrow:[{from:0,to:1,fromAnchor:'right',toAnchor:'left'}], transform:[null,'3x - (8 - 2x) = 2'], explanation: 'Подставляем выражение для y во второе уравнение.' },
+          { highlight:[1], transform:[null,'5x - 8 = 2','x = 2'], explanation: 'Упрощаем и находим x = 2.' },
+          { highlight:[0], transform:['y = 8 - 2(2) = 4'], explanation: 'Подставляем и получаем y = 4.' }
+        ]
+      }
+    ];
+
+    // UI state
+    let currentExample = 0;
+    let currentStep = 0;
+
+    const eqArea = document.getElementById('eq-area');
+    const stepExp = document.getElementById('step-explanation');
+    const examplesList = document.getElementById('examples-list');
+    const svg = document.getElementById('arrows-svg');
+    const stepIndex = document.getElementById('step-index');
+    const stepTotal = document.getElementById('step-total');
+
+    function renderExamples() {
+      examples.forEach((ex, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'example-btn';
+        btn.textContent = ex.title;
+        btn.onclick = () => { currentExample = i; currentStep = 0; render(); };
+        examplesList.appendChild(btn);
+      });
+    }
+
+    function renderEquations(eqTexts) {
+      eqArea.innerHTML = '';
+      eqTexts.forEach((t,i)=>{
+        const row = document.createElement('div'); row.className='eq-row';
+        const eq = document.createElement('div'); eq.className='eq k'; eq.id = 'eq-'+i; eq.innerHTML = '<div style="font-size:16px">\\('+escapeHtml(t)+'\\)</div>';
+        row.appendChild(eq);
+        eqArea.appendChild(row);
+      });
+      // typeset with MathJax
+      if (window.MathJax) MathJax.typesetPromise();
+    }
+
+    function escapeHtml(s){ return s===null? '': s.replace(/&/g,'\\&').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function renderArrow(def, eqCount){
+      // def: {from:0,to:1}
+      svg.innerHTML = '';
+      const w = 1000; const h = 120;
+      const pad = 40;
+      const colW = (w - pad*2) / Math.max(1, eqCount);
+      if (!def) return;
+
+      def.forEach(d=>{
+        const x1 = pad + (d.from + 0.8)*colW;
+        const x2 = pad + (d.to + 0.2)*colW;
+        const y = h/2;
+        const path = `<path d="M ${x1} ${y} C ${(x1+x2)/2} ${y-30}, ${(x1+x2)/2} ${y+30}, ${x2} ${y}" stroke="${getComputedStyle(document.documentElement).getPropertyValue('--accent')||'#06b6d4'}" stroke-width="2" fill="none" marker-end="url(#arrow)"></path>`;
+        svg.innerHTML += path;
+      });
+      svg.insertAdjacentHTML('afterbegin', `
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)" />
+          </marker>
+        </defs>
+      `);
+    }
+
+    function applyStepTransforms(baseEqs, step){
+      // step.transform is array with same length as base, or nulls; replace where provided
+      const out = baseEqs.map((t,i)=> t);
+      if (step.transform){
+        step.transform.forEach((nt,i)=>{ if (nt !== null && nt !== undefined) out[i] = nt; });
+      }
+      return out;
+    }
+
+    function render(){
+      const ex = examples[currentExample];
+      const base = ex.equations;
+      const step = ex.steps[currentStep];
+
+      // update equations (apply transforms up to current step)
+      // We'll progressively apply transforms from steps 0..currentStep
+      let eqs = [...base];
+      for (let si=0; si<=currentStep; si++){
+        const s = ex.steps[si];
+        if (s && s.transform){ s.transform.forEach((t,i)=>{ if (t!=null) eqs[i]=t; }); }
+      }
+
+      renderEquations(eqs);
+
+      // highlight
+      document.querySelectorAll('.eq').forEach(el=>el.classList.remove('highlight'));
+      if (step.highlight) step.highlight.forEach(i=>{ const el=document.getElementById('eq-'+i); if (el) el.classList.add('highlight'); });
+
+      // arrows
+      renderArrow(step.arrow, base.length);
+
+      // explanation
+      stepExp.innerHTML = '<div style="font-weight:600;margin-bottom:6px">'+escapeHtml(step.explanation)+'</div>';
+      // show additional transformed lines if present
+      if (step.transform){
+        const lines = step.transform.filter(x=>x!=null).map(x=>'<div style="margin-top:6px;">\\(' + escapeHtml(x) + '\\)</div>').join('');
+        stepExp.innerHTML += lines;
+        if (window.MathJax) MathJax.typesetPromise();
+      }
+
+      stepIndex.textContent = currentStep + 1;
+      stepTotal.textContent = ex.steps.length;
+    }
+
+    document.getElementById('next').addEventListener('click', ()=>{
+      const ex = examples[currentExample];
+      if (currentStep < ex.steps.length - 1) currentStep++; else currentStep = ex.steps.length - 1;
+      render();
+    });
+    document.getElementById('prev').addEventListener('click', ()=>{
+      if (currentStep > 0) currentStep--; render();
+    });
+
+    // init
+    renderExamples();
+    render();
+  </script>
+</body>
+</html>
