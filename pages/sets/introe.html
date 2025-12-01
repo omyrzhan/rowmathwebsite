@@ -1,0 +1,243 @@
+
+<!doctype html>
+<!-- This tells the browser: "This is a modern HTML5 document" -->
+<html lang="en">
+<!-- <html> is the root element of the page. lang="en" says the page is in English (good for screen readers and search engines) -->
+
+<head>
+  <!-- The <head> contains information ABOUT the page (not visible content) -->
+
+  <meta charset="utf-8">
+  <!-- Tells the browser to use UTF-8 encoding (supports almost all characters and emojis) -->
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Makes the page mobile-friendly: "make the width match the device's screen and don't zoom out" -->
+
+  <title>Naive Set Theory — 1. Introduction</title>
+  <!-- The text shown on the browser tab -->
+
+  <style>
+    /* All the CSS (styling) rules go inside <style> */
+
+    /* Basic page styling */
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      /* Uses the operating system's default nice font */
+      max-width: 900px;          /* Page won't be wider than 900 pixels */
+      margin: 28px auto;         /* Centers the page horizontally */
+      padding: 0 18px;           /* A little space on left and right */
+      color: #111;               /* Almost black text */
+    }
+
+    /* A colored left border for the header */
+    header {
+      border-left: 6px solid #4f46e5;  /* Indigo color */
+      padding: 12px 18px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;                 /* Removes default big space above/below */
+      font-size: 1.6rem;         /* Slightly larger than normal text */
+    }
+
+    section {
+      margin-bottom: 18px;       /* Space between sections */
+    }
+
+    /* Code snippets and preformatted text */
+    pre {
+      background: #f3f4f6;       /* Light gray background */
+      padding: 12px;
+      border-radius: 6px;        /* Rounded corners */
+      overflow: auto;            /* Horizontal scrollbar if code is too wide */
+    }
+
+    /* A nice card (box) for the interactive part */
+    .card {
+      border: 1px solid #e6e7eb;
+      padding: 12px;
+      border-radius: 8px;
+      background: white;         /* In case body has a different background */
+    }
+
+    /* Styling for input boxes and buttons */
+    input, button {
+      padding: 8px 10px;
+      margin: 6px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;   /* Light border */
+    }
+
+    button {
+      background: #4f46e5;
+      color: white;
+      cursor: pointer;           /* Hand pointer on hover */
+      border: none;
+    }
+
+    button:hover {
+      background: #4338ca;
+    }
+
+    /* Highlighted example boxes */
+    .example {
+      background: #fff7ed;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #fde2b4;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Everything the visitor actually sees goes in <body> -->
+ <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../index.html" class="logo-link">RowMath</a>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="../../index.html" class="nav-link" role="menuitem">Главная</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page1.html" class="nav-link" role="menuitem">Подстановка</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page2.html" class="nav-link active" role="menuitem">Знак =</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page3.html" class="nav-link" role="menuitem">Тавтология</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page4.html" class="nav-link" role="menuitem">Алгебра + Триг</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-formulas-ru.html" class="nav-link" role="menuitem">Формулы</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="trig-proofs-ru.html" class="nav-link" role="menuitem">Доказательства</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="page11.html" class="nav-link" role="menuitem">Решатель</a>
+                </li>
+                <!-- Special link to English version -->
+                <li class="nav-item" role="none">
+                    <a href="../../index.html" class="nav-link special-link" role="menuitem">English Version</a>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+  <header>
+    <h1>Naive Set Theory — 1. Introduction</h1>
+    <p style="margin:6px 0 0;opacity:.8">
+      Basic ideas: what is a set, examples, naive membership.
+    </p>
+  </header>
+
+  <section>
+    <h2>What is a set?</h2>
+    <p>
+      A <strong>set</strong> is a collection of distinct objects, called 
+      <em>elements</em> or <em>members</em>. 
+      We write sets using curly braces like this:
+    </p>
+    <pre>{red, green, blue}</pre>
+    <p>Order doesn't matter and duplicates are ignored:</p>
+    <ul>
+      <li><code>{1, 2, 2, 3}</code> is exactly the same as <code>{1, 2, 3}</code></li>
+      <li><code>{apple, banana, apple}</code> = <code>{apple, banana}</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Notation</h2>
+    <p>We use special symbols:</p>
+    <ul>
+      <li><code>a ∈ A</code> → "a is an element of set A" (the ∈ symbol means "is a member of")</li>
+      <li><code>a ∉ A</code> → "a is NOT an element of A"</li>
+      <li><code>∅</code> or <code>{}</code> → the empty set (a set with nothing inside)</li>
+    </ul>
+  </section>
+
+  <!-- Interactive demo -->
+  <section class="card">
+    <h3>Interactive: test membership</h3>Try typing a fruit to see if it's in the set</h3>
+    <p>Set A = <code>{apple, banana, cherry}</code> (checking is case-insensitive)</p>
+
+    <input id="memberInput" placeholder="type here, e.g. banana" />
+    <button id="checkBtn">Check membership</button>
+    <div id="checkResult" style="margin-top:12px;font-weight:bold;"></div>
+  </section>
+
+  <section class="example">
+    <h3>More real-life examples of sets</h3>
+    <ul>
+      <li>The set of all planets in our solar system:<br>
+          <code>{Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune}</code></li>
+      <li>The set of even digits:<br><code>{0, 2, 4, 6, 8}</code></li>
+      <li>The set of vowels in English:<br><code>{a, e, i, o, u}</code></li>
+      <li>The set of all integers: <code>{..., -3, -2, -1, 0, 1, 2, 3, ...}</code> (infinite in both directions)</li>
+      <li>The empty set (nothing): <code>∅</code> or <code>{}</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Quick quiz for beginners</h3></h3>
+    <p>Is <code>5</code> in the set <code>{1, 2, 3, 4}</code>?</p>
+    <p>No → we write <code>5 ∉ {1,2,3,4}</code></p>
+
+    <p>Is <code>banana</code> in <code>{apple, banana, cherry}</code>?</p>
+    <p>Yes → <code>banana ∈ {apple, banana, cherry}</code></p>
+  </section>
+
+  <footer style="margin-top:40px;color:#555;font-size:.95rem;border-top:1px solid #eee;padding-top:12px;">
+    Next lesson → <a href="02-notation.html">2. More Symbols & Notation</a>
+  </footer>
+
+  <!-- JavaScript that makes the interactive part work -->
+  <script>
+    >
+    // This is the set we are testing against
+    const A = ['apple', 'banana', 'cherry'];
+
+    // Get the HTML elements we need
+    const input = document.getElementById('memberInput');
+    const btn   = document.getElementById('checkBtn');
+    const out  = document.getElementById('checkResult');
+
+    // When the button is clicked...
+    btn.onclick = function() {
+      // Get what the user typed, remove extra spaces, make it lowercase
+      const userValue = input.value.trim().toLowerCase();
+
+      // If they didn't type anything
+      if (userValue === '') {
+        out.textContent = 'Please type something first!';
+        out.style.color = 'red';
+        return;
+      }
+
+      // Check if it is in our set A
+      if (A.includes(userValue)) {
+        out.textContent = `Yes! "${userValue}" ∈ A`;
+        out.style.color = 'green';
+      } else {
+        out.textContent = `No, "${userValue}" ∉ A`;
+        out.style.color = 'darkorange';
+      }
+    };
+
+    // Bonus: allow pressing Enter in the input box
+    input.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        btn.click(); // trigger the button
+      }
+    });
+  </script>
+</body>
+</html>
