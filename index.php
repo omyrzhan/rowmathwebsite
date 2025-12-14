@@ -1,0 +1,112 @@
+<?php
+$host = "sql206.infinityfree.com";
+$user = "if0_40372786";
+$pass = "Paranoik3691";
+$db   = "if0_40372786_mathdb";
+
+$conn = new mysqli($host, $user, $pass, $db);
+if ($conn->connect_error) {
+    die("Database connection failed");
+}
+
+// Get visitor data
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'UNKNOWN';
+$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'UNKNOWN';
+$time = date("Y-m-d H:i:s");
+
+// Optional: prevent multiple logs from same IP within short time
+$stmt = $conn->prepare("
+    INSERT INTO attend (ip_address, user_agent, attended_at)
+    VALUES (?, ?, ?)
+");
+$stmt->bind_param("sss", $ip, $userAgent, $time);
+$stmt->execute();
+$stmt->close();
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RowMath - Professional mathematics tutoring and courses">
+    <meta name="keywords" content="math, tutoring, courses, mathematics, education">
+    <title>RowMath - Master Mathematics</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">RowMath</a>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="index.html" class="nav-link" role="menuitem">Главная</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="pages/about.html" class="nav-link" role="menuitem">О сайте</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="pages/courses.html" class="nav-link" role="menuitem">Разделы</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="pages/resources.html" class="nav-link" role="menuitem">Ресурсы</a>
+                </li>
+                 <li class="nav-item" role="none">
+                    <a href="pages/login.php.html" class="nav-link" role="menuitem">Войти</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="pages/contact.html" class="nav-link" role="menuitem">Контакты</a>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" role="banner">
+        <div class="hero-content">
+            <h1 class="hero-title">Математика для нематематиков</h1>
+            <p class="hero-description">Концепция курса для моих учеников (черновой вариант)</p>
+            <div class="hero-actions">
+                <a href="pages/courses.html" class="btn btn-primary">Обзор</a>
+                <a href="pages/contact.html" class="btn btn-secondary">Начать</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" aria-labelledby="features-heading">
+        <div class="container">
+            <h2 id="features-heading" class="section-title">Почему я создал этот сайт?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Учить одинаково — значит не видеть различий.</h3>
+                    <p class="feature-description">Люди различаются по восприятию, мышлению, опыту и интересам. Поэтому универсального метода обучения не существует: то, что помогает одному ученику понять материал, может оказаться неэффективным для другого. Методы обучения должны учитывать эти различия — адаптироваться к индивидуальному темпу, способу мышления и мотивации каждого.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 class="feature-title">Учебник должен быть интерактивным</h3>
+                    <p class="feature-description">овременный учебник не должен быть просто сборником текстов и формул. Он обязан стать средой взаимодействия — где ученик не только читает, но и действует: исследует, пробует, проверяет, ошибается и исправляет. Только через активное участие знание становится личным опытом.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3 class="feature-title">Различные цели — различный набор знаний и умений</h3>
+                    <p class="feature-description">Математика — это универсальный инструмент, а не удел избранных.Однако у каждого своя цель её изучения — от сдачи экзамена до построения карьеры.Поэтому, выбирая путь, сначала честно спросите себя: «Зачем мне это?».
+
+Ответ превратит изучение из скучной обязанности в осмысленное движение к цели.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

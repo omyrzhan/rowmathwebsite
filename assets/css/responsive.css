@@ -1,97 +1,202 @@
+/* =========================================================
+   GLOBAL MOBILE FIXES
+   ========================================================= */
 
-/* Mobile-First Responsive Design */
+/* Offset for fixed navbar */
+body {
+    padding-top: 90px;
+}
 
-/* Tablet Styles */
+/* Prevent horizontal overflow */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   NAVIGATION — MOBILE
+   ========================================================= */
+
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        background: var(--bg-primary);
-        width: 100%;
-        flex-direction: column;
-        text-align: center;
-        transition: var(--transition);
-        box-shadow: var(--shadow);
-        padding: 2rem 0;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
 
     .nav-toggle {
         display: block;
     }
 
-    .nav-toggle.active .hamburger {
-        background: transparent;
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-primary);
+        flex-direction: column;
+        gap: 0;
+        display: none;
+        box-shadow: var(--shadow-lg);
+        z-index: 999;
     }
 
-    .nav-toggle.active .hamburger::before {
-        transform: rotate(45deg);
-        top: 0;
+    .nav-menu.active {
+        display: flex;
     }
 
-    .nav-toggle.active .hamburger::after {
-        transform: rotate(-45deg);
-        bottom: 0;
+    .nav-item {
+        border-bottom: 1px solid var(--border-color);
     }
 
-    .hero-title {
+    .nav-link {
+        padding: 1rem;
+        display: block;
+        text-align: center;
+    }
+
+    .special-link {
+        margin: 1rem;
+        text-align: center;
+        display: block;
+    }
+}
+
+/* =========================================================
+   CONTENT CONTAINERS
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .container,
+    .content-page,
+    .philosophical-content {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 24px 18px;
+        border-radius: 14px;
+    }
+}
+
+/* =========================================================
+   TYPOGRAPHY — PHILOSOPHICAL & MATH CONTENT
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    h1 {
         font-size: 2rem;
+        line-height: 1.3;
     }
 
-    .hero-description {
-        font-size: 1.125rem;
+    h2 {
+        font-size: 1.5rem;
     }
 
+    p,
+    .philosophical-text {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        text-align: left; /* critical for mobile readability */
+    }
+}
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    p,
+    .philosophical-text {
+        font-size: 1rem;
+        letter-spacing: 0.01em;
+    }
+}
+
+/* =========================================================
+   HIGHLIGHTS & CARDS
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .highlight,
+    .philosophical-highlight,
+    .example-card,
+    .proof-card,
+    .solver-container,
+    .formula-category {
+        padding: 1.25rem;
+        margin: 1.5rem 0;
+    }
+}
+
+/* =========================================================
+   TABLES & CODE BLOCKS
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .math-pre,
+    pre,
+    code {
+        font-size: 0.9rem;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+}
+
+/* =========================================================
+   GRIDS → SINGLE COLUMN
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .features-grid,
+    .topics-grid,
+    .comparison-grid,
+    .formulas-grid,
+    .tips-grid,
+    .reference-cards,
+    .proof-methods,
+    .strategies-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   BUTTONS & TOUCH TARGETS
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .btn,
+    .large-btn,
+    .solve-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .cta-actions,
     .hero-actions {
         flex-direction: column;
         align-items: center;
     }
+}
 
-    .btn {
-        width: 200px;
+/* =========================================================
+   FOOTERS
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    footer,
+    .content-footer,
+    .philosophical-footer {
+        font-size: 0.85rem;
         text-align: center;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-}
-
-/* Mobile Styles */
-@media (max-width: 480px) {
-    .container {
-        padding: 0 0.5rem;
-    }
-
-    .hero {
-        padding: 100px 0 60px;
-    }
-
-    .hero-title {
-        font-size: 1.75rem;
-    }
-
-    .features {
-        padding: 60px 0;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .feature-card {
-        padding: 1.5rem;
-    }
-}
-
-/* Large Desktop Styles */
-@media (min-width: 1200px) {
-    .container {
-        padding: 0;
     }
 }
